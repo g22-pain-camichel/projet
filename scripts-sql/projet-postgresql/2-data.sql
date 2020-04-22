@@ -10,6 +10,8 @@ DELETE FROM personne;
 DELETE FROM categorie;
 DELETE FROM role;
 DELETE FROM compte;
+DELETE FROM benevole;
+DELETE FROM participant;
 
 
 -- Compte
