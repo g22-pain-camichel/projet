@@ -1,8 +1,8 @@
 package test.git;
 
-public class Emile {
+public class Emile_E {
 	public void bonjour() {
-		System.out.println( "Bonjoour Emile test" );
+		System.out.println( "Bonjoour" );
 	}
 	
 	
