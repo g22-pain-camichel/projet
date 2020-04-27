@@ -73,7 +73,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <Label text="Accueil" textFill="#b4b4b4" GridPane.columnIndex="1">
+                        <Label text="Accueil" textFill="WHITE" GridPane.columnIndex="1">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -81,7 +81,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <Label text="Equipe des participants" textFill="#b4b4b4" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label text="Equipe des participants" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -89,7 +89,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <Label prefHeight="30.0" prefWidth="271.0" text="Taches et missions des bénévoles" textFill="#b4b4b4" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Label prefHeight="30.0" prefWidth="271.0" text="Taches et missions des bénévoles" textFill="WHITE" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -97,7 +97,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <Label text="Inscrire un participant" textFill="#b4b4b4" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Label text="Inscrire un participant" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -105,7 +105,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <Label text="Options" textFill="#b4b4b4" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Label text="Options" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -113,7 +113,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <Label text="A Propos" textFill="#b4b4b4" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <Label text="A Propos" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -121,7 +121,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <Label text="Liste des participants" textFill="#b4b4b4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label text="Liste des participants" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="18.0" />
                            </font>
