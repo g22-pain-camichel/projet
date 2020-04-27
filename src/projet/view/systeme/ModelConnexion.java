@@ -9,7 +9,7 @@ import javafx.application.Platform;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import jfox.commun.exception.ExceptionValidation;
-import projet.dao.DaoCompte2;
+import projet.dao.DaoCompte;
 import projet.data.Compte;
 
 
@@ -30,7 +30,7 @@ public class ModelConnexion {
 	
 	// Autres champs
 	@Inject
-	private DaoCompte2	daoCompte;
+	private DaoCompte	daoCompte;
 	
 
 	// Getters 
