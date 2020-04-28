@@ -206,7 +206,7 @@ public class Benevole {
 	
 
 
-	public final void sethrDbDispo(final Time hrDbDispo) {
+	public final void sethrDbDispo(Time hrDbDispo) {
 		this.hrDbDispoProperty().setValue(hrDbDispo);
 	}
 	
@@ -224,7 +224,7 @@ public class Benevole {
 	
 
 
-	public final void sethrFinDispo(final Time hrFinDispo) {
+	public final void sethrFinDispo(Time hrFinDispo) {
 		this.hrFinDispoProperty().setValue(hrFinDispo);
 	}
 	

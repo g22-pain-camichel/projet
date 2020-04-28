@@ -30,42 +30,37 @@ public class Club {
 		this.numProperty().setValue(num);
 	}
 	
+
 	public final StringProperty nomCapitainProperty() {
 		return this.nomCapitain;
 	}
 	
-	public final String getnomCapitain() {
+
+	public final String getNomCapitain() {
 		return this.nomCapitainProperty().get();
 	}
 	
-	public final void setnomCapitain(final String nomCapitain) {
+
+	public final void setNomCapitain(final String nomCapitain) {
 		this.nomCapitainProperty().set(nomCapitain);
 	}
 	
-	public final Property<Integer> nbRepasReservesProperty() {
-		return this.nbRepasReserves;
-	}
-	
-	public final Integer getnbRepasReserves() {
-		return this.nbRepasReservesProperty().getValue();
-	}
-	
-	public final void setnbRepasReserves(final Integer nbRepasReserves) {
-		this.nbRepasReservesProperty().setValue(nbRepasReserves);
-	}
-	
+
 	public final Property<Integer> numParticipantProperty() {
 		return this.numParticipant;
 	}
 	
-	public final Integer getnumParticipant() {
+
+	public final Integer getNumParticipant() {
 		return this.numParticipantProperty().getValue();
 	}
 	
-	public final void setnumParticipant(final Integer numParticipant) {
+
+	public final void setNumParticipant(final Integer numParticipant) {
 		this.numParticipantProperty().setValue(numParticipant);
 	}
-
+	
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(num.getValue());
@@ -82,7 +77,20 @@ public class Club {
 		Club other = (Club) obj;
 		return Objects.equals(num.getValue(), other.num.getValue());
 	}
+
+	public final Property<Integer> nbRepasReservesProperty() {
+		return this.nbRepasReserves;
+	}
 	
+
+	public final Integer getNbRepasReserves() {
+		return this.nbRepasReservesProperty().getValue();
+	}
+	
+
+	public final void setNbRepasReserves(final Integer nbRepasReserves) {
+		this.nbRepasReservesProperty().setValue(nbRepasReserves);
+	}
 	
 	
 	

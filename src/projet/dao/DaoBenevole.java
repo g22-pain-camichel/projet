@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
-import projet.data.Personne;
+import projet.data.Benevole;
 
 
 public class DaoBenevole {
@@ -25,7 +26,7 @@ public class DaoBenevole {
 	
 	// Actions
 
-	public int inserer(Personne personne)  {
+	public int inserer(Benevole benevole)  {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -35,18 +36,26 @@ public class DaoBenevole {
 		try {
 			cn = dataSource.getConnection();
 
-			// Insère le personne
-			sql = "INSERT INTO personne ( idcategorie, nom, prenom ) VALUES ( ?, ?, ? )";
+			// Insère le Benevole
+			sql = "INSERT INTO benevole (identifiant, nom, prenom, sexe, dtNaiss, email, tel, type, hrDbDispo, hrFinDispo)"
+					+ " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
-			stmt.setInt(	1, personne.getCategorie().getId() );
-			stmt.setString(	2, personne.getNom() );
-			stmt.setString(	3, personne.getPrenom() );
+			stmt.setObject(	1, benevole.getIdentifiant());
+			stmt.setObject(	2, benevole.getNom() );
+			stmt.setObject(	3, benevole.getPrenom() );
+			stmt.setObject(	4, benevole.getSexe());
+			stmt.setObject(	5, benevole.getdtNaiss());
+			stmt.setObject(	6, benevole.getEmail() );
+			stmt.setObject(	7, benevole.getTel() );
+			stmt.setObject(	8, benevole.getType());
+			stmt.setObject(	9, benevole.gethrDbDispo());
+			stmt.setObject(	10, benevole.gethrFinDispo() );
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
 			rs = stmt.getGeneratedKeys();
 			rs.next();
-			personne.setId( rs.getObject( 1, Integer.class ) );
+			benevole.setIdentifiant(rs.getObject( 1, Integer.class ) );
 	
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -55,11 +64,11 @@ public class DaoBenevole {
 		}
 		
 		// Retourne l'identifiant
-		return personne.getId();
+		return benevole.getIdentifiant();
 	}
 
 	
-	public void modifier(Personne personne)  {
+	public void modifier(Benevole benevole)  {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -68,13 +77,21 @@ public class DaoBenevole {
 		try {
 			cn = dataSource.getConnection();
 
-			// Modifie le personne
-			sql = "UPDATE personne SET idcategorie = ?, nom = ?, prenom = ? WHERE idpersonne =  ?";
+			// Modifie le benevole
+			sql = "UPDATE Benevole SET identifiant = ?, nom = ?, prenom = ?, sexe = ?, dtNaiss = ?, email = ?, tel = ?,"
+					+ " type = ?, hrDbDispo = ?, hrFinDispo = ? WHERE identifiant =  ?";
 			stmt = cn.prepareStatement( sql );
-			stmt.setObject( 1, personne.getCategorie().getId() );
-			stmt.setObject( 2, personne.getNom() );
-			stmt.setObject( 3, personne.getPrenom() );
-			stmt.setObject( 4, personne.getId() );
+			stmt.setObject(	1, benevole.getIdentifiant());
+			stmt.setObject(	2, benevole.getNom() );
+			stmt.setObject(	3, benevole.getPrenom() );
+			stmt.setObject(	4, benevole.getSexe());
+			stmt.setObject(	5, benevole.getdtNaiss());
+			stmt.setObject(	6, benevole.getEmail() );
+			stmt.setObject(	7, benevole.getTel() );
+			stmt.setObject(	8, benevole.getType());
+			stmt.setObject(	9, benevole.gethrDbDispo());
+			stmt.setObject(	10, benevole.gethrFinDispo() );
+			stmt.setObject(	11, benevole.getIdentifiant());
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -85,7 +102,7 @@ public class DaoBenevole {
 	}
 
 	
-	public void supprimer(int idPersonne)  {
+	public void supprimer(int idBenevole)  {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -95,10 +112,10 @@ public class DaoBenevole {
 		try {
 			cn = dataSource.getConnection();
 
-			// Supprime le personne
-			sql = "DELETE FROM personne WHERE idpersonne = ? ";
+			// Supprime le benevole
+			sql = "DELETE FROM benevole WHERE identifiant = ? ";
 			stmt = cn.prepareStatement(sql);
-			stmt.setObject( 1, idPersonne );
+			stmt.setObject( 1, idBenevole );
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -109,7 +126,7 @@ public class DaoBenevole {
 	}
 
 	
-	public Personne retrouver(int idPersonne)  {
+	public Benevole retrouver(int idBenevole)  {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -119,13 +136,13 @@ public class DaoBenevole {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM personne WHERE idpersonne = ?";
+			sql = "SELECT * FROM benevole WHERE identifiant = ?";
             stmt = cn.prepareStatement(sql);
-            stmt.setObject( 1, idPersonne);
+            stmt.setObject( 1, idBenevole);
             rs = stmt.executeQuery();
 
             if ( rs.next() ) {
-                return construirePersonne(rs, true );
+                return construireBenevole(rs, true );
             } else {
             	return null;
             }
@@ -137,7 +154,7 @@ public class DaoBenevole {
 	}
 
 	
-	public List<Personne> listerTout()   {
+	public List<Benevole> listerTout()   {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -147,15 +164,15 @@ public class DaoBenevole {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM personne ORDER BY nom, prenom";
+			sql = "SELECT * FROM benevole ORDER BY nom, prenom";
 			stmt = cn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			
-			List<Personne> personnes = new ArrayList<>();
+			List<Benevole> benevoles = new ArrayList<>();
 			while (rs.next()) {
-				personnes.add( construirePersonne(rs, false) );
+				benevoles.add( construireBenevole(rs, false) );
 			}
-			return personnes;
+			return benevoles;
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -165,7 +182,7 @@ public class DaoBenevole {
 	}
 
 	
-	public List<Personne> listerPourMemo( int idMemo )   {
+/* 	public List<Benevole> listerPourMemo( int idMemo )   {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -175,19 +192,19 @@ public class DaoBenevole {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT p.* FROM personne p" 
-				+ " INNER JOIN concerner c ON p.idpersonne = c.idpersonne" 
+			sql = "SELECT p.* FROM benevole p" 
+				+ " INNER JOIN concerner c ON p.idbenevole = c.idbenevole" 
 				+ " WHERE c.idmemo = ?" 
 				+ " ORDER BY nom, prenom";
 			stmt = cn.prepareStatement(sql);
 			stmt.setObject( 1, idMemo ); 
 			rs = stmt.executeQuery();
 			
-			List<Personne> personnes = new ArrayList<>();
+			List<benevole> benevoles = new ArrayList<>();
 			while (rs.next()) {
-				personnes.add( construirePersonne(rs, false) );
+				benevoles.add( construirebenevole(rs, false) );
 			}
-			return personnes;
+			return benevoles;
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -196,40 +213,22 @@ public class DaoBenevole {
 		}
 	}
 
-    
-    public int compterPourCategorie(int idCategorie) {
-    	
-		Connection			cn		= null;
-		PreparedStatement	stmt 	= null;
-		ResultSet 			rs		= null;
-
-		try {
-			cn = dataSource.getConnection();
-            String sql = "SELECT COUNT(*) FROM personne WHERE idcategorie = ?";
-            stmt = cn.prepareStatement( sql );
-            stmt.setObject( 1, idCategorie );
-            rs = stmt.executeQuery();
-
-            rs.next();
-            return rs.getInt( 1 );
-
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		} finally {
-			UtilJdbc.close( rs, stmt, cn );
-		}
-    }
-	
-	
+ */	
 	// Méthodes auxiliaires
 	
-	private Personne construirePersonne( ResultSet rs, boolean flagComplet ) throws SQLException {
-
-		Personne personne = new Personne();
-		personne.setId(rs.getObject( "idpersonne", Integer.class ));
-		personne.setNom(rs.getObject( "nom", String.class ));
-		personne.setPrenom(rs.getObject( "prenom", String.class ));
-		return personne;
+	private Benevole construireBenevole( ResultSet rs, boolean flagComplet ) throws SQLException {
+		Benevole benevole = new Benevole();
+		benevole.setIdentifiant(rs.getObject( "identifiant", Integer.class ));
+		benevole.setNom(rs.getObject( "nom", String.class ));
+		benevole.setPrenom(rs.getObject( "prenom", String.class ));
+		benevole.setSexe(rs.getObject( "sexe", Integer.class ));
+		benevole.setdtNaiss(rs.getObject( "dtNaiss", LocalDate.class ));
+		benevole.setEmail(rs.getObject( "email", String.class ));
+		benevole.setTel(rs.getObject( "tel", String.class ));
+		benevole.setType(rs.getObject( "type", String.class ));
+		benevole.sethrDbDispo(rs.getObject( "hrDbdispo", java.sql.Time.class));
+		benevole.sethrFinDispo(rs.getObject( "hrFindispo", java.sql.Time.class));
+		return benevole;
 	}
 	
 }

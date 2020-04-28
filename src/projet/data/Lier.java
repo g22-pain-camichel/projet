@@ -1,7 +1,5 @@
 package projet.data;
 
-import javafx.beans.property.Property;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 

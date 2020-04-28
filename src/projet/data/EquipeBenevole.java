@@ -19,67 +19,82 @@ public class EquipeBenevole {
 	private final Property<Time> hrFinDispo = new SimpleObjectProperty<>();
 	
 	//getters && setters
-	
-	
+
 	public final Property<Integer> numProperty() {
 		return this.num;
 	}
 	
+
 	public final Integer getNum() {
 		return this.numProperty().getValue();
 	}
 	
+
 	public final void setNum(final Integer num) {
 		this.numProperty().setValue(num);
 	}
 	
+
 	public final StringProperty libelleProperty() {
 		return this.libelle;
 	}
 	
-	public final String getlibelle() {
+
+	public final String getLibelle() {
 		return this.libelleProperty().get();
 	}
 	
-	public final void setlibelle(final String libelle) {
+
+	public final void setLibelle(final String libelle) {
 		this.libelleProperty().set(libelle);
 	}
 	
+
 	public final Property<Integer> nbreBenevoleProperty() {
 		return this.nbreBenevole;
 	}
 	
-	public final Integer getnbreBenevole() {
+
+	public final Integer getNbreBenevole() {
 		return this.nbreBenevoleProperty().getValue();
 	}
 	
-	public final void setnbreBenevole(final Integer nbreBenevole) {
+
+	public final void setNbreBenevole(final Integer nbreBenevole) {
 		this.nbreBenevoleProperty().setValue(nbreBenevole);
 	}
 	
+
 	public final Property<Time> hrDbDispoProperty() {
 		return this.hrDbDispo;
 	}
 	
-	public final Time gethrDbDispo() {
+
+	public final Time getHrDbDispo() {
 		return this.hrDbDispoProperty().getValue();
 	}
 	
-	public final void sethrDbDispo(final Time hrDbDispo) {
+
+	public final void setHrDbDispo(final Time hrDbDispo) {
 		this.hrDbDispoProperty().setValue(hrDbDispo);
 	}
 	
+
 	public final Property<Time> hrFinDispoProperty() {
 		return this.hrFinDispo;
 	}
 	
-	public final Time gethrFinDispo() {
+
+	public final Time getHrFinDispo() {
 		return this.hrFinDispoProperty().getValue();
 	}
 	
-	public final void sethrFinDispo(final Time hrFinDispo) {
+
+	public final void setHrFinDispo(final Time hrFinDispo) {
 		this.hrFinDispoProperty().setValue(hrFinDispo);
 	}
+	
+	
 	
 	@Override
 	public int hashCode() {
@@ -97,12 +112,6 @@ public class EquipeBenevole {
 		EquipeBenevole other = (EquipeBenevole) obj;
 		return Objects.equals(num.getValue(), other.num.getValue());
 	}
-	
-	
-	
-	
-	
-	
 
-
+	
 }

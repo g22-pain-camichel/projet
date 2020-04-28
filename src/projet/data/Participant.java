@@ -36,13 +36,13 @@ public class Participant {
 	
 
 
-	public final Integer getnum() {
+	public final Integer getNum() {
 		return this.numProperty().getValue();
 	}
 	
 
 
-	public final void setnum(final Integer num) {
+	public final void setNum(final Integer num) {
 		this.numProperty().setValue(num);
 	}
 	
@@ -118,20 +118,17 @@ public class Participant {
 	}
 	
 
-
 	public final Property<LocalDate> dtNaissProperty() {
 		return this.dtNaiss;
 	}
 	
 
-
-	public final LocalDate getdtNaiss() {
+	public final LocalDate getDtNaiss() {
 		return this.dtNaissProperty().getValue();
 	}
 	
 
-
-	public final void setDate_naiss(final LocalDate dtNaiss) {
+	public final void setDtNaiss(LocalDate dtNaiss) {
 		this.dtNaissProperty().setValue(dtNaiss);
 	}
 	
@@ -221,6 +218,8 @@ public class Participant {
 		Participant other = (Participant) obj;
 		return Objects.equals(num.getValue(), other.num.getValue());
 	}
+
+
 	
 	
 }
