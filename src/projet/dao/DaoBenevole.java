@@ -15,16 +15,12 @@ import jfox.dao.jdbc.UtilJdbc;
 import projet.data.Personne;
 
 
-public class DaoPersonne {
+public class DaoBenevole {
 
 		// Champs
 
 	@Inject
 	private DataSource		dataSource;
-	@Inject
-	private DaoTelephone	daoTelephone;
-	@Inject
-	private DaoCategorie	daoCategorie;
 
 	
 	// Actions
@@ -57,9 +53,6 @@ public class DaoPersonne {
 		} finally {
 			UtilJdbc.close( stmt, cn );
 		}
-
-		// Insère les telephones
-		daoTelephone.insererPourPersonne( personne );
 		
 		// Retourne l'identifiant
 		return personne.getId();
@@ -89,9 +82,6 @@ public class DaoPersonne {
 		} finally {
 			UtilJdbc.close( stmt, cn );
 		}
-
-		// Modifie les telephones
-		daoTelephone.modifierPourPersonne( personne );
 	}
 
 	
@@ -101,8 +91,6 @@ public class DaoPersonne {
 		PreparedStatement	stmt	= null;
 		String 				sql;
 
-		// Supprime les telephones
-		daoTelephone.supprimerPourPersonne( idPersonne );
 
 		try {
 			cn = dataSource.getConnection();
@@ -241,12 +229,6 @@ public class DaoPersonne {
 		personne.setId(rs.getObject( "idpersonne", Integer.class ));
 		personne.setNom(rs.getObject( "nom", String.class ));
 		personne.setPrenom(rs.getObject( "prenom", String.class ));
-
-		if ( flagComplet ) {
-			personne.setCategorie( daoCategorie.retrouver( rs.getObject("idcategorie", Integer.class) ) );
-			personne.getTelephones().addAll( daoTelephone.listerPourPersonne( personne ) );
-		}
-		
 		return personne;
 	}
 	

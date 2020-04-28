@@ -37,9 +37,4 @@ public class Epreuve {
 		this.nomProperty().set(nom);
 	}
 	
-	
-	
-	
-	
-	
 }

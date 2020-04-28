@@ -1,7 +1,7 @@
 package projet.data;
 
 import java.sql.Time;
-
+import java.util.Objects;
 
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
@@ -13,10 +13,10 @@ public class EquipeBenevole {
 	//champs
 	
 	private final Property<Integer>		num			= new SimpleObjectProperty<>();	
-	private final StringProperty   	 	libele       = new SimpleStringProperty();
-	private final Property<Integer>		nombre_de_benevole	= new SimpleObjectProperty<>();
-	private final Property<Time>	hr_debut_dispo	= new SimpleObjectProperty<>();
-	private final Property<Time> hr_fin_dispo = new SimpleObjectProperty<>();
+	private final StringProperty   	 	libelle       = new SimpleStringProperty();
+	private final Property<Integer>		nbreBenevole	= new SimpleObjectProperty<>();
+	private final Property<Time>	hrDbDispo	= new SimpleObjectProperty<>();
+	private final Property<Time> hrFinDispo = new SimpleObjectProperty<>();
 	
 	//getters && setters
 	
@@ -33,57 +33,70 @@ public class EquipeBenevole {
 		this.numProperty().setValue(num);
 	}
 	
-	public final StringProperty libeleProperty() {
-		return this.libele;
+	public final StringProperty libelleProperty() {
+		return this.libelle;
 	}
 	
-	public final String getLibele() {
-		return this.libeleProperty().get();
+	public final String getlibelle() {
+		return this.libelleProperty().get();
 	}
 	
-	public final void setLibele(final String libele) {
-		this.libeleProperty().set(libele);
+	public final void setlibelle(final String libelle) {
+		this.libelleProperty().set(libelle);
 	}
 	
-	public final Property<Integer> nombre_de_benevoleProperty() {
-		return this.nombre_de_benevole;
+	public final Property<Integer> nbreBenevoleProperty() {
+		return this.nbreBenevole;
 	}
 	
-	public final Integer getNombre_de_benevole() {
-		return this.nombre_de_benevoleProperty().getValue();
+	public final Integer getnbreBenevole() {
+		return this.nbreBenevoleProperty().getValue();
 	}
 	
-	public final void setNombre_de_benevole(final Integer nombre_de_benevole) {
-		this.nombre_de_benevoleProperty().setValue(nombre_de_benevole);
+	public final void setnbreBenevole(final Integer nbreBenevole) {
+		this.nbreBenevoleProperty().setValue(nbreBenevole);
 	}
 	
-	public final Property<Time> hr_debut_dispoProperty() {
-		return this.hr_debut_dispo;
+	public final Property<Time> hrDbDispoProperty() {
+		return this.hrDbDispo;
 	}
 	
-	public final Time getHr_debut_dispo() {
-		return this.hr_debut_dispoProperty().getValue();
+	public final Time gethrDbDispo() {
+		return this.hrDbDispoProperty().getValue();
 	}
 	
-	public final void setHr_debut_dispo(final Time hr_debut_dispo) {
-		this.hr_debut_dispoProperty().setValue(hr_debut_dispo);
+	public final void sethrDbDispo(final Time hrDbDispo) {
+		this.hrDbDispoProperty().setValue(hrDbDispo);
 	}
 	
-	public final Property<Time> hr_fin_dispoProperty() {
-		return this.hr_fin_dispo;
+	public final Property<Time> hrFinDispoProperty() {
+		return this.hrFinDispo;
 	}
 	
-	public final Time getHr_fin_dispo() {
-		return this.hr_fin_dispoProperty().getValue();
+	public final Time gethrFinDispo() {
+		return this.hrFinDispoProperty().getValue();
 	}
 	
-	public final void setHr_fin_dispo(final Time hr_fin_dispo) {
-		this.hr_fin_dispoProperty().setValue(hr_fin_dispo);
+	public final void sethrFinDispo(final Time hrFinDispo) {
+		this.hrFinDispoProperty().setValue(hrFinDispo);
 	}
 	
-	
-	
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(num.getValue());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EquipeBenevole other = (EquipeBenevole) obj;
+		return Objects.equals(num.getValue(), other.num.getValue());
+	}
 	
 	
 	

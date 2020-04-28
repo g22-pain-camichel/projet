@@ -1,7 +1,7 @@
 package projet.data;
 
-import java.sql.Time;
 import java.time.LocalDate;
+import java.util.Objects;
 
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
@@ -12,15 +12,15 @@ public class Participant {
 	
 	
 	//champs
-	private final Property<Integer>		identifiant			= new SimpleObjectProperty<>();	
+	private final Property<Integer>		num			= new SimpleObjectProperty<>();	
 	private final StringProperty   	 	nom       = new SimpleStringProperty();
 	private final StringProperty   		prenom = new SimpleStringProperty();
 	private final Property<Integer>		sexe	= new SimpleObjectProperty<>();
-	private final Property<LocalDate>	datnaiss	= new SimpleObjectProperty<>();
+	private final Property<LocalDate>	dtNaiss	= new SimpleObjectProperty<>();
 	private final StringProperty		email	= new SimpleStringProperty();
 	private final StringProperty		tel		= new SimpleStringProperty();
 	private final Property<Integer>		role	= new SimpleObjectProperty<>();
-	private final StringProperty		adressepost		= new SimpleStringProperty();
+	private final StringProperty		adressePost		= new SimpleStringProperty();
 	private final StringProperty		cm		= new SimpleStringProperty();
 	
 	//constructeurs
@@ -30,20 +30,20 @@ public class Participant {
 
 	//getters && setters
 
-	public final Property<Integer> identifiantProperty() {
-		return this.identifiant;
+	public final Property<Integer> numProperty() {
+		return this.num;
 	}
 	
 
 
-	public final Integer getIdentifiant() {
-		return this.identifiantProperty().getValue();
+	public final Integer getnum() {
+		return this.numProperty().getValue();
 	}
 	
 
 
-	public final void setIdentifiant(final Integer identifiant) {
-		this.identifiantProperty().setValue(identifiant);
+	public final void setnum(final Integer num) {
+		this.numProperty().setValue(num);
 	}
 	
 
@@ -119,20 +119,20 @@ public class Participant {
 	
 
 
-	public final Property<LocalDate> datnaissProperty() {
-		return this.datnaiss;
+	public final Property<LocalDate> dtNaissProperty() {
+		return this.dtNaiss;
 	}
 	
 
 
-	public final LocalDate getDatnaiss() {
-		return this.datnaissProperty().getValue();
+	public final LocalDate getdtNaiss() {
+		return this.dtNaissProperty().getValue();
 	}
 	
 
 
-	public final void setDate_naiss(final LocalDate datnaiss) {
-		this.datnaissProperty().setValue(datnaiss);
+	public final void setDate_naiss(final LocalDate dtNaiss) {
+		this.dtNaissProperty().setValue(dtNaiss);
 	}
 	
 
@@ -173,20 +173,20 @@ public class Participant {
 	
 
 
-	public final StringProperty adressepostProperty() {
-		return this.adressepost;
+	public final StringProperty adressePostProperty() {
+		return this.adressePost;
 	}
 	
 
 
-	public final String getAdressepost() {
-		return this.adressepostProperty().get();
+	public final String getadressePost() {
+		return this.adressePostProperty().get();
 	}
 	
 
 
-	public final void setAdressepost(final String Adressepost) {
-		this.adressepostProperty().set(Adressepost);
+	public final void setadressePost(final String adressePost) {
+		this.adressePostProperty().set(adressePost);
 	}
 
 	public final StringProperty cmProperty() {
@@ -204,6 +204,25 @@ public class Participant {
 	public final void setCm(final String Cm) {
 		this.cmProperty().set(Cm);
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(num.getValue());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Participant other = (Participant) obj;
+		return Objects.equals(num.getValue(), other.num.getValue());
+	}
+	
+	
 }
 
 

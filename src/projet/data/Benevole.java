@@ -2,6 +2,7 @@ package projet.data;
 
 import java.sql.Time;
 import java.time.LocalDate;
+import java.util.Objects;
 
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
@@ -16,22 +17,23 @@ public class Benevole {
 	private final StringProperty   	 	nom       = new SimpleStringProperty();
 	private final StringProperty   		prenom = new SimpleStringProperty();
 	private final Property<Integer>		sexe	= new SimpleObjectProperty<>();
-	private final Property<LocalDate>	date_naiss	= new SimpleObjectProperty<>();
+	private final Property<LocalDate>	dtNaiss	= new SimpleObjectProperty<>();
 	private final StringProperty		email	= new SimpleStringProperty();
 	private final StringProperty		tel		= new SimpleStringProperty();
 	private final StringProperty	type	= new SimpleStringProperty();
-	private final Property<Time>	hr_debut_dispo	= new SimpleObjectProperty<>();
-	private final Property<Time> hr_fin_dispo = new SimpleObjectProperty<>();
+	private final Property<Time>	hrDbDispo	= new SimpleObjectProperty<>();
+	private final Property<Time> hrFinDispo = new SimpleObjectProperty<>();
 	
 	//constructeurs
 	public Benevole() {
 	
 	}
-	// hashCode() & equals()
-/*
+	
+	//getters && setters
+
 	@Override
 	public int hashCode() {
-		return Objects.hash( identifiant.getValue() );
+		return Objects.hash(identifiant.getValue());
 	}
 
 	@Override
@@ -42,13 +44,11 @@ public class Benevole {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Memo other = (Memo) obj;
-		return Objects.equals( id.getValue(), other.id.getValue() );
+		Benevole other = (Benevole) obj;
+		return Objects.equals(identifiant.getValue(), other.identifiant.getValue());
 	}
-*/
 
-	
-	//getters && setters
+
 
 	public final Property<Integer> identifiantProperty() {
 		return this.identifiant;
@@ -122,20 +122,20 @@ public class Benevole {
 	
 
 
-	public final Property<LocalDate> date_naissProperty() {
-		return this.date_naiss;
+	public final Property<LocalDate> dtNaissProperty() {
+		return this.dtNaiss;
 	}
 	
 
 
-	public final LocalDate getDate_naiss() {
-		return this.date_naissProperty().getValue();
+	public final LocalDate getdtNaiss() {
+		return this.dtNaissProperty().getValue();
 	}
 	
 
 
-	public final void setDate_naiss(final LocalDate date_naiss) {
-		this.date_naissProperty().setValue(date_naiss);
+	public final void setdtNaiss(final LocalDate dtNaiss) {
+		this.dtNaissProperty().setValue(dtNaiss);
 	}
 	
 
@@ -194,38 +194,38 @@ public class Benevole {
 	
 
 
-	public final Property<Time> hr_debut_dispoProperty() {
-		return this.hr_debut_dispo;
+	public final Property<Time> hrDbDispoProperty() {
+		return this.hrDbDispo;
 	}
 	
 
 
-	public final Time getHr_debut_dispo() {
-		return this.hr_debut_dispoProperty().getValue();
+	public final Time gethrDbDispo() {
+		return this.hrDbDispoProperty().getValue();
 	}
 	
 
 
-	public final void setHr_debut_dispo(final Time hr_debut_dispo) {
-		this.hr_debut_dispoProperty().setValue(hr_debut_dispo);
+	public final void sethrDbDispo(final Time hrDbDispo) {
+		this.hrDbDispoProperty().setValue(hrDbDispo);
 	}
 	
 
 
-	public final Property<Time> hr_fin_dispoProperty() {
-		return this.hr_fin_dispo;
+	public final Property<Time> hrFinDispoProperty() {
+		return this.hrFinDispo;
 	}
 	
 
 
-	public final Time getHr_fin_dispo() {
-		return this.hr_fin_dispoProperty().getValue();
+	public final Time gethrFinDispo() {
+		return this.hrFinDispoProperty().getValue();
 	}
 	
 
 
-	public final void setHr_fin_dispo(final Time hr_fin_dispo) {
-		this.hr_fin_dispoProperty().setValue(hr_fin_dispo);
+	public final void sethrFinDispo(final Time hrFinDispo) {
+		this.hrFinDispoProperty().setValue(hrFinDispo);
 	}
 	
 

@@ -103,7 +103,7 @@ ALTER TABLE service ALTER COLUMN idservice RESTART WITH 5;
   
   -- Benevole 
   
-INSERT INTO benevole (identifiant, nom, prenom, sexe, date_de_naissance, email, tel, type, heure_debut_dispo, heure_fin_dispo) VALUES
+INSERT INTO benevole (identifiant, nom, prenom, sexe, dtNaiss, email, tel, type, hrDbDispo, hrFinDispo) VALUES
   	(1, 'jerome', 'vincent', 0, {d'2000-02-25'}, 'jvincent@gmail.com', '+33 07 54 23 08 39', 'interne', {t '12:20'}, {t '16:30'}),
   	(2, 'julia', 'adele', 1, {d'1996-08-15'}, 'juliaadh@gmail.com', '+33 07 44 23 98 30', 'externe', {t '10:00'}, {t '15:30'}),
   	(3, 'andres', 'brayan', 0, {d'1999-10-01'}, 'andres@yahoo.fr', '+33 07 22 76 48 21', 'externe', {t '08:00'}, {t '12:00'}),
@@ -113,7 +113,7 @@ ALTER TABLE benevole ALTER COLUMN identifiant RESTART WITH 5;
 
   -- Participant 
   
-INSERT INTO participant (num, nom, prenom, sexe, dtnaiss, email, tel, role, adressePost, cm) VALUES
+INSERT INTO participant (num, nom, prenom, sexe, dtNaiss, email, tel, role, adressePost, cm) VALUES
   	(1, 'luc', 'river', 0, {d'2000-12-05'}, 'luc@gmail.com', '+33 07 54 33 08 39', 0, 'xxxxxxxxxxxx', NULL),
   	(2, 'julie', 'rose', 0, {d'1999-08-07'}, 'julih@gmail.com', '+33 07 44 73 98 30', 1, 'xxxxxxxxxxxx', NULL),
   	(3, 'ange', 'robert', 0, {d'1995-02-01'}, 'angelo@yahoo.fr', '+33 07 22 76 48 20', 1, 'xxxxxxxxxxxx', NULL),
@@ -123,7 +123,7 @@ ALTER TABLE participant ALTER COLUMN num RESTART WITH 5;
 	
 	-- Club
 
-INSERT INTO club (num, nom_Capitain, nbRepasReserves, num_participant) VALUES
+INSERT INTO club (num, nomCapitain, nbRepasReserves, numParticipant) VALUES
 	(1, 'luc', 3, 1),
 	(2, 'suzane', 3, 4),
 	(3, 'julie', 4, 2),
@@ -141,7 +141,7 @@ INSERT INTO tache (libelle, emplacement) VALUES
 
 	-- Equipebenevole
 	
-INSERT INTO equipebenevole(num, nombre_de_benevole, heure_debut_dispo,heure_fin_dispo, libelle) VALUES
+INSERT INTO equipebenevole(num, nbreBenevole, hrDbDispo, hrFinDispo, libelle) VALUES
 	(1, 5, {t '12:20'}, {t '14:30'}, 'lorem ipsum'),
 	(2, 4, {t '10:20'}, {t '14:30'}, 'dolor sit amet'),
 	(3, 3, {t '08:20'}, {t '12:30'}, 'ipsum lorem'),

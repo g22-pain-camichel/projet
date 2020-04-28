@@ -32,7 +32,4 @@ public class Constituer {
 	public final void setIdentidant(final Integer identidant) {
 		this.identidantProperty().setValue(identidant);
 	}
-		
-	
-	
 }
