@@ -15,3 +15,9 @@
     -fx-font-size: 16;
 }
 
+#admin:hover { 
+   -fx-text-fill:  #0d6aff;
+}
+#decon:hover { 
+   -fx-text-fill:   #ef5350;
+}
