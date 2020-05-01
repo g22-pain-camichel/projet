@@ -18,6 +18,11 @@
 #admin:hover { 
    -fx-text-fill:  #0d6aff;
 }
+
 #decon:hover { 
    -fx-text-fill:   #ef5350;
+}
+
+#box:hover{
+	-fx-background-color: #5490ff;
 }

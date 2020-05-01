@@ -28,9 +28,9 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="395.0" layoutY="-3.0" prefHeight="532.0" prefWidth="395.0" style="-fx-background-color: #f5f5f5;">
+      <AnchorPane layoutX="395.0" layoutY="-3.0" prefHeight="532.0" prefWidth="395.0" style="-fx-background-color: #f0f0f0;">
          <children>
-            <AnchorPane layoutX="26.0" layoutY="50.0" prefHeight="433.0" prefWidth="344.0" style="-fx-background-color: #fafafa;">
+            <AnchorPane layoutX="26.0" layoutY="50.0" prefHeight="433.0" prefWidth="344.0" style="-fx-background-color: #fafafa; -fx-background-radius: 5;">
                <children>
                   <Label layoutX="34.0" layoutY="219.0" prefHeight="25.0" prefWidth="76.0" text="Password" textFill="WHITE">
                      <font>
@@ -65,16 +65,21 @@
                         <Image url="@../images/compte_connexion_ico.png" />
                      </image>
                   </ImageView>
-                  <JFXButton buttonType="RAISED" layoutX="63.0" layoutY="347.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #64b5f6;" text="Se Connecter" textFill="#fffefe">
+                  <JFXButton id="btncon" buttonType="RAISED" layoutX="63.0" layoutY="347.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #64b5f6;" stylesheets="@application.css" text="Se Connecter" textFill="#fffefe">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" layoutX="208.0" layoutY="347.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #ef5350;" text="Annuler" textFill="#fffefe">
+                  <JFXButton id="btnannuler" buttonType="RAISED" layoutX="208.0" layoutY="347.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #ef5350;" stylesheets="@application.css" text="Annuler" textFill="#fffefe">
                      <font>
                         <Font name="Gadugi" size="13.0" />
                      </font>
                   </JFXButton>
+                  <Label layoutX="199.0" layoutY="299.0" prefHeight="17.0" prefWidth="125.0" text="Inscrire un particpant" textFill="#154bc9">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
