@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" accessibleRole="IMAGE_VIEW" prefHeight="522.0" prefWidth="781.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gesbudg.controller.HomeController">
+<AnchorPane id="AnchorPane" accessibleRole="IMAGE_VIEW" prefHeight="522.0" prefWidth="781.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.connexion.ControllerConnexion">
    <children>
       <AnchorPane prefHeight="525.0" prefWidth="394.0">
          <children>
@@ -37,7 +37,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="user" focusColor="#8193c9" labelFloat="true" layoutX="58.0" layoutY="181.0" prefHeight="30.0" prefWidth="256.0" promptText="Entrer votre Login" unFocusColor="#c6bdbd">
+                  <JFXTextField fx:id="fieldPseudo" focusColor="#8193c9" labelFloat="true" layoutX="58.0" layoutY="181.0" prefHeight="30.0" prefWidth="256.0" promptText="Entrer votre Pseudo" unFocusColor="#c6bdbd">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -45,7 +45,7 @@
                         <Font size="14.0" />
                      </font>
                   </JFXTextField>
-                  <JFXPasswordField fx:id="password" labelFloat="true" layoutX="58.0" layoutY="244.0" prefHeight="30.0" prefWidth="256.0" promptText="Entrer votre mot de passe" unFocusColor="#c6bdbd">
+                  <JFXPasswordField fx:id="fieldMotDePasse" labelFloat="true" layoutX="58.0" layoutY="244.0" prefHeight="30.0" prefWidth="256.0" promptText="Entrer votre mot de passe" unFocusColor="#c6bdbd">
                      <font>
                         <Font size="14.0" />
                      </font>

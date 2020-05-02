@@ -10,7 +10,7 @@ public enum EnumView implements IEnumView {
 	// Valeurs
 	
 	Info				( "systeme/ViewInfo.fxml" ),
-	Connexion			( "systeme/ViewConnexion.fxml" ),
+	Connexion			( "connexion/connexion.fxml" ),
 	CompteListe			( "compte/ViewCompteListe.fxml" ),
 	CompteForm			( "compte/ViewCompteForm.fxml" ),
 	CategorieListe		( "personne/ViewCategorieListe.fxml" ),

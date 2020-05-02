@@ -6,8 +6,6 @@ import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 
 public class Utilisateur  {
@@ -19,104 +17,115 @@ public class Utilisateur  {
 	private final StringProperty	pseudo		= new SimpleStringProperty();
 	private final StringProperty	motDePasse	= new SimpleStringProperty();
 	private final StringProperty	email 		= new SimpleStringProperty();
-	private final ObservableList<String> roles = FXCollections.observableArrayList();
+	private final Property<Integer>	role			= new SimpleObjectProperty<>();
 	
 	
 	// Constructeurs
 	
 	public Utilisateur() {
+		
 	}
-
-	public Utilisateur( int id, String pseudo, String motDePasse, String email ) {
+	
+	public Utilisateur( int id, String pseudo, String motDePasse, String email, int role) {
 		setId(id);
 		setPseudo(pseudo);
 		setMotDePasse(motDePasse);
 		setEmail(email);
+		setRole(role);
 	}
-	
-	
-	// Getters et Setters
 
 	public final Property<Integer> idProperty() {
 		return this.id;
 	}
-
+	
 	public final Integer getId() {
 		return this.idProperty().getValue();
 	}
+	
+
 
 	public final void setId(final Integer id) {
 		this.idProperty().setValue(id);
 	}
+	
+
 
 	public final StringProperty pseudoProperty() {
 		return this.pseudo;
 	}
+	
+
 
 	public final String getPseudo() {
-		return this.pseudoProperty().getValue();
+		return this.pseudoProperty().get();
 	}
+	
+
 
 	public final void setPseudo(final String pseudo) {
-		this.pseudoProperty().setValue(pseudo);
+		this.pseudoProperty().set(pseudo);
 	}
+	
+
 
 	public final StringProperty motDePasseProperty() {
 		return this.motDePasse;
 	}
+	
+
 
 	public final String getMotDePasse() {
-		return this.motDePasseProperty().getValue();
+		return this.motDePasseProperty().get();
 	}
+	
+
 
 	public final void setMotDePasse(final String motDePasse) {
-		this.motDePasseProperty().setValue(motDePasse);
+		this.motDePasseProperty().set(motDePasse);
 	}
+	
+
 
 	public final StringProperty emailProperty() {
 		return this.email;
 	}
+	
+
 
 	public final String getEmail() {
-		return this.emailProperty().getValue();
+		return this.emailProperty().get();
 	}
+	
+
 
 	public final void setEmail(final String email) {
-		this.emailProperty().setValue(email);
+		this.emailProperty().set(email);
+	}
+	
+
+
+	public final Property<Integer> roleProperty() {
+		return this.role;
+	}
+	
+
+
+	public final Integer getRole() {
+		return this.roleProperty().getValue();
+	}
+	
+
+
+	public final void setRole(final Integer role) {
+		this.roleProperty().setValue(role);
 	}
 
-	public final ObservableList<String> getRoles() {
-		return this.roles;
-	}
-
-	
-	public boolean isInRole( String role ) {
-		
-		if ( role != null ) {
-			for ( String r : roles ) {
-				if ( role.equals( r ) ) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
-	
-	// toString()
-	
-	@Override
-	public String toString() {
-		return getPseudo();
-	}
-	
-	
-	// hashCode() & equals()
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id.getValue() );
+		return Objects.hash(id.getValue());
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -127,7 +136,8 @@ public class Utilisateur  {
 		if (getClass() != obj.getClass())
 			return false;
 		Utilisateur other = (Utilisateur) obj;
-		return Objects.equals(id.getValue(), other.id.getValue() );
+		return Objects.equals(id.getValue(), other.id.getValue());
 	}
+	
 	
 }

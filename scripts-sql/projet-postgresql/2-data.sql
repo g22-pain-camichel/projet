@@ -16,22 +16,12 @@ DELETE FROM participant;
 
 
 
-INSERT INTO utilisateur (idutilisateur, pseudo, motdepasse, email ) VALUES 
-  (1, 'geek', 'geek', 'geek@3il.fr' ),
-  (2, 'chef', 'chef', 'chef@3il.fr' ),
-  (3, 'job', 'job', 'job@3il.fr' );
+INSERT INTO utilisateur (idutilisateur, pseudo, motdepasse, email, role ) VALUES 
+  (1, 'geek', 'geek', 'geek@3il.fr', 1),
+  (2, 'chef', 'chef', 'chef@3il.fr', 0),
+  (3, 'job', 'job', 'job@3il.fr', 2 );
 
 ALTER TABLE utilisateur ALTER COLUMN idutilisateur RESTART WITH 4;
-
-
--- Roles
-
-INSERT INTO roles (idutilisateur, roles) VALUES 
-  ( 1, 'ADMINISTRATEUR' ),
-  ( 1, 'UTILISATEUR' ),
-  ( 2, 'UTILISATEUR' ),
-  ( 3, 'UTILISATEUR' );
-
 
 -- Compte
 
@@ -39,10 +29,8 @@ INSERT INTO compte (idcompte, pseudo, motdepasse, email ) VALUES
   (1, 'geek', 'geek', 'geek@3il.fr' ),
   (2, 'chef', 'chef', 'chef@3il.fr' ),
   (3, 'job', 'job', 'job@3il.fr' );
-
-ALTER TABLE compte ALTER COLUMN idcompte RESTART WITH 4;
-
-
+  
+ 
 -- Role
 
 INSERT INTO role (idcompte, role) VALUES 
@@ -51,6 +39,8 @@ INSERT INTO role (idcompte, role) VALUES
   ( 2, 'UTILISATEUR' ),
   ( 3, 'UTILISATEUR' );
 
+
+ALTER TABLE compte ALTER COLUMN idcompte RESTART WITH 4;
 
 -- Categorie
   
