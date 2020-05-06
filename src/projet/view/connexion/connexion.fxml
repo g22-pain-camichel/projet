@@ -11,78 +11,97 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" accessibleRole="IMAGE_VIEW" prefHeight="522.0" prefWidth="781.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.connexion.ControllerConnexion">
+<AnchorPane id="AnchorPane" accessibleRole="IMAGE_VIEW" prefHeight="650.0" prefWidth="1100.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.connexion.ControllerConnexion">
    <children>
-      <AnchorPane prefHeight="525.0" prefWidth="394.0">
+      <AnchorPane layoutX="110.0" layoutY="23.0" prefHeight="567.0" prefWidth="804.0" style="-fx-background-color: white;">
          <children>
-            <Label alignment="CENTER" layoutX="93.0" layoutY="176.0" prefHeight="85.0" prefWidth="203.0" text="GesBol" textFill="WHITE">
-               <font>
-                  <Font name="Gadugi" size="58.0" />
-               </font>
-            </Label>
-            <Label layoutX="51.0" layoutY="243.0" prefHeight="38.0" prefWidth="300.0" text="La meilleure solution logicielle pour gérer vos bénévoles" textAlignment="JUSTIFY" textFill="#fffefe" />
-            <ImageView fitHeight="433.0" fitWidth="411.0" layoutX="-4.0" layoutY="2.0" opacity="0.27" pickOnBounds="true">
-               <image>
-                  <Image url="@../../images/benev_connexion_ico.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="395.0" layoutY="-3.0" prefHeight="532.0" prefWidth="395.0" style="-fx-background-color: #f0f0f0;">
-         <children>
-            <AnchorPane layoutX="26.0" layoutY="50.0" prefHeight="433.0" prefWidth="344.0" style="-fx-background-color: #fafafa; -fx-background-radius: 5;">
+            <AnchorPane layoutX="71.0" layoutY="34.0" prefHeight="538.0" prefWidth="407.0" style="-fx-background-color: black;">
                <children>
-                  <Label layoutX="34.0" layoutY="219.0" prefHeight="25.0" prefWidth="76.0" text="Password" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="93.0" layoutY="176.0" prefHeight="85.0" prefWidth="203.0" text="GesBol" textFill="WHITE">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="Gadugi" size="58.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="fieldPseudo" focusColor="#8193c9" labelFloat="true" layoutX="58.0" layoutY="181.0" prefHeight="30.0" prefWidth="256.0" promptText="Entrer votre Pseudo" unFocusColor="#c6bdbd">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXTextField>
-                  <JFXPasswordField fx:id="fieldMotDePasse" labelFloat="true" layoutX="58.0" layoutY="244.0" prefHeight="30.0" prefWidth="256.0" promptText="Entrer votre mot de passe" unFocusColor="#c6bdbd">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXPasswordField>
-                  <Label alignment="CENTER" layoutX="58.0" layoutY="22.0" prefHeight="43.0" prefWidth="224.0" text="Connectez-Vous" textAlignment="JUSTIFY" textFill="#252424">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="57.0" layoutY="299.0" prefHeight="17.0" prefWidth="125.0" text="Mot de passe oublié ?" textFill="#154bc9" underline="true">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Label>
-                  <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="138.0" layoutY="80.0" pickOnBounds="true">
+                  <Label layoutX="51.0" layoutY="243.0" prefHeight="38.0" prefWidth="300.0" text="La meilleure solution logicielle pour gérer vos bénévoles" textAlignment="JUSTIFY" textFill="#fffefe" />
+                  <ImageView fitHeight="433.0" fitWidth="411.0" layoutX="-4.0" layoutY="12.0" opacity="0.27" pickOnBounds="true">
                      <image>
-                        <Image url="@../../images/compte_connexion_ico.png" />
+                        <Image url="@../../images/benev_connexion_ico.png" />
                      </image>
                   </ImageView>
-                  <JFXButton id="btncon" buttonType="RAISED" layoutX="63.0" layoutY="347.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #64b5f6;" stylesheets="@../application.css" text="Se Connecter" textFill="#fffefe">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton id="btnannuler" buttonType="RAISED" layoutX="208.0" layoutY="347.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #ef5350;" stylesheets="@../application.css" text="Annuler" textFill="#fffefe">
-                     <font>
-                        <Font name="Gadugi" size="13.0" />
-                     </font>
-                  </JFXButton>
-                  <Label layoutX="199.0" layoutY="299.0" prefHeight="17.0" prefWidth="125.0" text="Inscrire un particpant" textFill="#154bc9">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="478.0" layoutY="34.0" prefHeight="538.0" prefWidth="418.0" style="-fx-background-color: #f0f0f0;">
+               <children>
+                  <AnchorPane layoutX="36.0" layoutY="50.0" prefHeight="433.0" prefWidth="344.0" style="-fx-background-color: #fafafa; -fx-background-radius: 5;">
+                     <children>
+                        <Label layoutX="34.0" layoutY="219.0" prefHeight="25.0" prefWidth="76.0" text="Password" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="fieldPseudo" focusColor="#8193c9" labelFloat="true" layoutX="58.0" layoutY="181.0" prefHeight="30.0" prefWidth="256.0" promptText="Entrer votre Pseudo" unFocusColor="#c6bdbd">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXPasswordField fx:id="fieldMotDePasse" labelFloat="true" layoutX="58.0" layoutY="244.0" prefHeight="30.0" prefWidth="256.0" promptText="Entrer votre mot de passe" unFocusColor="#c6bdbd">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXPasswordField>
+                        <Label alignment="CENTER" layoutX="58.0" layoutY="22.0" prefHeight="43.0" prefWidth="224.0" text="Connectez-Vous" textAlignment="JUSTIFY" textFill="#252424">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="57.0" layoutY="299.0" prefHeight="17.0" prefWidth="125.0" text="Mot de passe oublié ?" textFill="#154bc9" underline="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="138.0" layoutY="80.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../../images/compte_connexion_ico.png" />
+                           </image>
+                        </ImageView>
+                        <JFXButton id="btncon" buttonType="RAISED" layoutX="63.0" layoutY="347.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #64b5f6;" stylesheets="@../application.css" text="Se Connecter" textFill="#fffefe">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton id="btnannuler" buttonType="RAISED" layoutX="208.0" layoutY="347.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #ef5350;" stylesheets="@../application.css" text="Annuler" textFill="#fffefe">
+                           <font>
+                              <Font name="Gadugi" size="13.0" />
+                           </font>
+                        </JFXButton>
+                        <Label layoutX="199.0" layoutY="299.0" prefHeight="17.0" prefWidth="125.0" text="Inscrire un particpant" textFill="#154bc9">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
+      <Label layoutX="8.0" layoutY="635.0" text="Copyright 2020">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="635.0" text="Made by Group ">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="635.0" text="Paincamiche" underline="true">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

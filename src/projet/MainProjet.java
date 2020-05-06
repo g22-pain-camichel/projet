@@ -13,7 +13,6 @@ import projet.view.ManagerGui;
 
 public class MainProjet {
 
-	
 	// main()
 	
 	public static void main(String[] args) {   
