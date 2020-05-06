@@ -39,10 +39,8 @@ public class ManagerGui extends ManagerGuiAbstract {
 		
 		// Configure le stage
 		stage.setTitle( "Gestion de contacts" );
-		stage.setWidth(600);
-		stage.setHeight(440);
-		stage.setMinWidth(400);
-		stage.setMinHeight(300);
+		stage.setWidth(800);
+		stage.setHeight(570);
 		stage.getIcons().add(new Image(getClass().getResource("icone.png").toExternalForm()));
 		
 		// Configuration par défaut pour les boîtes de dialogue

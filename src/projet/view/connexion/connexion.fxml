@@ -23,7 +23,7 @@
             <Label layoutX="51.0" layoutY="243.0" prefHeight="38.0" prefWidth="300.0" text="La meilleure solution logicielle pour gérer vos bénévoles" textAlignment="JUSTIFY" textFill="#fffefe" />
             <ImageView fitHeight="433.0" fitWidth="411.0" layoutX="-4.0" layoutY="2.0" opacity="0.27" pickOnBounds="true">
                <image>
-                  <Image url="@../images/benev_connexion_ico.png" />
+                  <Image url="@../../images/benev_connexion_ico.png" />
                </image>
             </ImageView>
          </children>
@@ -62,15 +62,15 @@
                   </Label>
                   <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="138.0" layoutY="80.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../images/compte_connexion_ico.png" />
+                        <Image url="@../../images/compte_connexion_ico.png" />
                      </image>
                   </ImageView>
-                  <JFXButton id="btncon" buttonType="RAISED" layoutX="63.0" layoutY="347.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #64b5f6;" stylesheets="@application.css" text="Se Connecter" textFill="#fffefe">
+                  <JFXButton id="btncon" buttonType="RAISED" layoutX="63.0" layoutY="347.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #64b5f6;" stylesheets="@../application.css" text="Se Connecter" textFill="#fffefe">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton id="btnannuler" buttonType="RAISED" layoutX="208.0" layoutY="347.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #ef5350;" stylesheets="@application.css" text="Annuler" textFill="#fffefe">
+                  <JFXButton id="btnannuler" buttonType="RAISED" layoutX="208.0" layoutY="347.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #ef5350;" stylesheets="@../application.css" text="Annuler" textFill="#fffefe">
                      <font>
                         <Font name="Gadugi" size="13.0" />
                      </font>
