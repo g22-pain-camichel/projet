@@ -295,7 +295,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <Pane prefHeight="59.0" prefWidth="271.0" style="-fx-background-color: #0d6aff;">
+      <Pane layoutX="-6.0" prefHeight="59.0" prefWidth="277.0" style="-fx-background-color: #0d6aff;">
          <children>
             <Label contentDisplay="CENTER" layoutX="58.0" layoutY="7.0" prefHeight="46.0" prefWidth="127.0" text="GESBOL" textFill="WHITE">
                <font>
