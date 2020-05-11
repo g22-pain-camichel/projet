@@ -40,7 +40,7 @@ public class ManagerGui extends ManagerGuiAbstract {
 		// Configure le stage
 		stage.setTitle( "Gestion des bénévoles" );
 		stage.setWidth(1100);
-		stage.setHeight(715);
+		stage.setHeight(690);
 		stage.getIcons().add(new Image(getClass().getResource("../images/logo_ico.png").toExternalForm()));
 		stage.setResizable(false);
 		

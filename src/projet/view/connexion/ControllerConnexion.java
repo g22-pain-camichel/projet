@@ -2,12 +2,13 @@ package projet.view.connexion;
 
 import javax.inject.Inject;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Utilisateur;
-
+import projet.view.EnumView;
 
 public class ControllerConnexion {
 	
@@ -40,7 +41,6 @@ public class ControllerConnexion {
 
 	}
 	
-	
 	public void refresh() {
 		// Ferem la session si elle est ouverte
 		if ( modelConnexion.getUtilisateurActif() != null ) {
@@ -48,15 +48,17 @@ public class ControllerConnexion {
 		}
 	}
 	
-
 	// Actions
 	
-	/*
-	 * @FXML private void doConnexion() { managerGui.execTask( () -> {
-	 * modelConnexion.ouvrirSessionUtilisateur(); Platform.runLater( () -> {
-	 * modelInfo.titreProperty().setValue( "Bienvenue" );
-	 * modelInfo.messageProperty().setValue( "Connexion réussie" );
-	 * managerGui.showView(EnumView.Info); }) ; } ); }
-	 */
+	@FXML 
+	private void doConnexion() { 
+		managerGui.execTask( () -> {
+		modelConnexion.ouvrirSessionUtilisateur();
+		Platform.runLater( () -> {
+			managerGui.showView(EnumView.Accueil); 
+			}) ; 
+		} ); 
+	}
+	 
 
 }

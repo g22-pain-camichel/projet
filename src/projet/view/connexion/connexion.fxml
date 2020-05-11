@@ -67,12 +67,12 @@
                               <Image url="@../../images/compte_connexion_ico.png" />
                            </image>
                         </ImageView>
-                        <JFXButton id="btncon" buttonType="RAISED" layoutX="63.0" layoutY="347.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #64b5f6;" stylesheets="@../application.css" text="Se Connecter" textFill="#fffefe">
+                        <JFXButton id="btncon" buttonType="RAISED" layoutX="63.0" layoutY="347.0" onAction="#doConnexion" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #64b5f6;" stylesheets="@../application.css" text="Se Connecter" textFill="#fffefe">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton id="btnannuler" buttonType="RAISED" layoutX="208.0" layoutY="347.0" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #ef5350;" stylesheets="@../application.css" text="Annuler" textFill="#fffefe">
+                        <JFXButton id="btnannuler" buttonType="RAISED" layoutX="208.0" layoutY="347.0" onAction="#initialize" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #ef5350;" stylesheets="@../application.css" text="Annuler" textFill="#fffefe">
                            <font>
                               <Font name="Gadugi" size="13.0" />
                            </font>
