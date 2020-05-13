@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
 import jfox.commun.context.IContext;
 import jfox.javafx.view.ManagerGuiAbstract;
 
@@ -52,8 +52,7 @@ public class ManagerGui extends ManagerGuiAbstract {
 	
 	@Override
 	public Scene createScene( Parent root ) {
-		BorderPane paneMenu = new BorderPane( root );
-		paneMenu.setTop( context.getBeanNew( MenuBarAppli.class ) );
+		AnchorPane paneMenu = new AnchorPane( root );
 		Scene scene = new Scene( paneMenu );
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		return scene;
