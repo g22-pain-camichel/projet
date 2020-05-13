@@ -23,9 +23,9 @@
                      </font>
                   </Label>
                   <Label layoutX="51.0" layoutY="243.0" prefHeight="38.0" prefWidth="300.0" text="La meilleure solution logicielle pour gérer vos bénévoles" textAlignment="JUSTIFY" textFill="#fffefe" />
-                  <ImageView fitHeight="433.0" fitWidth="411.0" layoutX="-4.0" layoutY="12.0" opacity="0.27" pickOnBounds="true">
+                  <ImageView fitHeight="527.0" fitWidth="407.0" layoutY="12.0" opacity="0.46" pickOnBounds="true">
                      <image>
-                        <Image url="@../../images/benev_connexion_ico.png" />
+                        <Image url="@../../images/course.jpg" />
                      </image>
                   </ImageView>
                </children>
