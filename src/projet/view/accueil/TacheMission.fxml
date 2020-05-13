@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.chart.AreaChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
@@ -13,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
@@ -352,119 +347,13 @@
                <children>
                   <AnchorPane prefHeight="890.0" prefWidth="816.0" style="-fx-background-color: #e6e6e6;">
                      <children>
-                        <Pane layoutX="30.0" layoutY="61.0" prefHeight="68.0" prefWidth="749.0" style="-fx-background-color: #FFF; -fx-background-radius: 5;">
-                           <children>
-                              <Pane layoutX="22.0" layoutY="11.0" prefHeight="46.0" prefWidth="706.0" style="-fx-background-color: #4485fc; -fx-background-radius: 5px;">
-                                 <children>
-                                    <Label layoutX="90.0" layoutY="14.0" text="Bienvenue dans l'application qui vous permettra de gérer vos bénévoles et participants" textFill="WHITE">
-                                       <font>
-                                          <Font name="Gadugi" size="14.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </Pane>
-                           </children>
-                        </Pane>
-                        <HBox alignment="CENTER" layoutX="30.0" layoutY="162.0" prefHeight="100.0" prefWidth="749.0" spacing="40.0">
-                           <children>
-                              <Pane prefHeight="85.0" prefWidth="157.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
-                                 <children>
-                                    <Label layoutX="30.0" layoutY="14.0" text="TOTAL BENEVOLES" textFill="#4485fc">
-                                       <font>
-                                          <Font name="System Bold" size="10.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="63.0" layoutY="33.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
-                                       <font>
-                                          <Font name="System Bold" size="40.0" />
-                                       </font>
-                                    </Label>
-                                    <Pane layoutX="-2.0" prefHeight="100.0" prefWidth="5.0" style="-fx-background-color: #4485fc;" />
-                                 </children>
-                              </Pane>
-                              <Pane prefHeight="85.0" prefWidth="157.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
-                                 <children>
-                                    <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="22.0" layoutY="10.0" prefHeight="46.0" prefWidth="114.0" text="NOMBRE EQUIPE BENEVOLES" textAlignment="CENTER" textFill="#4485fc" wrapText="true">
-                                       <font>
-                                          <Font name="System Bold" size="10.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="63.0" layoutY="33.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
-                                       <font>
-                                          <Font name="System Bold" size="40.0" />
-                                       </font>
-                                    </Label>
-                                    <Pane layoutX="-2.0" prefHeight="100.0" prefWidth="5.0" style="-fx-background-color: #4485fc;" />
-                                 </children>
-                              </Pane>
-                              <Pane prefHeight="85.0" prefWidth="157.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
-                                 <children>
-                                    <Label layoutX="30.0" layoutY="14.0" text="TOTAL PARTICIPANTS" textFill="#4485fc">
-                                       <font>
-                                          <Font name="System Bold" size="10.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="63.0" layoutY="33.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
-                                       <font>
-                                          <Font name="System Bold" size="40.0" />
-                                       </font>
-                                    </Label>
-                                    <Pane layoutX="-2.0" prefHeight="100.0" prefWidth="5.0" style="-fx-background-color: #4485fc;" />
-                                 </children>
-                              </Pane>
-                              <Pane prefHeight="85.0" prefWidth="157.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
-                                 <children>
-                                    <Label layoutX="63.0" layoutY="33.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
-                                       <font>
-                                          <Font name="System Bold" size="40.0" />
-                                       </font>
-                                    </Label>
-                                    <Pane layoutX="-2.0" prefHeight="100.0" prefWidth="5.0" style="-fx-background-color: #4485fc;" />
-                                    <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="22.0" layoutY="10.0" prefHeight="46.0" prefWidth="114.0" text="NOMBRE EQUIPE PARTIPANTS" textAlignment="CENTER" textFill="#4485fc" wrapText="true">
-                                       <font>
-                                          <Font name="System Bold" size="10.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </Pane>
-                           </children>
-                        </HBox>
-                        <AreaChart layoutX="14.0" layoutY="271.0" prefHeight="296.0" prefWidth="396.0">
-                           <xAxis>
-                              <CategoryAxis label="axe des x" side="BOTTOM" />
-                           </xAxis>
-                           <yAxis>
-                              <NumberAxis label="axe des  y" side="LEFT" />
-                           </yAxis>
-                        </AreaChart>
-                        <PieChart layoutX="228.0" layoutY="591.0" prefHeight="255.0" prefWidth="353.0" title="Pourcentage hommes et femmes partipants" titleSide="BOTTOM" />
                         <Label layoutX="56.0" layoutY="7.0" text=" &gt; " />
                         <ImageView fitHeight="27.0" fitWidth="23.0" layoutX="33.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../images/accueil_ico.png" />
+                              <Image url="@../../../../../../../../AppData/Local/Temp/icons8_group_task_40px.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="71.0" layoutY="7.0" text="Accueil" textFill="#4485fc" underline="true" />
-                        <Pane layoutX="493.0" layoutY="326.0" prefHeight="160.0" prefWidth="220.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
-                           <children>
-                              <Label layoutX="95.0" layoutY="102.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
-                                 <font>
-                                    <Font name="System Bold" size="40.0" />
-                                 </font>
-                              </Label>
-                              <Pane layoutX="-2.0" prefHeight="160.0" prefWidth="6.0" style="-fx-background-color: #4485fc;" />
-                              <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="24.0" layoutY="67.0" prefHeight="30.0" prefWidth="173.0" text="NOMBRE DE JOURS RESTANT AVANT L'EVENEMENT" textAlignment="CENTER" textFill="#4485fc" wrapText="true">
-                                 <font>
-                                    <Font name="System Bold" size="10.0" />
-                                 </font>
-                              </Label>
-                              <ImageView fitHeight="50.0" fitWidth="63.0" layoutX="86.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../images/timer.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
+                        <Label layoutX="71.0" layoutY="7.0" text="Taches et Missions des bénévoles" textFill="#4485fc" underline="true" />
                      </children>
                   </AnchorPane>
                </children>
