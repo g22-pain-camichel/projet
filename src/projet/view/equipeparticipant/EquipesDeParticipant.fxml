@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="834.0" prefHeight="650.0" prefWidth="834.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.equipeparticipant.EquipeParticipantController">
+   <children>
+      <AnchorPane prefHeight="59.0" prefWidth="830.0" style="-fx-background-color: #fafafa;">
+         <children>
+            <Pane layoutX="507.0" layoutY="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="302.0">
+               <children>
+                  <Label id="decon" layoutX="212.0" layoutY="10.0" onMouseClicked="#deconnexion" stylesheets="@../application.css" text="Déconnexion" underline="true">
+                     <font>
+                        <Font name="Gadugi" size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="27.0" fitWidth="36.0" layoutX="173.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icone.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label id="admin" layoutX="79.0" layoutY="11.0" stylesheets="@../application.css" text="Administrateur" />
+               </children>
+            </Pane>
+         </children>
+         <effect>
+            <DropShadow color="#b2adad" height="64.985" radius="31.37375" spread="0.09" width="62.51" />
+         </effect>
+      </AnchorPane>
+      <ScrollPane hbarPolicy="NEVER" layoutY="62.0" prefHeight="574.0" prefWidth="830.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="816.0">
+               <children>
+                  <AnchorPane layoutY="-5.0" prefHeight="895.0" prefWidth="822.0" style="-fx-background-color: #e6e6e6;">
+                     <children>
+                        <Label layoutX="56.0" layoutY="17.0" text=" &gt; " />
+                        <ImageView fitHeight="27.0" fitWidth="23.0" layoutX="33.0" layoutY="12.0" onMouseClicked="#doAccueil" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/accueil_ico.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="71.0" layoutY="17.0" text="Equipes des participants" textFill="#4485fc" underline="true" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

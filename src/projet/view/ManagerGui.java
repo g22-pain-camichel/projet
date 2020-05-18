@@ -1,14 +1,18 @@
 package projet.view;
 
+import java.io.IOException;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import jfox.commun.context.IContext;
 import jfox.javafx.view.ManagerGuiAbstract;
+import projet.view.connexion.ModelConnexion;
 
 
 public class ManagerGui extends ManagerGuiAbstract {
@@ -18,6 +22,8 @@ public class ManagerGui extends ManagerGuiAbstract {
 	
 	@Inject
 	private IContext		context;
+	@Inject
+	private ModelConnexion	modelConnexion;
 	
 	
 	// Initialisation
@@ -38,12 +44,14 @@ public class ManagerGui extends ManagerGuiAbstract {
 		showView( EnumView.Connexion);
 		
 		// Configure le stage
-		stage.setTitle( "Gestion des bénévoles" );
-		stage.setWidth(1120);
-		stage.setHeight(690);
-		stage.getIcons().add(new Image(getClass().getResource("../images/logo_ico.png").toExternalForm()));
-		stage.setResizable(false);
-	
+		stage.setTitle( "Gestion de bol d'air" );
+		stage.setWidth(900);
+		stage.setHeight(700);
+		stage.setMinWidth(400);
+		stage.setMinHeight(300);
+		stage.getIcons().add(new Image(getClass().getResource("logo_ico.png").toExternalForm()));
+		stage.sizeToScene();
+		stage.setResizable(false);;
 		
 		// Configuration par défaut pour les boîtes de dialogue
 		typeConfigDialogDefault = ConfigDialog.class;
@@ -52,9 +60,23 @@ public class ManagerGui extends ManagerGuiAbstract {
 	
 	@Override
 	public Scene createScene( Parent root ) {
-		AnchorPane paneMenu = new AnchorPane( root );
+		BorderPane paneMenu = new BorderPane( root );
+//		paneMenu.setTop( context.getBeanNew( MenuBarAppli.class ) );
+		if( modelConnexion.getUtilisateurActif() != null ) {
+			// Charge le panneau
+			FXMLLoader loader = new FXMLLoader(this.getClass().getResource( "Menu.fxml" ));
+			loader.setControllerFactory( factoryController );
+			//Parent root = loader.load();
+			
+			try {
+				paneMenu.setLeft( loader.load() );
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			} 	
+	}
 		Scene scene = new Scene( paneMenu );
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("menu-vertical.css").toExternalForm());
 		return scene;
 	}
 	

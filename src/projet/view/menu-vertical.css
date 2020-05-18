@@ -1,0 +1,15 @@
+
+.menu-vertical {
+    -fx-background-color: blue;
+}
+
+.menu-vertical Button {
+    -fx-background-color: blue;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border: none; 
+}
+
+.menu-vertical Button:hover {
+    -fx-background-color: lightblue;
+}

@@ -11,21 +11,17 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="1100.0" prefHeight="650.0" prefWidth="1100.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.accueil.ControllerAccueil">
    <children>
-      <AnchorPane layoutX="-19.0" prefHeight="59.0" prefWidth="1119.0" style="-fx-background-color: #fafafa;">
+      <AnchorPane prefHeight="59.0" prefWidth="830.0" style="-fx-background-color: #fafafa;">
          <children>
-            <Pane layoutX="818.0" layoutY="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="302.0">
+            <Pane layoutX="514.0" layoutY="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="302.0">
                <children>
-                  <Label id="decon" layoutX="212.0" layoutY="10.0" stylesheets="@../application.css" text="Déconnexion" underline="true">
+                  <Label id="decon" layoutX="212.0" layoutY="10.0" onMouseClicked="#deconnexion" stylesheets="@../application.css" text="Déconnexion" underline="true">
                      <font>
                         <Font name="Gadugi" size="14.0" />
                      </font>
@@ -46,311 +42,11 @@
             <DropShadow color="#b2adad" height="64.985" radius="31.37375" spread="0.09" width="62.51" />
          </effect>
       </AnchorPane>
-      <AnchorPane layoutX="-6.0" layoutY="59.0" prefHeight="591.0" prefWidth="277.0" style="-fx-background-color: #0d6aff;">
-         <children>
-            <Label layoutX="8.0" layoutY="570.0" text="Copyright 2020" textFill="WHITE" />
-            <Label layoutX="111.0" layoutY="570.0" text="Made by Group " textFill="WHITE" />
-            <Label layoutX="198.0" layoutY="570.0" text="Paincamiche" textFill="#fcfcfc" underline="true" />
-            <VBox layoutY="14.0" prefHeight="363.0" prefWidth="277.0">
+      <ScrollPane hbarPolicy="NEVER" layoutY="60.0" prefHeight="574.0" prefWidth="830.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="816.0">
                <children>
-                  <Pane id="box" prefHeight="50.0" prefWidth="277.0" stylesheets="@../application.css">
-                     <children>
-                        <GridPane alignment="CENTER" layoutX="5.0" layoutY="10.0" prefHeight="30.0" prefWidth="271.0">
-                          <columnConstraints>
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="51.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../images/accueil_ico.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                              <Label text="Accueil" textFill="WHITE" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                           </children>
-                        </GridPane>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Pane>
-                  <Pane id="box" prefHeight="50.0" prefWidth="277.0" stylesheets="@../application.css">
-                     <children>
-                        <GridPane alignment="CENTER" layoutX="5.0" layoutY="10.0" prefHeight="30.0" prefWidth="271.0">
-                           <columnConstraints>
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="51.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../images/list_ico.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                              <Label text="Liste des participants" textFill="WHITE" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                           </children>
-                        </GridPane>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Pane>
-                  <Pane prefHeight="45.0" prefWidth="282.0">
-                     <children>
-                        <GridPane alignment="CENTER" layoutX="8.0" prefHeight="46.0" prefWidth="263.0">
-                           <columnConstraints>
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="51.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../images/bene_icon.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                              <Label prefHeight="27.0" prefWidth="178.0" text="Listes des bénévoles" textFill="WHITE" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                           </children>
-                        </GridPane>
-                     </children>
-                  </Pane>
-                  <Pane id="box" prefHeight="50.0" prefWidth="277.0" stylesheets="@../application.css">
-                     <children>
-                        <GridPane alignment="CENTER" layoutX="5.0" layoutY="10.0" prefHeight="30.0" prefWidth="271.0">
-                           <columnConstraints>
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="51.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../images/equipeparticip_ico.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                              <Label text="Equipe des participants" textFill="WHITE" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                           </children>
-                        </GridPane>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Pane>
-                  <Pane id="box" prefHeight="50.0" prefWidth="277.0" stylesheets="@../application.css">
-                     <children>
-                        <GridPane alignment="CENTER" layoutX="5.0" layoutY="10.0" prefHeight="30.0" prefWidth="271.0">
-                           <columnConstraints>
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="51.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../images/taches_ico.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                              <Label prefHeight="56.0" prefWidth="220.0" text="Taches et missions des bénévoles" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                           </children>
-                        </GridPane>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Pane>
-                  <Pane id="box" prefHeight="50.0" prefWidth="277.0" stylesheets="@../application.css">
-                     <children>
-                        <GridPane alignment="CENTER" layoutX="5.0" layoutY="10.0" prefHeight="30.0" prefWidth="271.0">
-                           <columnConstraints>
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="51.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../images/inscrire_ico.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                              <Label text="Inscrire un participant" textFill="WHITE" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                           </children>
-                        </GridPane>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Pane>
-                  <Pane id="box" prefHeight="50.0" prefWidth="277.0" stylesheets="@../application.css">
-                     <children>
-                        <GridPane alignment="CENTER" layoutX="5.0" layoutY="10.0" prefHeight="30.0" prefWidth="271.0">
-                           <columnConstraints>
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="51.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../images/options_ico.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                              <Label text="Options" textFill="WHITE" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                           </children>
-                        </GridPane>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Pane>
-                  <Pane id="box" prefHeight="47.0" prefWidth="278.0" stylesheets="@../application.css">
-                     <children>
-                        <GridPane alignment="CENTER" layoutX="5.0" layoutY="10.0" prefHeight="30.0" prefWidth="271.0">
-                           <columnConstraints>
-                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="51.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../images/apropos_ico.png" />
-                                 </image>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ImageView>
-                              <Label text="A Propos" textFill="WHITE" GridPane.columnIndex="1">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                           </children>
-                        </GridPane>
-                     </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Pane>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
-      <Pane layoutX="-6.0" prefHeight="59.0" prefWidth="277.0" style="-fx-background-color: #0d6aff;">
-         <children>
-            <Label contentDisplay="CENTER" layoutX="58.0" layoutY="7.0" prefHeight="46.0" prefWidth="127.0" text="GESBOL" textFill="WHITE">
-               <font>
-                  <Font name="Gadugi" size="31.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
-            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="12.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/logo_ico.png" />
-               </image>
-            </ImageView>
-         </children>
-         <effect>
-            <DropShadow color="WHITE" height="12.86" radius="2.715" width="0.0" />
-         </effect>
-      </Pane>
-      <ScrollPane hbarPolicy="NEVER" layoutX="271.0" layoutY="77.0" prefHeight="574.0" prefWidth="830.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="816.0">
-               <children>
-                  <AnchorPane prefHeight="890.0" prefWidth="816.0" style="-fx-background-color: #e6e6e6;">
+                  <AnchorPane layoutY="2.0" prefHeight="893.0" prefWidth="816.0" style="-fx-background-color: #e6e6e6;">
                      <children>
                         <Pane layoutX="30.0" layoutY="61.0" prefHeight="68.0" prefWidth="749.0" style="-fx-background-color: #FFF; -fx-background-radius: 5;">
                            <children>
@@ -469,7 +165,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-        </content>
+         </content>
       </ScrollPane>
    </children>
 </AnchorPane>
