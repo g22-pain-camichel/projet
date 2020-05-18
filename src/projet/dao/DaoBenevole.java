@@ -180,7 +180,6 @@ public class DaoBenevole {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
-
 	
 /* 	public List<Benevole> listerPourMemo( int idMemo )   {
 

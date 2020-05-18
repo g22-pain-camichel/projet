@@ -16,7 +16,6 @@ public class MainProjet {
 	// main()
 	
 	public static void main(String[] args) {   
-
 		
 		try {
 

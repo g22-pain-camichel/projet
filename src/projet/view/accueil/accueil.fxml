@@ -70,7 +70,7 @@
                                           <Font name="System Bold" size="10.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="63.0" layoutY="33.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
+                                    <Label fx:id="totalB" alignment="CENTER" layoutX="46.0" layoutY="29.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
                                        <font>
                                           <Font name="System Bold" size="40.0" />
                                        </font>
@@ -85,7 +85,7 @@
                                           <Font name="System Bold" size="10.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="63.0" layoutY="33.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
+                                    <Label fx:id="totalEqB" alignment="CENTER" layoutX="50.0" layoutY="33.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
                                        <font>
                                           <Font name="System Bold" size="40.0" />
                                        </font>
@@ -100,7 +100,7 @@
                                           <Font name="System Bold" size="10.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="63.0" layoutY="33.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
+                                    <Label alignment="CENTER" layoutX="50.0" layoutY="29.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
                                        <font>
                                           <Font name="System Bold" size="40.0" />
                                        </font>
@@ -110,7 +110,7 @@
                               </Pane>
                               <Pane prefHeight="85.0" prefWidth="157.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
                                  <children>
-                                    <Label layoutX="63.0" layoutY="33.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
+                                    <Label alignment="CENTER" layoutX="50.0" layoutY="33.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
                                        <font>
                                           <Font name="System Bold" size="40.0" />
                                        </font>
