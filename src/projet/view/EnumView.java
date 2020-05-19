@@ -9,9 +9,21 @@ public enum EnumView implements IEnumView {
 	
 	// Valeurs
 	
+	// ours
+	
 	Info				( "systeme/ViewInfo.fxml" ),
 	Connexion			( "connexion/connexion.fxml" ),
 	Accueil				( "accueil/accueil.fxml" ),	
+	Options				("option/Option.fxml"),
+	Apropos				("apropos/Apropos.fxml"),
+	ListBenevoles		("benevole/ListedesBenevoles.fxml"),
+	TachesMissions		("tacheMission/TacheMission.fxml"),
+	EquipeParticipant	("equipeparticipant/EquipesDeParticipant.fxml"),
+	ListParticipants 	("participant/ListeParticipantView.fxml"),
+	InscrireParticipant	("participant/InscrireParticipant.fxml"),
+	
+	// celui du prof
+	
 	CompteListe			( "compte/ViewCompteListe.fxml" ),
 	CompteForm			( "compte/ViewCompteForm.fxml" ),
 	CategorieListe		( "personne/ViewCategorieListe.fxml" ),
@@ -28,13 +40,6 @@ public enum EnumView implements IEnumView {
 	TestDaoService		( "test/ViewTestDaoService.fxml" ),
 	EtatPersonnesParCateogire1	( "personne/ViewEtatPersonnesParCategorie1.fxml" ),
 	EtatPersonnesParCateogire2	( "personne/ViewEtatPersonnesParCategorie2.fxml" ),
-	ListParticipants 	("listeparticipants/ListeParticipantView.fxml"),
-	ListBenevoles		("listebenevoles/ListedesBenevoles.fxml"),
-	EquipeParticipant	("equipeparticipant/EquipesDeParticipant.fxml"),
-	TachesMissions		("tacheMission/TacheMission.fxml"),
-	InscrireParticipant	("inscrireparticipant/InscrireParticipant.fxml"),
-	Options				("option/Option.fxml"),
-	Apropos				("apropos/Apropos.fxml"),
 	;
 
 	

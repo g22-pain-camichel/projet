@@ -32,6 +32,6 @@
 	<classpathentry kind="lib" path="/~libraries/jasperreports-6.12/javax.inject-1.jar"/>
 	<classpathentry kind="lib" path="/~libraries/jasperreports-6.12/jcommon-1.0.23.jar"/>
 	<classpathentry kind="lib" path="/~libraries/jasperreports-6.12/jfreechart-1.0.19.jar"/>
-	<classpathentry kind="lib" path="C:/dev19/jfoenix/jfoenix-9.0.9.jar"/>
+	<classpathentry kind="lib" path="D:/tuto_jfox/folder/jfoenix-9.0.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
