@@ -5,6 +5,8 @@ import java.io.IOException;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
+import com.lowagie.text.Anchor;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
