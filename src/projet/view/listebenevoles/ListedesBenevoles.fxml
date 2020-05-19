@@ -129,7 +129,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../AppData/Local/Temp/icons8_add_24px.png" />
+                                    <Image url="@../../images/add_ico.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -138,7 +138,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../AppData/Local/Temp/icons8_delete_64px.png" />
+                                    <Image url="@../../images/delete_ico.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -147,7 +147,7 @@
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../AppData/Local/Temp/icons8_edit_account_50px.png" />
+                                    <Image url="@../../images/edit_account_ico.png" />
                                  </image>
                               </ImageView>
                            </graphic>
