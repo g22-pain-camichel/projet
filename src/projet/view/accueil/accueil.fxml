@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.accueil.ControllerAccueil">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.accueil.ControllerAccueil">
    <children>
       <AnchorPane prefHeight="59.0" prefWidth="830.0" style="-fx-background-color: #fafafa;">
          <children>
@@ -100,7 +100,7 @@
                                           <Font name="System Bold" size="10.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="CENTER" layoutX="50.0" layoutY="29.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
+                                    <Label fx:id="totalP" alignment="CENTER" layoutX="50.0" layoutY="29.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
                                        <font>
                                           <Font name="System Bold" size="40.0" />
                                        </font>
@@ -110,7 +110,7 @@
                               </Pane>
                               <Pane prefHeight="85.0" prefWidth="157.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
                                  <children>
-                                    <Label alignment="CENTER" layoutX="50.0" layoutY="33.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
+                                    <Label fx:id="totalEqP" alignment="CENTER" layoutX="50.0" layoutY="33.0" prefHeight="58.0" prefWidth="57.0" text="0" textAlignment="CENTER">
                                        <font>
                                           <Font name="System Bold" size="40.0" />
                                        </font>

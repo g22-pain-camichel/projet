@@ -15,6 +15,13 @@ public class ControllerAccueil {
 	@FXML
 	private Label totalB, totalEqB;
 	
+	@FXML
+	private Label totalP;
+	
+	@FXML
+	private Label totalEqP;
+	
+	
 	@Inject
 	private ModelAccueil modelAccueil;
 	
@@ -22,11 +29,16 @@ public class ControllerAccueil {
 	private void initialize() {
 		totalB.setText(modelAccueil.totalBenevole());
 		totalEqB.setText(modelAccueil.totalEquipeBenevole());
+		totalP.setText(modelAccueil.totalParticipant());
+		totalEqP.setText(modelAccueil.totalEquipeParticipant());
+		
 	}
 	
 	@FXML
 	public void deconnexion() {
 		managerGui.showView(EnumView.Connexion);
 	}
+	
+	
 	
 }

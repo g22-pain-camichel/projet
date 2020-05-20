@@ -10,7 +10,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Benevole {
-	
+	int i;
 	
 	//champs
 	private final Property<Integer>		identifiant			= new SimpleObjectProperty<>();	
