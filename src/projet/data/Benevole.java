@@ -220,4 +220,13 @@ public class Benevole {
 	public final void setHrFinDispo(final String hrFinDispo) {
 		this.hrFinDispoProperty().set(hrFinDispo);
 	}
+
+	@Override
+	public String toString() {
+		return "Benevole {identifiant=" + identifiant + ", nom=" + nom + ", prenom=" + prenom + ", sexe="
+				+ sexe + ", dtNaiss=" + dtNaiss + ", email=" + email + ", tel=" + tel + ", type=" + type
+				+ ", hrDbDispo=" + hrDbDispo + ", hrFinDispo=" + hrFinDispo + "}";
+	}
+	
+	
 }

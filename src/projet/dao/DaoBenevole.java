@@ -158,7 +158,6 @@ public class DaoBenevole {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
-
 	
 	public List<Benevole> listerTout()   {
 
@@ -174,6 +173,34 @@ public class DaoBenevole {
 			stmt = cn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			
+			List<Benevole> benevoles = new ArrayList<>();
+			while (rs.next()) {
+				benevoles.add( construireBenevole(rs, false) );
+			}
+			return benevoles;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
+	public List<Benevole> listerBenevoles(String name)   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM benevole WHERE nom = ?";
+			stmt = cn.prepareStatement(sql);
+			stmt.setObject( 1, name);
+            rs = stmt.executeQuery();
+            
 			List<Benevole> benevoles = new ArrayList<>();
 			while (rs.next()) {
 				benevoles.add( construireBenevole(rs, false) );

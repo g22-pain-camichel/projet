@@ -2,6 +2,8 @@ package projet.view.benevole;
 
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -53,6 +55,12 @@ public class ModelBenevole {
 	
 	public void preparerModifier( Benevole item ) {
 		mapper.update( courant, daoBenevole.retrouver( item.getIdentifiant()) );
+	}
+	
+	public List<Benevole> find(String name) {
+		List<Benevole> liste = new ArrayList();
+		liste = daoBenevole.listerBenevoles(name);
+		return liste;
 	}
 	
 	public void validerMiseAJour() throws ParseException {

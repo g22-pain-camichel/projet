@@ -117,7 +117,7 @@ INSERT INTO benevole (identifiant, nom, prenom, sexe, dtNaiss, email, tel, type,
   	(2, 'julia', 'adele', 1, {d'1996-08-15'}, 'juliaadh@gmail.com', '+33 07 44 23 98 30', 'externe', {t '10:00'}, {t '15:30'}),
   	(3, 'andres', 'brayan', 0, {d'1999-10-01'}, 'andres@yahoo.fr', '+33 07 22 76 48 21', 'externe', {t '08:00'}, {t '12:00'}),
   	(4, 'suzie', 'angela', 1, {d'2000-05-09'}, 'suzangela@gmail.com', '+33 06 49 03 78 10', 'interne', {t '16:00'}, {t '18:30'});
-
+  	 	
 ALTER TABLE benevole ALTER COLUMN identifiant RESTART WITH 5;
 
   -- Participant 

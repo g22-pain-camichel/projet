@@ -58,8 +58,8 @@
                   <ListView fx:id="listView" layoutY="54.0" onMouseClicked="#doFillGap" prefHeight="395.0" prefWidth="267.0" />
                   <HBox layoutX="1.0" layoutY="1.0" prefHeight="31.0" prefWidth="267.0">
                      <children>
-                        <TextField fx:id="textField_find" prefHeight="33.0" prefWidth="185.0" promptText="Recherche un benevole" />
-                        <Button fx:id="button_find" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" text="Rechercher" />
+                        <TextField fx:id="textField_find" prefHeight="33.0" prefWidth="185.0" promptText="Recherche un benevole [nom]" />
+                        <Button fx:id="button_find" mnemonicParsing="false" onAction="#doFind" prefHeight="31.0" prefWidth="85.0" text="Rechercher" />
                      </children>
                   </HBox>
                </children>
@@ -113,7 +113,7 @@
                               <Image url="@../../images/info.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="20.0" prefWidth="161.0" text="Informations participant :">
+                        <Label prefHeight="20.0" prefWidth="161.0" text="Informations bénévole:">
                            <font>
                               <Font size="14.0" />
                            </font>

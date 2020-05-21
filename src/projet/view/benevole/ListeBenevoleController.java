@@ -1,6 +1,7 @@
 package projet.view.benevole;
 
 import java.text.ParseException;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -11,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
@@ -107,6 +109,19 @@ public class ListeBenevoleController {
 		if ( managerGui.showDialogConfirm( "Confirmez-vous la suppresion ?" ) ) {
 			modelBenevole.supprimer( listView.getSelectionModel().getSelectedItem() );
 			initialize();
+		}
+	}
+	
+	@FXML
+	public void doFind() {
+		if (!textField_find.getText().isEmpty()) {
+			List<Benevole> maListe = modelBenevole.find(textField_find.getText());
+			if (maListe.isEmpty()) {
+				managerGui.showDialogMessage("Aucun bénévole possédant ce nom n'a été trouvé");
+			}
+			else {
+				UtilFX.selectInListView( listView, maListe.get(0) );
+			}
 		}
 	}
 	
