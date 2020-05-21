@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -19,6 +20,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="831.0" prefHeight="680.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.benevole.ListeBenevoleController">
@@ -50,18 +52,9 @@
       </AnchorPane>
       <AnchorPane layoutX="-1.0" layoutY="59.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;">
          <children>
-            <AnchorPane layoutX="45.0" layoutY="114.0" minHeight="0.0" minWidth="0.0" prefHeight="449.0" prefWidth="318.0">
+            <AnchorPane layoutX="45.0" layoutY="114.0" minHeight="0.0" minWidth="0.0" prefHeight="449.0" prefWidth="267.0">
                <children>
-                  <TableView editable="true" layoutX="10.0" layoutY="-1.0" prefHeight="466.0" prefWidth="302.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="-16.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="-1.0">
-                     <columns>
-                        <TableColumn prefWidth="67.0" text="ID" />
-                        <TableColumn prefWidth="133.0" text="NOM" />
-                        <TableColumn prefWidth="112.00004577636719" text="PRENOM" />
-                     </columns>
-                     <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                     </columnResizePolicy>
-                  </TableView>
+                  <ListView fx:id="listView" onMouseClicked="#doFillGap" prefHeight="449.0" prefWidth="267.0" />
                </children>
             </AnchorPane>
             <Label layoutX="56.0" layoutY="17.0" text=" &gt; " />
@@ -70,130 +63,11 @@
                   <Image url="@../../images/accueil_ico.png" />
                </image>
             </ImageView>
-            <AnchorPane layoutX="363.0" layoutY="114.0" minHeight="0.0" minWidth="0.0" prefHeight="466.0" prefWidth="433.0">
+            <AnchorPane layoutX="339.0" layoutY="114.0" minHeight="0.0" minWidth="0.0" prefHeight="466.0" prefWidth="485.0">
                <children>
-                  <GridPane layoutX="17.0" layoutY="50.0" prefHeight="367.0" prefWidth="393.0" vgap="15.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="50.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.0" minWidth="10.0" prefWidth="151.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="378.0" minWidth="10.0" prefWidth="203.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
+                  <HBox alignment="CENTER" layoutX="97.0" layoutY="386.0" prefHeight="40.0" prefWidth="312.0" spacing="10.0">
                      <children>
-                        <Label text="Nom :" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Prénom :" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Sexe :" GridPane.rowIndex="3">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Date de Naissance :" GridPane.rowIndex="4">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="E-mail :" GridPane.rowIndex="5">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="N°Téléphone :" GridPane.rowIndex="6">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="Type:" GridPane.rowIndex="7">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="20.0" prefWidth="137.0" text="Fonctions souhaitées :" GridPane.rowIndex="8">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="18.0" prefWidth="0.0" GridPane.rowIndex="10" />
-                        <Label text="Heure de debut :" GridPane.rowIndex="10">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="ID">
-                           <font>
-                              <Font name="Gadugi" size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField GridPane.columnIndex="1" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                           <children>
-                              <JFXCheckBox checkedColor="#1362d0" text="M">
-                                 <HBox.margin>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </HBox.margin>
-                              </JFXCheckBox>
-                              <JFXCheckBox checkedColor="#1362d0" text="F">
-                                 <HBox.margin>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </HBox.margin>
-                              </JFXCheckBox>
-                           </children>
-                        </HBox>
-                        <DatePicker prefHeight="25.0" prefWidth="229.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label text="Heure de fin :" GridPane.rowIndex="11">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="11" />
-                        <ComboBox prefHeight="25.0" prefWidth="223.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <ComboBox prefHeight="25.0" prefWidth="221.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <Label prefHeight="20.0" prefWidth="137.0" text="Fonctions affectées :" GridPane.rowIndex="9">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <ComboBox prefHeight="25.0" prefWidth="222.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                        <Label text="Nbre d'heures affectation :" GridPane.rowIndex="12">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                        <Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="12">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </GridPane>
-                  <HBox alignment="CENTER_LEFT" layoutX="61.0" layoutY="426.0" prefHeight="40.0" prefWidth="312.0" spacing="10.0">
-                     <children>
-                        <JFXButton buttonType="RAISED" prefHeight="28.0" prefWidth="87.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Ajouter">
+                        <JFXButton fx:id="button_add" buttonType="RAISED" prefHeight="28.0" prefWidth="87.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Ajouter">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -201,8 +75,11 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" prefHeight="28.0" prefWidth="98.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Modifier">
+                        <JFXButton fx:id="button_update" buttonType="RAISED" prefHeight="28.0" prefWidth="98.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Modifier">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -211,7 +88,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" prefHeight="28.0" prefWidth="97.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Supprimer">
+                        <JFXButton fx:id="button_delete" buttonType="RAISED" prefHeight="28.0" prefWidth="97.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Supprimer">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -236,12 +113,63 @@
                         </Label>
                      </children>
                   </HBox>
+                  <HBox alignment="CENTER" layoutX="153.0" layoutY="58.0" prefHeight="40.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label text="Id" />
+                        <TextField fx:id="textField_id" editable="false" prefHeight="25.0" prefWidth="57.0" />
+                     </children>
+                  </HBox>
+                  <GridPane alignment="CENTER" layoutX="6.0" layoutY="107.0" prefHeight="252.0" prefWidth="453.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.66666666666667" minWidth="10.0" prefWidth="108.66666666666667" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="148.66666666666666" minWidth="10.0" prefWidth="114.00000000000001" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.00004069010416" minWidth="10.0" prefWidth="114.66668701171878" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.66668701171875" minWidth="10.0" prefWidth="116.66666666666663" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="41.66668701171875" minHeight="10.0" prefHeight="41.66668701171875" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="51.333343505859375" minHeight="10.0" prefHeight="40.99997965494791" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="63.00002034505209" minHeight="10.0" prefHeight="44.666676839192704" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="66.66665649414062" minHeight="10.0" prefHeight="41.99997965494791" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="66.66665649414062" minHeight="10.0" prefHeight="41.99997965494791" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Nom" textAlignment="CENTER" GridPane.halignment="CENTER" />
+                        <Label text="Prenom" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                        <Label text="Email" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Label text="Date naissance" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Label prefHeight="27.0" prefWidth="100.0" text="fonction souhaitée" textAlignment="CENTER" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="114.0" text="Telephone" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                        <Label text="Sexe" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Label text="fonction affectée" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <TextField fx:id="textField_name" GridPane.columnIndex="1" />
+                        <TextField fx:id="textField_email" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="datePicker_birthday" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="8.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <children>
+                              <RadioButton mnemonicParsing="false" text="Masculin">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="toggleSex" />
+                                 </toggleGroup></RadioButton>
+                              <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="69.0" text="Feminin" toggleGroup="$toggleSex" />
+                           </children>
+                        </VBox>
+                        <TextField fx:id="textField_surname" GridPane.columnIndex="3" />
+                        <TextField fx:id="textField_phone" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="comboBox_desireFunc" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="textField_affectedFunc" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Label text="Heure debut" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                        <Label text="Heure fin" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                        <JFXTimePicker fx:id="timePicker_startH" defaultColor="#4485fc" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <JFXTimePicker fx:id="timePicker_endH" defaultColor="#4485fc" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
                </children>
             </AnchorPane>
             <Label layoutX="71.0" layoutY="17.0" text="Liste des Bénévoles" textFill="#4485fc" underline="true" />
             <Pane layoutX="56.0" layoutY="49.0" prefHeight="40.0" prefWidth="719.0" style="-fx-background-color: #F1F1F1; -fx-background-radius: 5;">
                <children>
-                  <Label contentDisplay="CENTER" graphicTextGap="6.0" layoutX="80.0" layoutY="13.0" text="Pour modifier les informations d'un bénévole,cliquez sur un enregistrement dans le tableau">
+                  <Label contentDisplay="CENTER" graphicTextGap="6.0" layoutX="80.0" layoutY="13.0" text="Pour modifier les informations d'un bénévole,cliquez sur un enregistrement dans la liste">
                      <font>
                         <Font name="Gadugi" size="14.0" />
                      </font>

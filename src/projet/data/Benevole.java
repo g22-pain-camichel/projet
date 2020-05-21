@@ -21,8 +21,8 @@ public class Benevole {
 	private final StringProperty		email	= new SimpleStringProperty();
 	private final StringProperty		tel		= new SimpleStringProperty();
 	private final StringProperty	type	= new SimpleStringProperty();
-	private final Property<Time>	hrDbDispo	= new SimpleObjectProperty<>();
-	private final Property<Time> hrFinDispo = new SimpleObjectProperty<>();
+	private final StringProperty	hrDbDispo	= new SimpleStringProperty();
+	private final StringProperty hrFinDispo = new SimpleStringProperty();
 	
 	//constructeurs
 	public Benevole() {
@@ -128,13 +128,13 @@ public class Benevole {
 	
 
 
-	public final LocalDate getdtNaiss() {
+	public final LocalDate getDtNaiss() {
 		return this.dtNaissProperty().getValue();
 	}
 	
 
 
-	public final void setdtNaiss(final LocalDate dtNaiss) {
+	public final void setDtNaiss(final LocalDate dtNaiss) {
 		this.dtNaissProperty().setValue(dtNaiss);
 	}
 	
@@ -191,43 +191,33 @@ public class Benevole {
 	public final void setType(final String type) {
 		this.typeProperty().set(type);
 	}
-	
 
-
-	public final Property<Time> hrDbDispoProperty() {
+	public final StringProperty hrDbDispoProperty() {
 		return this.hrDbDispo;
 	}
 	
 
-
-	public final Time gethrDbDispo() {
-		return this.hrDbDispoProperty().getValue();
+	public final String getHrDbDispo() {
+		return this.hrDbDispoProperty().get();
 	}
 	
 
-
-	public final void sethrDbDispo(Time hrDbDispo) {
-		this.hrDbDispoProperty().setValue(hrDbDispo);
+	public final void setHrDbDispo(final String hrDbDispo) {
+		this.hrDbDispoProperty().set(hrDbDispo);
 	}
 	
 
-
-	public final Property<Time> hrFinDispoProperty() {
+	public final StringProperty hrFinDispoProperty() {
 		return this.hrFinDispo;
 	}
 	
 
-
-	public final Time gethrFinDispo() {
-		return this.hrFinDispoProperty().getValue();
+	public final String getHrFinDispo() {
+		return this.hrFinDispoProperty().get();
 	}
 	
 
-
-	public final void sethrFinDispo(Time hrFinDispo) {
-		this.hrFinDispoProperty().setValue(hrFinDispo);
+	public final void setHrFinDispo(final String hrFinDispo) {
+		this.hrFinDispoProperty().set(hrFinDispo);
 	}
-	
-
-
 }

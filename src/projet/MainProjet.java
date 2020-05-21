@@ -19,7 +19,7 @@ public class MainProjet {
 		
 		try {
 
-			// JDBC - DataSource
+			// JDBC - DataSource	
 			DataSource dataSource = new DataSourceSingleConnection( "META-INF/jdbc.properties" );
 			
 			// Context
@@ -28,7 +28,7 @@ public class MainProjet {
 			context.addBean( new IMapperImpl() );
 
 			// Configure le ManagerReport
-			context.getBean( ManagerReport.class ).setDirReports( "etats" );;
+			context.getBean( ManagerReport.class).setDirReports( "etats" );;
 			
 			// Démarre l'application
 			context.getBean( ManagerGui.class ).launch();

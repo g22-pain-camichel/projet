@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,12 +46,14 @@ public class DaoBenevole {
 			stmt.setObject(	2, benevole.getNom() );
 			stmt.setObject(	3, benevole.getPrenom() );
 			stmt.setObject(	4, benevole.getSexe());
-			stmt.setObject(	5, benevole.getdtNaiss());
+			stmt.setObject(	5, benevole.getDtNaiss());
 			stmt.setObject(	6, benevole.getEmail() );
 			stmt.setObject(	7, benevole.getTel() );
 			stmt.setObject(	8, benevole.getType());
-			stmt.setObject(	9, benevole.gethrDbDispo());
-			stmt.setObject(	10, benevole.gethrFinDispo() );
+			LocalTime t1 = LocalTime.parse(benevole.getHrDbDispo());
+			LocalTime t2 = LocalTime.parse(benevole.getHrFinDispo());
+			stmt.setObject(	9, t1);
+			stmt.setObject(	10, t2 );
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -85,12 +89,14 @@ public class DaoBenevole {
 			stmt.setObject(	2, benevole.getNom() );
 			stmt.setObject(	3, benevole.getPrenom() );
 			stmt.setObject(	4, benevole.getSexe());
-			stmt.setObject(	5, benevole.getdtNaiss());
+			stmt.setObject(	5, benevole.getDtNaiss());
 			stmt.setObject(	6, benevole.getEmail() );
 			stmt.setObject(	7, benevole.getTel() );
 			stmt.setObject(	8, benevole.getType());
-			stmt.setObject(	9, benevole.gethrDbDispo());
-			stmt.setObject(	10, benevole.gethrFinDispo() );
+			LocalTime t1 = LocalTime.parse(benevole.getHrDbDispo());
+			LocalTime t2 = LocalTime.parse(benevole.getHrFinDispo());
+			stmt.setObject(	9, t1);
+			stmt.setObject(	10, t2 );
 			stmt.setObject(	11, benevole.getIdentifiant());
 			stmt.executeUpdate();
 			
@@ -221,12 +227,14 @@ public class DaoBenevole {
 		benevole.setNom(rs.getObject( "nom", String.class ));
 		benevole.setPrenom(rs.getObject( "prenom", String.class ));
 		benevole.setSexe(rs.getObject( "sexe", Integer.class ));
-		benevole.setdtNaiss(rs.getObject( "dtNaiss", LocalDate.class ));
+		benevole.setDtNaiss(rs.getObject( "dtNaiss", LocalDate.class ));
 		benevole.setEmail(rs.getObject( "email", String.class ));
 		benevole.setTel(rs.getObject( "tel", String.class ));
 		benevole.setType(rs.getObject( "type", String.class ));
-		benevole.sethrDbDispo(rs.getObject( "hrDbdispo", java.sql.Time.class));
-		benevole.sethrFinDispo(rs.getObject( "hrFindispo", java.sql.Time.class));
+		Time t1 = rs.getObject("hrDbdispo", Time.class);
+		Time t2 = rs.getObject("hrFindispo", Time.class);
+		benevole.setHrDbDispo(t1.toString());
+		benevole.setHrFinDispo(t2.toString());
 		return benevole;
 	}
 	
