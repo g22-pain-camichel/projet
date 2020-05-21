@@ -239,7 +239,7 @@
                </children>
             </AnchorPane>
             <Label layoutX="71.0" layoutY="17.0" text="Liste des Bénévoles" textFill="#4485fc" underline="true" />
-            <Pane layoutX="56.0" layoutY="49.0" prefHeight="40.0" prefWidth="682.0" style="-fx-background-color: #F1F1F1; -fx-background-radius: 5;">
+            <Pane layoutX="56.0" layoutY="49.0" prefHeight="40.0" prefWidth="719.0" style="-fx-background-color: #F1F1F1; -fx-background-radius: 5;">
                <children>
                   <Label contentDisplay="CENTER" graphicTextGap="6.0" layoutX="80.0" layoutY="13.0" text="Pour modifier les informations d'un bénévole,cliquez sur un enregistrement dans le tableau">
                      <font>
