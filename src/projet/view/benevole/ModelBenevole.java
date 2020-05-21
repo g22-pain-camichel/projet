@@ -19,7 +19,7 @@ public class ModelBenevole {
 	
 	private final ObservableList<Benevole> listBenevole = FXCollections.observableArrayList();
 	
-	private final Benevole courant = new Benevole();
+	private Benevole courant = new Benevole();
 	
 	@Inject
 	private IMapper mapper;
@@ -33,6 +33,10 @@ public class ModelBenevole {
 	
 	public Benevole getCourant() {
 		return courant;
+	}
+	
+	public void setCourant(Benevole b) {
+		courant = b; 
 	}
 	
 	// actualisation

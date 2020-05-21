@@ -1,5 +1,7 @@
 package projet.view.benevole;
 
+import java.text.ParseException;
+
 import javax.inject.Inject;
 
 import com.jfoenix.controls.JFXTimePicker;
@@ -29,7 +31,7 @@ public class ListeBenevoleController {
 	
 	@FXML
 	private TextField textField_id, textField_name, textField_surname, textField_email,
-		textField_phone, textField_affectedFunc;
+		textField_phone, textField_equipe, textField_find;
 	
 	@FXML
 	private DatePicker datePicker_birthday;
@@ -47,17 +49,21 @@ public class ListeBenevoleController {
 	private ListView<Benevole> listView;
 	
 	@FXML
-	private Button button_add, button_update, button_delete;
+	private Button button_add, button_update, button_delete, button_find;
 	
-	
+	private Benevole courant;
 	
 	@FXML
 	private void initialize() {
 		// data binding
-		Benevole courant = modelBenevole.getCourant();
+		courant = modelBenevole.getCourant();
 		listView.setItems(modelBenevole.getListe());
 		listView.setCellFactory(UtilFX.cellFactory(item -> item.getNom()+" "+item.getPrenom()));
+		
 		if (courant != null) {
+			UtilFX.selectInListView( listView, modelBenevole.getCourant() );
+			listView.requestFocus();
+			
 			toggleSex.selectedToggleProperty().addListener(obs -> actualiserSexeDansModele());
 			modelBenevole.getCourant().sexeProperty().addListener(obs -> actualiserSexeDansVue());
 			
@@ -83,6 +89,25 @@ public class ListeBenevoleController {
 	public void doFillGap() {
 		modelBenevole.preparerModifier(listView.getSelectionModel().getSelectedItem() );
 		initialize();
+	}
+	
+	@FXML
+	public void doAdd() {
+		
+	}
+	
+	@FXML
+	public void doUpdate() throws ParseException {
+		modelBenevole.validerMiseAJour();
+		initialize();
+	}
+	
+	@FXML
+	public void doDelete() {
+		if ( managerGui.showDialogConfirm( "Confirmez-vous la suppresion ?" ) ) {
+			modelBenevole.supprimer( listView.getSelectionModel().getSelectedItem() );
+			initialize();
+		}
 	}
 	
 	@FXML
