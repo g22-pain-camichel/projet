@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="831.0" prefHeight="650.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.participant.InscrireParticipantController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="831.0" prefHeight="650.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.inscrireparticipant.InscrireParticipantController">
    <children>
       <AnchorPane prefHeight="59.0" prefWidth="830.0" style="-fx-background-color: #fafafa;">
          <children>

@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
+import projet.data.Benevole;
 import projet.data.Participant;
 
 
@@ -229,6 +230,35 @@ public class DaoParticipant {
 		participant.setadressePost(rs.getObject( "adressePost", String.class));
 		participant.setCm(rs.getObject( "cm", String.class));
 		return participant;
+	}
+
+
+	public List<Participant> listerParticipant(String name)   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM participant WHERE nom = ?";
+			stmt = cn.prepareStatement(sql);
+			stmt.setObject( 1, name);
+            rs = stmt.executeQuery();
+            
+			List<Participant> participants = new ArrayList<>();
+			while (rs.next()) {
+				participants.add( construireParticipant(rs, false) );
+			}
+			return participants;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
 	}
 	
 }

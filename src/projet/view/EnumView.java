@@ -19,7 +19,7 @@ public enum EnumView implements IEnumView {
 	ListBenevoles		("benevole/ListedesBenevoles.fxml"),
 	TachesMissions		("tacheMission/TacheMission.fxml"),
 	EquipeParticipant	("equipeparticipant/EquipesDeParticipant.fxml"),
-	ListParticipants 	("participant/ListeParticipantView.fxml"),
+	ListParticipants 	("participant/ListedesParticipants.fxml"),
 	InscrireParticipant	("participant/InscrireParticipant.fxml"),
 	
 	// celui du prof
