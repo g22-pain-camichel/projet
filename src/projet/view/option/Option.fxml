@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="833.0" prefHeight="650.0" prefWidth="833.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.option.OptionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="680.0" minWidth="833.0" prefHeight="650.0" prefWidth="833.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.option.OptionController">
    <children>
       <AnchorPane prefHeight="59.0" prefWidth="830.0" style="-fx-background-color: #fafafa;">
          <children>
@@ -37,7 +37,7 @@
             <DropShadow color="#b2adad" height="64.985" radius="31.37375" spread="0.09" width="62.51" />
          </effect>
       </AnchorPane>
-      <ScrollPane hbarPolicy="NEVER" layoutY="62.0" prefHeight="574.0" prefWidth="830.0">
+      <ScrollPane hbarPolicy="NEVER" layoutY="62.0" prefHeight="617.0" prefWidth="830.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="816.0">
                <children>

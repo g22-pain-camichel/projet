@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -22,7 +22,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="831.0" prefHeight="680.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.participant.ListeParticipantController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="831.0" prefHeight="680.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.participant.ListeParticipantController">
    <children>
       <AnchorPane layoutX="-1.0" prefHeight="59.0" prefWidth="831.0" style="-fx-background-color: #fafafa;">
          <children>
@@ -53,11 +53,19 @@
          <children>
             <AnchorPane layoutX="45.0" layoutY="114.0" minHeight="0.0" minWidth="0.0" prefHeight="449.0" prefWidth="267.0">
                <children>
-                  <ListView fx:id="listView" layoutY="54.0" onMouseClicked="#doFillGap" prefHeight="395.0" prefWidth="267.0" />
-                  <HBox layoutX="1.0" layoutY="1.0" prefHeight="31.0" prefWidth="267.0">
+                  <ListView fx:id="listView" layoutY="55.0" onMouseClicked="#doFillGap" prefHeight="407.0" prefWidth="279.0" />
+                  <HBox layoutX="1.0" layoutY="1.0" prefHeight="31.0" prefWidth="279.0" spacing="6.0">
                      <children>
-                        <TextField fx:id="textField_find" prefHeight="33.0" prefWidth="185.0" promptText="Recherche un partcipant [nom]" />
-                        <Button fx:id="button_find" mnemonicParsing="false" onAction="#doFind" prefHeight="31.0" prefWidth="85.0" text="Rechercher" />
+                        <JFXTextField fx:id="textField_find" focusColor="#6b8cee" prefHeight="25.0" prefWidth="197.0" promptText="Recherche un participant [nom]" />
+                        <JFXButton fx:id="button_find" buttonType="RAISED" onAction="#doFind" prefHeight="28.0" prefWidth="137.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Rechercher">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/search.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
                      </children>
                   </HBox>
                </children>
@@ -68,7 +76,7 @@
                   <Image url="@../../images/accueil_ico.png" />
                </image>
             </ImageView>
-            <AnchorPane layoutX="339.0" layoutY="114.0" minHeight="0.0" minWidth="0.0" prefHeight="466.0" prefWidth="485.0">
+            <AnchorPane layoutX="341.0" layoutY="116.0" minHeight="0.0" minWidth="0.0" prefHeight="466.0" prefWidth="496.0">
                <children>
                   <HBox alignment="CENTER" layoutX="97.0" layoutY="386.0" prefHeight="40.0" prefWidth="312.0" spacing="10.0">
                      <children>
@@ -118,9 +126,9 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="153.0" layoutY="58.0" prefHeight="40.0" prefWidth="200.0" spacing="20.0">
+                  <HBox alignment="CENTER" layoutX="3.0" layoutY="60.0" prefHeight="40.0" prefWidth="217.0" spacing="50.0">
                      <children>
-                        <Label text="Id" />
+                        <Label text="ID" />
                         <TextField fx:id="textField_id" editable="false" prefHeight="25.0" prefWidth="57.0" />
                      </children>
                   </HBox>
@@ -163,7 +171,7 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <Label layoutX="71.0" layoutY="17.0" text="Liste des Participantss" textFill="#4485fc" underline="true" />
+            <Label layoutX="71.0" layoutY="17.0" text="Liste des Participants" textFill="#4485fc" underline="true" />
             <Pane layoutX="56.0" layoutY="49.0" prefHeight="40.0" prefWidth="719.0" style="-fx-background-color: #F1F1F1; -fx-background-radius: 5;">
                <children>
                   <Label contentDisplay="CENTER" graphicTextGap="6.0" layoutX="80.0" layoutY="13.0" text="Pour modifier les informations d'un participant,cliquez sur un enregistrement dans la liste">

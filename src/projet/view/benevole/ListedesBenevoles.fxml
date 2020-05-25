@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -56,10 +56,18 @@
             <AnchorPane layoutX="45.0" layoutY="114.0" minHeight="0.0" minWidth="0.0" prefHeight="449.0" prefWidth="267.0">
                <children>
                   <ListView fx:id="listView" layoutY="54.0" onMouseClicked="#doFillGap" prefHeight="395.0" prefWidth="267.0" />
-                  <HBox layoutX="1.0" layoutY="1.0" prefHeight="31.0" prefWidth="267.0">
+                  <HBox prefHeight="31.0" prefWidth="267.0" spacing="6.0">
                      <children>
-                        <TextField fx:id="textField_find" prefHeight="33.0" prefWidth="185.0" promptText="Recherche un benevole [nom]" />
-                        <Button fx:id="button_find" mnemonicParsing="false" onAction="#doFind" prefHeight="31.0" prefWidth="85.0" text="Rechercher" />
+                        <JFXTextField fx:id="textField_find" focusColor="#6b8cee" prefHeight="25.0" prefWidth="173.0" promptText="Recherche un benevole [nom]" />
+                        <JFXButton fx:id="button_find" buttonType="RAISED" onAction="#doFind" prefHeight="28.0" prefWidth="112.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Rechercher">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/search.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
                      </children>
                   </HBox>
                </children>
@@ -120,9 +128,9 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" layoutX="153.0" layoutY="58.0" prefHeight="40.0" prefWidth="200.0" spacing="20.0">
+                  <HBox alignment="CENTER" layoutX="14.0" layoutY="67.0" prefHeight="40.0" prefWidth="200.0" spacing="50.0">
                      <children>
-                        <Label text="Id" />
+                        <Label text="ID" />
                         <TextField fx:id="textField_id" editable="false" prefHeight="25.0" prefWidth="57.0" />
                      </children>
                   </HBox>

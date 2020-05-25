@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="271.0" prefHeight="676.0" prefWidth="271.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="271.0" prefHeight="680.0" prefWidth="271.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.MenuController">
    <children>
-      <AnchorPane layoutX="-6.0" layoutY="59.0" prefHeight="617.0" prefWidth="277.0" style="-fx-background-color: #0d6aff;">
+      <AnchorPane layoutX="-6.0" layoutY="59.0" prefHeight="622.0" prefWidth="277.0" style="-fx-background-color: #0d6aff;">
          <children>
             <Label layoutX="8.0" layoutY="600.0" text="Copyright 2020" textFill="WHITE" />
             <Label layoutX="111.0" layoutY="600.0" text="Made by Group " textFill="WHITE" />
