@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
@@ -50,6 +54,29 @@
                            </image>
                         </ImageView>
                         <Label layoutX="71.0" layoutY="17.0" text="Equipes des participants" textFill="#4485fc" underline="true" />
+                        <TableView layoutX="71.0" layoutY="115.0" prefHeight="421.0" prefWidth="693.0" tableMenuButtonVisible="true">
+                          <columns>
+                              <TableColumn prefWidth="58.0" text="ID" />
+                            <TableColumn prefWidth="106.0" text="Nom Equipes" />
+                              <TableColumn prefWidth="123.0" text="Capitaine" />
+                              <TableColumn prefWidth="124.0" text="Equipier" />
+                            <TableColumn prefWidth="126.0" text="Reglement bancaire" />
+                              <TableColumn prefWidth="157.0" text="Compétition" />
+                          </columns>
+                        </TableView>
+                        <HBox alignment="CENTER" layoutX="642.0" layoutY="65.0" prefHeight="40.0" prefWidth="122.0" spacing="10.0">
+                           <children>
+                              <JFXButton buttonType="RAISED" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 5;" text="Imprimer">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../images/print.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </children>
