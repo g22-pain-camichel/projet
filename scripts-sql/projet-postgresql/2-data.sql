@@ -110,51 +110,59 @@ INSERT INTO service ( idservice, nom, anneecreation, flagsiege ) VALUES
   
 ALTER TABLE service ALTER COLUMN idservice RESTART WITH 5;
   
+  -- Permi
+  
+INSERT INTO permi(numero, dateDelivrance, lieu) VALUES
+	(911091204209, {d'2000-08-02'}, 'foreke'),
+	(122082203108, {d'1990-10-20'}, 'bamenda'),
+	(788171614617, {d'1999-01-15'}, 'bouda'),
+	(513853284285, {d'2003-11-08'}, 'doul');
+
   -- Benevole 
   
-INSERT INTO benevole (identifiant, nom, prenom, sexe, dtNaiss, email, tel, type, hrDbDispo, hrFinDispo) VALUES
-  	(1, 'jerome', 'vincent', 0, {d'2000-02-25'}, 'jvincent@gmail.com', '+33 07 54 23 08 39', 'interne', {t '12:20'}, {t '16:30'}),
-  	(2, 'julia', 'adele', 1, {d'1996-08-15'}, 'juliaadh@gmail.com', '+33 07 44 23 98 30', 'externe', {t '10:00'}, {t '15:30'}),
-  	(3, 'andres', 'brayan', 0, {d'1999-10-01'}, 'andres@yahoo.fr', '+33 07 22 76 48 21', 'externe', {t '08:00'}, {t '12:00'}),
-  	(4, 'suzie', 'angela', 1, {d'2000-05-09'}, 'suzangela@gmail.com', '+33 06 49 03 78 10', 'interne', {t '16:00'}, {t '18:30'});
+INSERT INTO benevole (identifiant, nom, prenom, sexe, dtNaiss, email, tel, type, hrDbDispo, hrFinDispo, estValide, numero) VALUES
+  	(1, 'jerome', 'vincent', 0, {d'2000-02-25'}, 'jvincent@gmail.com', '+33 07 54 23 08 39', 'interne', {t '12:20'}, {t '16:30'}, false, NULL),
+  	(2, 'julia', 'adele', 1, {d'1996-08-15'}, 'juliaadh@gmail.com', '+33 07 44 23 98 30', 'externe', {t '10:00'}, {t '15:30'}, false, 911091204209),
+  	(3, 'andres', 'brayan', 0, {d'1999-10-01'}, 'andres@yahoo.fr', '+33 07 22 76 48 21', 'externe', {t '08:00'}, {t '12:00'}, false, NULL),
+  	(4, 'suzie', 'angela', 1, {d'2000-05-09'}, 'suzangela@gmail.com', '+33 06 49 03 78 10', 'interne', {t '16:00'}, {t '18:30'}, false, 122082203108);
   	 	
 ALTER TABLE benevole ALTER COLUMN identifiant RESTART WITH 5;
 
   -- Participant 
   
-INSERT INTO participant (num, nom, prenom, sexe, dtNaiss, email, tel, role, adressePost, cm) VALUES
-  	(1, 'luc', 'river', 0, {d'2000-12-05'}, 'luc@gmail.com', '+33 07 54 33 08 39', 0, 'xxxxxxxxxxxx', NULL),
-  	(2, 'julie', 'rose', 0, {d'1999-08-07'}, 'julih@gmail.com', '+33 07 44 73 98 30', 1, 'xxxxxxxxxxxx', NULL),
-  	(3, 'ange', 'robert', 0, {d'1995-02-01'}, 'angelo@yahoo.fr', '+33 07 22 76 48 20', 1, 'xxxxxxxxxxxx', NULL),
-  	(4, 'suzane', 'beldouce', 0, {d'2002-09-29'}, 'suzaned@gmail.com', '+33 06 49 03 75 10', 1, 'xxxxxxxxxxxx', NULL);
+INSERT INTO participant (num, nom, prenom, sexe, dtNaiss, email, tel, role, adressePost, cm, estValide) VALUES
+  	(1, 'luc', 'river', 0, {d'2000-12-05'}, 'luc@gmail.com', '+33 07 54 33 08 39', 0, 'xxxxxxxxxxxx', NULL, false),
+  	(2, 'julie', 'rose', 0, {d'1999-08-07'}, 'julih@gmail.com', '+33 07 44 73 98 30', 1, 'xxxxxxxxxxxx', NULL, false),
+  	(3, 'ange', 'robert', 0, {d'1995-02-01'}, 'angelo@yahoo.fr', '+33 07 22 76 48 20', 1, 'xxxxxxxxxxxx', NULL, false),
+  	(4, 'suzane', 'beldouce', 0, {d'2002-09-29'}, 'suzaned@gmail.com', '+33 06 49 03 75 10', 1, 'xxxxxxxxxxxx', NULL, false);
 
 ALTER TABLE participant ALTER COLUMN num RESTART WITH 5;
 	
 	-- Club
 
-INSERT INTO club (num, nomCapitain, nbRepasReserves, numParticipant) VALUES
-	(1, 'luc', 3, 1),
-	(2, 'suzane', 3, 4),
-	(3, 'julie', 4, 2),
-	(4, 'ange', 3, 3);
+INSERT INTO club (num, nomCapitain, nbRepasReserves, numParticipant, categorie, estValide, activite) VALUES
+	(1, 'luc', 3, 1, 0, false, 0),
+	(2, 'suzane', 3, 4, 1, false, 0),
+	(3, 'julie', 4, 2, 1, false, 1),
+	(4, 'ange', 3, 3, 3, false, 1);
 
 ALTER TABLE club ALTER COLUMN num RESTART WITH 5;
 	
 	-- Tache
 
-INSERT INTO tache (libelle, emplacement) VALUES
-	('lorem ipsum', 'idn'),
-	('dolor sit amet', 'idn'),
-	('ipsum lorem', 'idn'),
-	('amet sit dolor', 'idn');
+INSERT INTO tache (libelle, emplacement, hr_deb, hr_fin, taille) VALUES
+	('lorem ipsum', 'idn', {t '10:30'}, {t '14:00'}, 3),
+	('dolor sit amet', 'idn', {t '08:00'}, {t '10:00'}, 3),
+	('ipsum lorem', 'idn', {t '14:00'}, {t '16:00'}, 2),
+	('amet sit dolor', 'idn', {t '10:00'}, {t '16:00'}, 4);
 
 	-- Equipebenevole
 	
-INSERT INTO equipebenevole(num, nbreBenevole, hrDbDispo, hrFinDispo, libelle) VALUES
-	(1, 5, {t '12:20'}, {t '14:30'}, 'lorem ipsum'),
-	(2, 4, {t '10:20'}, {t '14:30'}, 'dolor sit amet'),
-	(3, 3, {t '08:20'}, {t '12:30'}, 'ipsum lorem'),
-	(4, 2, {t '14:20'}, {t '16:30'}, 'amet sit dolor');
+INSERT INTO equipebenevole(num, nbreBenevole, libelle, estValide) VALUES
+	(1, 3, 'lorem ipsum', false),
+	(2, 4, 'dolor sit amet', false),
+	(3, 3, 'ipsum lorem', false),
+	(4, 2, 'amet sit dolor', false);
 	
 ALTER TABLE equipebenevole ALTER COLUMN num RESTART WITH 5;
 
@@ -168,11 +176,11 @@ INSERT INTO constituer (identifiant, num) VALUES
 
 	-- Epreuve
 
-INSERT INTO epreuve (nom, distance) VALUES
-	('epreuve 1', 123),
-	('epreuve 2', 460),
-	('epreuve 3', 463),
-	('epreuve 4', 383);
+INSERT INTO epreuve (nom, distance, hr_deb, hr_fin) VALUES
+	('epreuve 1', 123, {t '10:00'}, {t '16:00'}),
+	('epreuve 2', 460, {t '14:00'}, {t '16:00'}),
+	('epreuve 3', 463, {t '08:00'}, {t '10:00'}),
+	('epreuve 4', 383, {t '10:30'}, {t '14:00'});
 	
 	-- Lier
 	
