@@ -37,11 +37,11 @@
             <DropShadow color="#b2adad" height="64.985" radius="31.37375" spread="0.09" width="62.51" />
          </effect>
       </AnchorPane>
-      <ScrollPane hbarPolicy="NEVER" layoutY="62.0" prefHeight="618.0" prefWidth="830.0">
+      <ScrollPane hbarPolicy="NEVER" layoutY="62.0" prefHeight="622.0" prefWidth="830.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="816.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1095.0" prefWidth="816.0">
                <children>
-                  <AnchorPane prefHeight="890.0" prefWidth="816.0" style="-fx-background-color: #e6e6e6;">
+                  <AnchorPane prefHeight="1101.0" prefWidth="816.0" style="-fx-background-color: #e6e6e6;">
                      <children>
                         <Label layoutX="56.0" layoutY="7.0" text=" &gt; " />
                         <ImageView fitHeight="27.0" fitWidth="23.0" layoutX="33.0" layoutY="2.0" onMouseClicked="#doAccueil" pickOnBounds="true" preserveRatio="true">
@@ -50,8 +50,81 @@
                            </image>
                         </ImageView>
                         <Label layoutX="71.0" layoutY="7.0" text="A-propos" textFill="#4485fc" underline="true" />
+                        <AnchorPane layoutX="33.0" layoutY="115.0" prefHeight="378.0" prefWidth="760.0">
+                           <children>
+                              <ImageView fitHeight="203.0" fitWidth="200.0" layoutX="44.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/running.png" />
+                                 </image></ImageView>
+                              <ImageView fitHeight="203.0" fitWidth="200.0" layoutX="533.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/riding.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="203.0" fitWidth="200.0" layoutX="289.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/canoe.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="104.0" layoutY="261.0" text="Course a pieds" textFill="#2c70dd">
+                                 <font>
+                                    <Font name="Gadugi" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="356.0" layoutY="268.0" text="Course a canoe" textFill="#2c70dd" />
+                              <Label layoutX="605.0" layoutY="258.0" text="Course a vélo" textFill="#2c70dd" />
+                              <Label layoutX="59.0" layoutY="24.0" text="Chaque discipline est ouverte a toute personne de + 16ans (+14 ans pour le mini Bol d'Air )" />
+                              <AnchorPane layoutX="43.0" layoutY="290.0" prefHeight="59.0" prefWidth="229.0">
+                                 <children>
+                                    <Label layoutX="7.0" layoutY="6.0" text="Epreuve par équipe de deux personnes" />
+                                    <Label layoutX="7.0" layoutY="23.0" text="Pas de remboursement en cas d'absence" />
+                                 </children></AnchorPane>
+                              <AnchorPane layoutX="301.0" layoutY="310.0" prefHeight="80.0" prefWidth="200.0">
+                                 <children>
+                                    <Label layoutY="6.0" text="Fourni : Canoe , gilets et pagaies" />
+                                    <Label layoutX="1.0" layoutY="23.0" prefHeight="40.0" prefWidth="199.0" text="Non fourni : VTT, casque, gourde et couverture de suivie" wrapText="true" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="519.0" layoutY="290.0" prefHeight="78.0" prefWidth="236.0">
+                                 <children>
+                                    <Label layoutX="1.0" layoutY="3.0" prefHeight="40.0" prefWidth="230.0" text="Port du casque( sur le parcours VTT ) et le respect du code de la route" wrapText="true" />
+                                    <Label layoutX="1.0" layoutY="42.0" text="Vélos a assistance électrique tolerés" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <Label layoutX="81.0" layoutY="95.0" text="Différents disciplines" textFill="#2c70dd">
+                           <font>
+                              <Font name="Gadugi" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="86.0" layoutY="512.0" text="Parcours" textFill="#2c70dd">
+                           <font>
+                              <Font name="Gadugi" size="20.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="380.0" fitWidth="724.0" layoutX="45.0" layoutY="572.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../../images/parcours.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="96.0" layoutY="551.0" text="Départs simultanés a 9h sur les 2 sites différents et meme arrivée au niveau du club Canoe Kayak de St Victurnien" />
                      </children>
                   </AnchorPane>
+                  <Pane layoutX="66.0" layoutY="49.0" prefHeight="40.0" prefWidth="719.0" style="-fx-background-color: #F1F1F1; -fx-background-radius: 5;">
+                     <children>
+                        <Label contentDisplay="CENTER" graphicTextGap="6.0" layoutX="300.0" layoutY="13.0" text="Gestion bol d'air Edition 2019">
+                           <font>
+                              <Font name="Gadugi" size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="275.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/toolinfo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
                </children>
             </AnchorPane>
         </content>
