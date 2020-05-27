@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="831.0" prefHeight="680.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.tacheMission.TacheMissionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="834.0" prefHeight="680.0" prefWidth="834.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.epreuve.EpreuveController">
    <children>
       <AnchorPane prefHeight="59.0" prefWidth="830.0" style="-fx-background-color: #fafafa;">
          <children>
-            <Pane layoutX="508.0" layoutY="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="302.0">
+            <Pane layoutX="507.0" layoutY="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="302.0">
                <children>
                   <Label id="decon" layoutX="212.0" layoutY="10.0" onMouseClicked="#deconnexion" stylesheets="@../application.css" text="Déconnexion" underline="true">
                      <font>
@@ -37,19 +42,139 @@
             <DropShadow color="#b2adad" height="64.985" radius="31.37375" spread="0.09" width="62.51" />
          </effect>
       </AnchorPane>
-      <ScrollPane hbarPolicy="NEVER" layoutY="62.0" prefHeight="619.0" prefWidth="830.0">
+      <ScrollPane hbarPolicy="NEVER" layoutY="76.0" prefHeight="618.0" prefWidth="830.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="900.0" prefWidth="816.0">
                <children>
-                  <AnchorPane prefHeight="890.0" prefWidth="816.0" style="-fx-background-color: #e6e6e6;">
+                  <AnchorPane accessibleRole="TABLE_VIEW" layoutY="-5.0" prefHeight="895.0" prefWidth="822.0" style="-fx-background-color: #e6e6e6;">
                      <children>
-                        <Label layoutX="56.0" layoutY="7.0" text=" &gt; " />
-                        <ImageView fitHeight="27.0" fitWidth="23.0" layoutX="33.0" layoutY="2.0" onMouseClicked="#doAccueil" pickOnBounds="true" preserveRatio="true">
+                        <Label layoutX="56.0" layoutY="17.0" text=" &gt; " />
+                        <ImageView fitHeight="27.0" fitWidth="23.0" layoutX="33.0" layoutY="12.0" onMouseClicked="#doAccueil" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../images/accueil_ico.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="71.0" layoutY="7.0" text="Epreuves" textFill="#4485fc" underline="true" />
+                        <Label layoutX="71.0" layoutY="17.0" text="Epreuves" textFill="#4485fc" underline="true" />
+                        <HBox alignment="CENTER" layoutX="642.0" layoutY="65.0" prefHeight="40.0" prefWidth="122.0" spacing="10.0" />
+                        <Label layoutX="71.0" layoutY="64.0" prefHeight="18.0" prefWidth="199.0" text="Veuillez choisir une épreuve :" textFill="#4485fc">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Label>
+                        <ComboBox layoutX="252.0" layoutY="60.0" prefWidth="150.0" promptText="Saut" />
+                        <JFXButton buttonType="RAISED" layoutX="693.0" layoutY="48.0" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 5;" text="Imprimer">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/print.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <TableView layoutX="14.0" layoutY="272.0" prefHeight="200.0" prefWidth="701.0" tableMenuButtonVisible="true">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="ID" />
+                            <TableColumn prefWidth="107.20001220703125" text="Nom equipe" />
+                              <TableColumn prefWidth="169.5999755859375" text="Nombre" />
+                              <TableColumn minWidth="7.20001220703125" prefWidth="160.0" text="Heure de debut" />
+                              <TableColumn prefWidth="168.800048828125" style="-fx-font-color: #40A497;" text="Heure de fin" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="25.0" layoutY="213.0" prefHeight="18.0" prefWidth="175.0" text="Tableau de bénévole :" textFill="#4485fc">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                        <TableView layoutX="18.0" layoutY="546.0" prefHeight="263.0" prefWidth="398.0" tableMenuButtonVisible="true">
+                          <columns>
+                              <TableColumn prefWidth="75.0" text="ID" />
+                            <TableColumn prefWidth="120.79998779296875" text="Nom equipe" />
+                            <TableColumn prefWidth="100.79998779296875" text="Capitaine" />
+                              <TableColumn prefWidth="88.79998779296875" text="Equipier" />
+                          </columns>
+                        </TableView>
+                        <HBox alignment="CENTER" layoutX="25.0" layoutY="105.0" prefHeight="70.0" prefWidth="752.0" spacing="30.0">
+                           <children>
+                              <Pane prefHeight="70.0" prefWidth="108.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="18.0" prefHeight="15.0" prefWidth="63.0" text="ID" textAlignment="CENTER" textFill="#4485fc">
+                                       <font>
+                                          <Font name="System Bold" size="10.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="28.0" layoutY="35.0" prefHeight="33.0" prefWidth="53.0" text="0" textAlignment="CENTER" textFill="#4485fc">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Pane layoutX="-2.0" prefHeight="70.0" prefWidth="5.0" style="-fx-background-color: #4485fc;" />
+                                 </children>
+                              </Pane>
+                              <Pane prefHeight="70.0" prefWidth="108.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
+                                 <children>
+                                    <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="15.0" layoutY="16.0" prefHeight="20.0" prefWidth="78.0" text="NOM EPREUVE" textAlignment="CENTER" textFill="#4485fc" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="10.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="30.0" layoutY="38.0" prefHeight="27.0" prefWidth="47.0" text="Saut" textAlignment="CENTER" textFill="#4485fc">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Pane layoutX="-2.0" prefHeight="70.0" prefWidth="5.0" style="-fx-background-color: #4485fc;" />
+                                 </children>
+                              </Pane>
+                              <Pane prefHeight="70.0" prefWidth="108.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="18.0" text="DISTANCE" textAlignment="CENTER" textFill="#4485fc">
+                                       <font>
+                                          <Font name="System Bold" size="10.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="26.0" layoutY="35.0" prefHeight="33.0" prefWidth="57.0" text="0" textAlignment="CENTER" textFill="#4485fc">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Pane layoutX="-2.0" prefHeight="70.0" prefWidth="5.0" style="-fx-background-color: #4485fc;" />
+                                 </children>
+                              </Pane>
+                              <Pane prefHeight="70.0" prefWidth="108.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="27.0" layoutY="31.0" prefHeight="40.0" prefWidth="57.0" text="0" textAlignment="CENTER" textFill="#4485fc">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Pane layoutX="-2.0" prefHeight="70.0" prefWidth="5.0" style="-fx-background-color: #4485fc;" />
+                                    <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="22.0" layoutY="18.0" prefHeight="17.0" prefWidth="67.0" text="HEURE DEBUT" textAlignment="CENTER" textFill="#4485fc" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="10.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane prefHeight="70.0" prefWidth="108.0" style="-fx-background-color: white; -fx-background-radius: 5px;">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="16.0" prefHeight="20.0" prefWidth="63.0" text="HEURE FIN" textAlignment="CENTER" textFill="#4485fc">
+                                       <font>
+                                          <Font name="System Bold" size="10.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" layoutX="25.0" layoutY="39.0" prefHeight="27.0" prefWidth="59.0" text="0" textAlignment="CENTER" textFill="#4485fc">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Pane layoutX="-2.0" prefHeight="70.0" prefWidth="5.0" style="-fx-background-color: #4485fc;" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                        <Label layoutX="33.0" layoutY="490.0" prefHeight="18.0" prefWidth="216.0" text="Tableau des équipes participantes :" textFill="#4485fc">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>

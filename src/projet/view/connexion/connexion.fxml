@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" accessibleRole="IMAGE_VIEW" prefHeight="650.0" prefWidth="1100.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.connexion.ControllerConnexion">
    <children>
-      <AnchorPane layoutX="110.0" layoutY="23.0" prefHeight="567.0" prefWidth="804.0" style="-fx-background-color: white;">
+      <AnchorPane layoutX="110.0" layoutY="23.0" prefHeight="567.0" prefWidth="300.0" style="-fx-background-color: white;">
          <children>
             <AnchorPane layoutX="71.0" layoutY="34.0" prefHeight="538.0" prefWidth="407.0" style="-fx-background-color: black;">
                <children>
@@ -30,7 +30,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="478.0" layoutY="34.0" prefHeight="538.0" prefWidth="418.0" style="-fx-background-color: #f0f0f0;">
+            <AnchorPane layoutX="478.0" layoutY="34.0" prefHeight="538.0" prefWidth="400.0" style="-fx-background-color: #f0f0f0;">
                <children>
                   <AnchorPane layoutX="36.0" layoutY="50.0" prefHeight="433.0" prefWidth="344.0" style="-fx-background-color: #fafafa; -fx-background-radius: 5;">
                      <children>
