@@ -20,7 +20,7 @@
             <Label layoutX="8.0" layoutY="600.0" text="Copyright 2020" textFill="WHITE" />
             <Label layoutX="111.0" layoutY="600.0" text="Made by Group " textFill="WHITE" />
             <Label layoutX="198.0" layoutY="600.0" text="Paincamiche" textFill="#fcfcfc" underline="true" />
-            <VBox layoutY="14.0" prefHeight="363.0" prefWidth="277.0">
+            <VBox layoutY="14.0" prefHeight="433.0" prefWidth="277.0">
                <children>
                   <Pane id="box" onMouseClicked="#doAccueil" prefHeight="50.0" prefWidth="277.0" stylesheets="@application.css">
                      <children>
@@ -42,6 +42,40 @@
                                  </cursor>
                               </ImageView>
                               <Label text="Accueil" textFill="WHITE" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                           </children>
+                        </GridPane>
+                     </children>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Pane>
+                  <Pane id="box" layoutX="10.0" layoutY="56.0" onMouseClicked="#doEpreuve" prefHeight="50.0" prefWidth="277.0" stylesheets="@application.css">
+                     <children>
+                        <GridPane alignment="CENTER" layoutX="5.0" layoutY="10.0" prefHeight="30.0" prefWidth="271.0">
+                           <columnConstraints>
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="51.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/epreuve.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                              <Label text="Différentes Epreuves" textFill="WHITE" GridPane.columnIndex="1">
                                  <font>
                                     <Font size="18.0" />
                                  </font>

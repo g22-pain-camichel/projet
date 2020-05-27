@@ -15,6 +15,11 @@ public class MenuController {
 	public void doAccueil() {
 		managerGui.showView(EnumView.Accueil);
 	}
+	
+	@FXML
+	public void doEpreuve() {
+		managerGui.showView(EnumView.Epreuve);
+	}
 
 	@FXML
 	public void doListParticpant() {
