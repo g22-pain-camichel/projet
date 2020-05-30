@@ -1,5 +1,10 @@
 package projet.view;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import javax.inject.Inject;
 
 import javafx.fxml.FXML;
@@ -37,8 +42,10 @@ public class MenuController {
 	}
 
 	@FXML
-	public void doInscriptionParticipant() {
-		managerGui.showView(EnumView.InscrireParticipant);
+	public void doInscriptionParticipant() throws IOException, URISyntaxException {
+		//Ouvrir le lien de notre site web
+		Desktop d = Desktop.getDesktop();
+		d.browse(new URI("https://www.google.com"));
 	}
 
 	@FXML
