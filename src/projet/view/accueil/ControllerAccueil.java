@@ -28,7 +28,7 @@ public class ControllerAccueil {
 	@FXML
 	private void initialize() {
 		totalB.setText(modelAccueil.totalBenevole());
-		totalEqB.setText(modelAccueil.totalEquipeBenevole());
+		//totalEqB.setText(modelAccueil.totalEquipeBenevole());
 		totalP.setText(modelAccueil.totalParticipant());
 		totalEqP.setText(modelAccueil.totalEquipeParticipant());
 		

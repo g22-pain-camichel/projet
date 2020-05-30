@@ -1,5 +1,10 @@
 package projet.view.connexion;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import javax.inject.Inject;
 
 import javafx.application.Platform;
@@ -58,6 +63,13 @@ public class ControllerConnexion {
 			managerGui.showView(EnumView.Accueil); 
 			}) ; 
 		} ); 
+	}
+	
+	@FXML
+	public void doInscriptionParticipant() throws IOException, URISyntaxException {
+		//Ouvrir le lien de notre site web
+		Desktop d = Desktop.getDesktop();
+		d.browse(new URI("https://www.google.com"));
 	}
 	 
 
