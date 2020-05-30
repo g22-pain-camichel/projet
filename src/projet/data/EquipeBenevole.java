@@ -1,6 +1,5 @@
 package projet.data;
 
-import java.sql.Time;
 import java.util.Objects;
 
 import javafx.beans.property.Property;
@@ -15,9 +14,8 @@ public class EquipeBenevole {
 	private final Property<Integer>		num			= new SimpleObjectProperty<>();	
 	private final StringProperty   	 	libelle       = new SimpleStringProperty();
 	private final Property<Integer>		nbreBenevole	= new SimpleObjectProperty<>();
-	private final Property<Time>	hrDbDispo	= new SimpleObjectProperty<>();
-	private final Property<Time> hrFinDispo = new SimpleObjectProperty<>();
-	
+	private final Property<Boolean> estValide = new SimpleObjectProperty<>(); 
+
 	//getters && setters
 
 	public final Property<Integer> numProperty() {
@@ -65,35 +63,7 @@ public class EquipeBenevole {
 	}
 	
 
-	public final Property<Time> hrDbDispoProperty() {
-		return this.hrDbDispo;
-	}
-	
 
-	public final Time getHrDbDispo() {
-		return this.hrDbDispoProperty().getValue();
-	}
-	
-
-	public final void setHrDbDispo(final Time hrDbDispo) {
-		this.hrDbDispoProperty().setValue(hrDbDispo);
-	}
-	
-
-	public final Property<Time> hrFinDispoProperty() {
-		return this.hrFinDispo;
-	}
-	
-
-	public final Time getHrFinDispo() {
-		return this.hrFinDispoProperty().getValue();
-	}
-	
-
-	public final void setHrFinDispo(final Time hrFinDispo) {
-		this.hrFinDispoProperty().setValue(hrFinDispo);
-	}
-	
 	
 	
 	@Override
@@ -112,6 +82,24 @@ public class EquipeBenevole {
 		EquipeBenevole other = (EquipeBenevole) obj;
 		return Objects.equals(num.getValue(), other.num.getValue());
 	}
+
+
+	public final Property<Boolean> estValideProperty() {
+		return this.estValide;
+	}
+	
+
+
+	public final Boolean getEstValide() {
+		return this.estValideProperty().getValue();
+	}
+	
+
+
+	public final void setEstValide(final Boolean estValide) {
+		this.estValideProperty().setValue(estValide);
+	}
+	
 
 	
 }

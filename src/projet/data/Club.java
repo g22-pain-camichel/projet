@@ -16,8 +16,13 @@ public class Club {
 	private final StringProperty   	 	nomCapitain       = new SimpleStringProperty();
 	private final Property<Integer>		nbRepasReserves	= new SimpleObjectProperty<>();
 	private final Property<Integer>		numParticipant	= new SimpleObjectProperty<>();
+
+	private final Property<Integer> categorie = new SimpleObjectProperty<>();
+	private final Property<Boolean> estValide = new SimpleObjectProperty<>(); 
+	private final Property<Integer> activite = new SimpleObjectProperty<>();
 	
 	//getters && setters
+	
 	public final Property<Integer> numProperty() {
 		return this.num;
 	}
@@ -91,6 +96,51 @@ public class Club {
 	public final void setNbRepasReserves(final Integer nbRepasReserves) {
 		this.nbRepasReservesProperty().setValue(nbRepasReserves);
 	}
+
+	public final Property<Integer> categorieProperty() {
+		return this.categorie;
+	}
+	
+
+	public final Integer getCategorie() {
+		return this.categorieProperty().getValue();
+	}
+	
+
+	public final void setCategorie(final Integer categorie) {
+		this.categorieProperty().setValue(categorie);
+	}
+	
+
+	public final Property<Boolean> estValideProperty() {
+		return this.estValide;
+	}
+	
+
+	public final Boolean getEstValide() {
+		return this.estValideProperty().getValue();
+	}
+	
+
+	public final void setEstValide(final Boolean estValide) {
+		this.estValideProperty().setValue(estValide);
+	}
+	
+
+	public final Property<Integer> activiteProperty() {
+		return this.activite;
+	}
+	
+
+	public final Integer getActivite() {
+		return this.activiteProperty().getValue();
+	}
+	
+
+	public final void setActivite(final Integer activite) {
+		this.activiteProperty().setValue(activite);
+	}
+	
 	
 	
 	

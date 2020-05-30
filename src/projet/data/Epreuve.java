@@ -12,8 +12,11 @@ public class Epreuve {
 	//champs
 	private final Property<Integer>		distance			= new SimpleObjectProperty<>();	
 	private final StringProperty   	 	nom       = new SimpleStringProperty();
+	private final StringProperty	hr_deb	= new SimpleStringProperty();
+	private final StringProperty hr_fin = new SimpleStringProperty();
 	
 	//getters && setters
+	
 	public final Property<Integer> distanceProperty() {
 		return this.distance;
 	}
@@ -36,5 +39,29 @@ public class Epreuve {
 	public final void setNom(final String nom) {
 		this.nomProperty().set(nom);
 	}
+	public final StringProperty hr_debProperty() {
+		return this.hr_deb;
+	}
+	
+	public final String getHr_deb() {
+		return this.hr_debProperty().get();
+	}
+	
+	public final void setHr_deb(final String hr_deb) {
+		this.hr_debProperty().set(hr_deb);
+	}
+	
+	public final StringProperty hr_finProperty() {
+		return this.hr_fin;
+	}
+	
+	public final String getHr_fin() {
+		return this.hr_finProperty().get();
+	}
+	
+	public final void setHr_fin(final String hr_fin) {
+		this.hr_finProperty().set(hr_fin);
+	}
+	
 	
 }

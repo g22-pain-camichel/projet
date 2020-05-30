@@ -22,7 +22,8 @@ public class Participant {
 	private final Property<Integer>		role	= new SimpleObjectProperty<>();
 	private final StringProperty		adressePost		= new SimpleStringProperty();
 	private final StringProperty		cm		= new SimpleStringProperty();
-	
+	private final Property<Boolean> estValide = new SimpleObjectProperty<>(); 
+
 	//constructeurs
 	public Participant() {
 	
@@ -218,6 +219,21 @@ public class Participant {
 		Participant other = (Participant) obj;
 		return Objects.equals(num.getValue(), other.num.getValue());
 	}
+
+	public final Property<Boolean> estValideProperty() {
+		return this.estValide;
+	}
+	
+
+	public final Boolean getEstValide() {
+		return this.estValideProperty().getValue();
+	}
+	
+
+	public final void setEstValide(final Boolean estValide) {
+		this.estValideProperty().setValue(estValide);
+	}
+	
 
 
 	
