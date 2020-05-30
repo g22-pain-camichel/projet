@@ -77,7 +77,7 @@
                               <Font name="Gadugi" size="13.0" />
                            </font>
                         </JFXButton>
-                        <Label layoutX="199.0" layoutY="299.0" prefHeight="17.0" prefWidth="125.0" text="Inscrire un particpant" textFill="#154bc9">
+                        <Label layoutX="199.0" layoutY="299.0" onMouseClicked="#doInscriptionParticipant" prefHeight="17.0" prefWidth="125.0" text="Inscrire un particpant" textFill="#154bc9">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
