@@ -36,14 +36,12 @@ public class DaoEquipeBenevole {
 			cn = dataSource.getConnection();
 
 			// Insère le equipeBenevole
-			sql = "INSERT INTO equipebenevole(num, nbreBenevole, hrDbDispo, hrFinDispo, libelle)"
-					+ " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "INSERT INTO equipebenevole(num, nbreBenevole, libelle)"
+					+ " VALUES ( ?, ?, ?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
 			stmt.setObject(	1, equipeBenevole.getNum());
 			stmt.setObject(	2, equipeBenevole.getNbreBenevole());
-			stmt.setObject(	3, equipeBenevole.getHrDbDispo());
-			stmt.setObject(	4, equipeBenevole.getHrFinDispo() );
-			stmt.setObject(	5, equipeBenevole.getLibelle() );
+			stmt.setObject(	3, equipeBenevole.getLibelle() );
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -72,15 +70,13 @@ public class DaoEquipeBenevole {
 			cn = dataSource.getConnection();
 
 			// Modifie le equipeBenevole
-			sql = "UPDATE equipeBenevole SET num = ?, nbreBenevole = ?, hrDbDispo = ?, hrFinDispo = ?, "
+			sql = "UPDATE equipeBenevole SET num = ?, nbreBenevole = ?, "
 					+ "libelle = ? WHERE num =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject(	1, equipeBenevole.getNum());
 			stmt.setObject(	2, equipeBenevole.getNbreBenevole());
-			stmt.setObject(	3, equipeBenevole.getHrDbDispo());
-			stmt.setObject(	4, equipeBenevole.getHrFinDispo() );
-			stmt.setObject(	5, equipeBenevole.getLibelle() );
-			stmt.setObject(	6, equipeBenevole.getNum());
+			stmt.setObject(	3, equipeBenevole.getLibelle() );
+			stmt.setObject(	4, equipeBenevole.getNum());
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -175,8 +171,6 @@ public class DaoEquipeBenevole {
 		equipeBenevole.setNum(rs.getObject( "num", Integer.class ));
 		equipeBenevole.setLibelle(rs.getObject( "libelle", String.class ));
 		equipeBenevole.setNbreBenevole(rs.getObject( "nbreBenevole", Integer.class ));
-		equipeBenevole.setHrDbDispo(rs.getObject( "hrDbdispo", java.sql.Time.class));
-		equipeBenevole.setHrFinDispo(rs.getObject( "hrFindispo", java.sql.Time.class));
 		return equipeBenevole;
 	}
 	
