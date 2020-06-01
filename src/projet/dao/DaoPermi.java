@@ -1,6 +1,7 @@
 package projet.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,9 +12,9 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
-import projet.data.Tache;
+import projet.data.Permi;
 
-public class DaoTache {
+public class DaoPermi {
 	
 	// Champs
 
@@ -22,7 +23,7 @@ public class DaoTache {
 		
 		// Actions
 
-		public void inserer( Tache tache )  {
+		public void inserer( Permi permi )  {
 
 			Connection			cn		= null;
 			PreparedStatement	stmt	= null;
@@ -30,13 +31,11 @@ public class DaoTache {
 
 			try {
 				cn = dataSource.getConnection();
-				sql = "INSERT INTO tache (libelle, emplacement, hr_deb, hr_fin, taille) VALUES (?,?,?,?,?)";
+				sql = "INSERT INTO permi (numero, lieu, dateDelivrance) VALUES (?,?,?)";
 				stmt = cn.prepareStatement( sql );
-				stmt.setObject(1, tache.getLibelle());
-				stmt.setObject(2, tache.getEmplacement());
-				stmt.setObject(3, tache.getHr_deb());
-				stmt.setObject(4, tache.getHr_fin());
-				stmt.setObject(5, tache.getTaille());
+				stmt.setObject(1, permi.getNumero());
+				stmt.setObject(2, permi.getLieu());
+				stmt.setObject(3, permi.getDateDelivrance());
 				stmt.executeUpdate();
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
@@ -45,7 +44,7 @@ public class DaoTache {
 			}
 		}
 		
-		public void modifier(Tache tache ) {
+		public void modifier(Permi permi ) {
 
 			Connection			cn		= null;
 			PreparedStatement	stmt	= null;
@@ -53,15 +52,13 @@ public class DaoTache {
 
 			try {
 				cn = dataSource.getConnection();
-				sql = "UPDATE tache SET libelle = ?, emplacement = ?, hr_deb = ?,"
-						+ " hr_fin = ?, taille = ? WHERE libelle =  ?";
+				sql = "UPDATE permi SET numero = ?, lieu = ?,"
+						+ " dateDelivrance = ? WHERE numero =  ?";
 				stmt = cn.prepareStatement( sql );
-				stmt.setObject(1, tache.getLibelle());
-				stmt.setObject(2, tache.getEmplacement());
-				stmt.setObject(3, tache.getHr_deb());
-				stmt.setObject(4, tache.getHr_fin());
-				stmt.setObject(5, tache.getTaille());
-				stmt.setObject(6, tache.getLibelle());
+				stmt.setObject(1, permi.getNumero());
+				stmt.setObject(2, permi.getLieu());
+				stmt.setObject(3, permi.getDateDelivrance());
+				stmt.setObject(4, permi.getNumero());
 				stmt.executeUpdate();
 
 			} catch (SQLException e) {
@@ -71,7 +68,7 @@ public class DaoTache {
 			}
 		}
 		
-		public void supprimer(String libelle) {
+		public void supprimer(String numero) {
 
 			Connection			cn		= null;
 			PreparedStatement	stmt	= null;
@@ -81,9 +78,9 @@ public class DaoTache {
 				cn = dataSource.getConnection();
 
 				// Supprime les roles
-				sql = "DELETE FROM tache WHERE libelle = ? ";
+				sql = "DELETE FROM permi WHERE numero = ? ";
 				stmt = cn.prepareStatement(sql);
-				stmt.setObject( 1, libelle);
+				stmt.setObject( 1, numero);
 				stmt.executeUpdate();
 
 			} catch (SQLException e) {
@@ -93,7 +90,7 @@ public class DaoTache {
 			}
 		}
 		
-		public Tache retrouver( String libelle ) {
+		public Permi retrouver( String numero ) {
 
 			Connection			cn 		= null;
 			PreparedStatement	stmt	= null;
@@ -102,13 +99,13 @@ public class DaoTache {
 
 			try {
 				cn = dataSource.getConnection();
-				sql = "SELECT * FROM Tache WHERE libelle = ?";
+				sql = "SELECT * FROM permi WHERE numero = ?";
 				stmt = cn.prepareStatement( sql );
-				stmt.setString(1, libelle);
+				stmt.setString(1, numero);
 				rs = stmt.executeQuery();
 
 				if ( rs.next() ) {
-					return construireTache( rs );
+					return construirePermi( rs );
 				} else {
 					return null;
 				}
@@ -119,7 +116,7 @@ public class DaoTache {
 			}
 		}
 		
-		public List<Tache> listerTout() {
+		public List<Permi> listerTout() {
 
 			Connection			cn 		= null;
 			PreparedStatement	stmt 	= null;
@@ -128,15 +125,15 @@ public class DaoTache {
 
 			try {
 				cn = dataSource.getConnection();
-				sql = "SELECT * FROM tache ORDER BY libelle";
+				sql = "SELECT * FROM permi ORDER BY numero";
 				stmt = cn.prepareStatement( sql );
 				rs = stmt.executeQuery();
 
-				List<Tache> taches = new LinkedList<>();
+				List<Permi> permis = new LinkedList<>();
 				while (rs.next()) {
-					taches.add( construireTache( rs ) );
+					permis.add( construirePermi( rs ) );
 				}
-				return taches;
+				return permis;
 
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
@@ -145,13 +142,11 @@ public class DaoTache {
 			}
 		}
 		
-		private Tache construireTache( ResultSet rs ) throws SQLException {
-			Tache tache = new Tache();
-			tache.setLibelle(rs.getObject( "libelle", String.class ) );
-			tache.setEmplacement( rs.getObject( "emplacement", String.class ) );
-			tache.setHr_deb(rs.getObject("hr_deb", String.class));
-			tache.setHr_fin(rs.getObject("hr_fin", String.class));
-			tache.setTaille(rs.getObject("taille", Integer.class));
-			return tache;
+		private Permi construirePermi( ResultSet rs ) throws SQLException {
+			Permi permi = new Permi();
+			permi.setNumero(rs.getObject( "numero", String.class ) );
+			permi.setLieu(rs.getObject( "Lieu", String.class ) );
+			permi.setDateDelivrance(rs.getObject("dateDelivrance", Date.class));
+			return permi;
 		}
 }

@@ -32,12 +32,16 @@ public class DaoClub {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "INSERT INTO club (num, nomCapitain, nbRepasReserves, numParticipant) VALUES (?,?,?)";
+			sql = "INSERT INTO club (num, nomCapitain, nbRepasReserves, numParticipant, categorie,"
+					+ " activite, estValide) VALUES (?,?,?,?,?,?,?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, club.getNum());
 			stmt.setObject( 2, club.getNomCapitain() );
 			stmt.setObject( 3, club.getNbRepasReserves());
 			stmt.setObject( 4, club.getNumParticipant());
+			stmt.setObject(5, club.getCategorie());
+			stmt.setObject(6, club.getActivite());
+			stmt.setObject(7, club.getEstValide());
 			stmt.executeUpdate();
 
 			// Récupère l'Num généré par le SGBD
@@ -62,13 +66,16 @@ public class DaoClub {
 
 			// Modifie le club
 			sql = "UPDATE club SET num = ?, nomCapitain = ?, nbRepasReserves = ?, numParticipant = ?"
-					+ " WHERE num =  ?";
+					+ "categorie = ?, activite = ?, estValide = ? WHERE num =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, club.getNum());
 			stmt.setObject( 2, club.getNomCapitain() );
 			stmt.setObject( 3, club.getNbRepasReserves());
 			stmt.setObject( 4, club.getNumParticipant());
-			stmt.setObject( 5, club.getNum());
+			stmt.setObject( 5, club.getCategorie());
+			stmt.setObject( 6, club.getActivite());
+			stmt.setObject( 7, club.getEstValide());
+			stmt.setObject( 8, club.getNum());
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -164,6 +171,9 @@ public class DaoClub {
 		club.setNomCapitain(rs.getObject( "nomCapitain", String.class ));
 		club.setNbRepasReserves(rs.getObject( "nbRepasReserves", Integer.class ));
 		club.setNumParticipant(rs.getObject( "numParticipant", Integer.class ));
+		club.setCategorie(rs.getObject("Categorie", Integer.class));
+		club.setActivite(rs.getObject("Activite", Integer.class));
+		club.setEstValide(rs.getObject("estValide", Boolean.class));
 		return club;
 	}
 

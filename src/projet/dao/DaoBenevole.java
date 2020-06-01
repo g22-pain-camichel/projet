@@ -39,8 +39,8 @@ public class DaoBenevole {
 			cn = dataSource.getConnection();
 
 			// Insère le Benevole
-			sql = "INSERT INTO benevole (identifiant, nom, prenom, sexe, dtNaiss, email, tel, type, hrDbDispo, hrFinDispo)"
-					+ " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "INSERT INTO benevole (identifiant, nom, prenom, sexe, dtNaiss, email, tel, type,"
+					+ " hrDbDispo, hrFinDispo, numero, estValide) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
 			stmt.setObject(	1, benevole.getIdentifiant());
 			stmt.setObject(	2, benevole.getNom() );
@@ -54,6 +54,8 @@ public class DaoBenevole {
 			LocalTime t2 = LocalTime.parse(benevole.getHrFinDispo());
 			stmt.setObject(	9, t1);
 			stmt.setObject(	10, t2 );
+			stmt.setObject(11, benevole.getNumero());
+			stmt.setObject(12, benevole.getEstValide());
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -83,7 +85,8 @@ public class DaoBenevole {
 
 			// Modifie le benevole
 			sql = "UPDATE Benevole SET identifiant = ?, nom = ?, prenom = ?, sexe = ?, dtNaiss = ?, email = ?, tel = ?,"
-					+ " type = ?, hrDbDispo = ?, hrFinDispo = ? WHERE identifiant =  ?";
+					+ " type = ?, hrDbDispo = ?, hrFinDispo = ?, numero = ?,"
+					+ " estValide = ? WHERE identifiant =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject(	1, benevole.getIdentifiant());
 			stmt.setObject(	2, benevole.getNom() );
@@ -97,6 +100,8 @@ public class DaoBenevole {
 			LocalTime t2 = LocalTime.parse(benevole.getHrFinDispo());
 			stmt.setObject(	9, t1);
 			stmt.setObject(	10, t2 );
+			stmt.setObject(11, benevole.getNumero());
+			stmt.setObject(12, benevole.getEstValide());
 			stmt.setObject(	11, benevole.getIdentifiant());
 			stmt.executeUpdate();
 			
@@ -262,6 +267,8 @@ public class DaoBenevole {
 		Time t2 = rs.getObject("hrFindispo", Time.class);
 		benevole.setHrDbDispo(t1.toString());
 		benevole.setHrFinDispo(t2.toString());
+		benevole.setNumero(rs.getObject("numero", String.class));
+		benevole.setEstValide(rs.getObject("estValide", Boolean.class));
 		return benevole;
 	}
 	

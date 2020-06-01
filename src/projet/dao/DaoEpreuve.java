@@ -30,10 +30,12 @@ public class DaoEpreuve {
 
 			try {
 				cn = dataSource.getConnection();
-				sql = "INTO epreuve (nom, distance) VALUES (?,?)";
+				sql = "INTO epreuve (nom, distance, hr_deb, hr_fin) VALUES (?,?,?,?)";
 				stmt = cn.prepareStatement( sql );
 				stmt.setObject(1, epreuve.getNom());
 				stmt.setObject(2, epreuve.getDistance());
+				stmt.setObject(3, epreuve.getHr_deb());
+				stmt.setObject(4, epreuve.getHr_fin());
 				stmt.executeUpdate();
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
@@ -50,11 +52,14 @@ public class DaoEpreuve {
 
 			try {
 				cn = dataSource.getConnection();
-				sql = "UPDATE epreuve SET nom = ?, distance = ? WHERE nom =  ?";
+				sql = "UPDATE epreuve SET nom = ?, distance = ?,"
+						+ " hr_deb = ?, hr_fin = ? WHERE nom =  ?";
 				stmt = cn.prepareStatement( sql );
 				stmt.setObject(1, epreuve.getNom());
 				stmt.setObject(2, epreuve.getDistance());
-				stmt.setObject(3, epreuve.getNom());
+				stmt.setObject(3, epreuve.getHr_deb());
+				stmt.setObject(4, epreuve.getHr_fin());
+				stmt.setObject(5, epreuve.getNom());
 				stmt.executeUpdate();
 
 			} catch (SQLException e) {
@@ -142,6 +147,8 @@ public class DaoEpreuve {
 			Epreuve epreuve = new Epreuve();
 			epreuve.setNom(rs.getObject( "nom", String.class ) );
 			epreuve.setDistance(rs.getObject( "distance", Integer.class ) );
+			epreuve.setHr_deb(rs.getObject("hr_deb", String.class));
+			epreuve.setHr_fin(rs.getObject("hr_fin", String.class));
 			return epreuve;
 		}
 }

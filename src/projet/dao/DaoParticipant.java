@@ -38,8 +38,8 @@ public class DaoParticipant {
 			cn = dataSource.getConnection();
 
 			// Insère le participant
-			sql = "INSERT INTO participant (num, nom, prenom, sexe, dtNaiss, email, tel, role, adressePost, cm)"
-					+ " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "INSERT INTO participant (num, nom, prenom, sexe, dtNaiss, email, tel, role, adressePost, cm, estValide)"
+					+ " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
 			stmt.setObject(	1, participant.getNum());
 			stmt.setObject(	2, participant.getNom() );
@@ -51,6 +51,7 @@ public class DaoParticipant {
 			stmt.setObject(	8, participant.getRole());
 			stmt.setObject(	9, participant.getadressePost());
 			stmt.setObject(	10, participant.getCm());
+			stmt.setObject(11, participant.getEstValide());
 			stmt.executeUpdate();
 
 			// Récupère l'Num généré par le SGBD
@@ -80,7 +81,7 @@ public class DaoParticipant {
 
 			// Modifie le participant
 			sql = "UPDATE participant SET num = ?, nom = ?, prenom = ?, sexe = ?, dtNaiss = ?, email = ?, tel = ?,"
-					+ " role = ?, adressePost = ?, cm = ? WHERE num =  ?";
+					+ " role = ?, adressePost = ?, cm = ?, estValide = ? WHERE num =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject(	1, participant.getNum());
 			stmt.setObject(	2, participant.getNom() );
@@ -92,7 +93,8 @@ public class DaoParticipant {
 			stmt.setObject(	8, participant.getRole());
 			stmt.setObject(	9, participant.getadressePost());
 			stmt.setObject(	10, participant.getCm());
-			stmt.setObject(	11, participant.getNum());
+			stmt.setObject( 11, participant.getEstValide());
+			stmt.setObject(	12, participant.getNum());
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -229,6 +231,7 @@ public class DaoParticipant {
 		participant.setRole(rs.getObject( "role", Integer.class ));
 		participant.setadressePost(rs.getObject( "adressePost", String.class));
 		participant.setCm(rs.getObject( "cm", String.class));
+		participant.setEstValide(rs.getObject("estValide", Boolean.class));
 		return participant;
 	}
 
