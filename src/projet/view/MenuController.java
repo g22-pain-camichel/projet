@@ -65,7 +65,7 @@ public class MenuController {
 
 	@FXML
 	public void doTacheMission() {
-		managerGui.showView(EnumView.TachesMissions);
+		managerGui.showView(EnumView.EquipeBenevole);
 	}
 	
 	@FXML

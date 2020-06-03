@@ -5,7 +5,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -82,17 +81,14 @@
                <children>
                   <HBox alignment="CENTER" layoutX="97.0" layoutY="386.0" prefHeight="40.0" prefWidth="312.0" spacing="10.0">
                      <children>
-                        <JFXButton fx:id="button_add" buttonType="RAISED" onAction="#doAdd" prefHeight="28.0" prefWidth="87.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Ajouter">
+                        <JFXButton fx:id="button_valid" buttonType="RAISED" prefHeight="28.0" prefWidth="87.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Valider">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../images/add_ico.png" />
+                                    <Image url="@../../images/valider.png" />
                                  </image>
                               </ImageView>
                            </graphic>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
                         </JFXButton>
                         <JFXButton fx:id="button_update" buttonType="RAISED" onAction="#doUpdate" prefHeight="28.0" prefWidth="98.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Modifier">
                            <graphic>
@@ -165,9 +161,7 @@
                         <TextField fx:id="textField_surname" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                         <TextField fx:id="textField_phone" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                         <Label text="Adresse" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                        <Label text="Rôle" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <ComboBox prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <TextField prefHeight="25.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
                         <Label text="Certificat médical" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
                         <Button mnemonicParsing="false" text="Modifier" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                         <Label text="nomcertificat.pdf" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />

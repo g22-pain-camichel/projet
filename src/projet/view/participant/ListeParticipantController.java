@@ -1,5 +1,9 @@
 package projet.view.participant;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.util.List;
 
@@ -132,6 +136,13 @@ public class ListeParticipantController {
 		int sex = modelParticipant.getCourant().getSexe();
 		Toggle button = toggleSex.getToggles().get(sex);
 		toggleSex.selectToggle(button);
+	}
+	
+	@FXML
+	public void doInscriptionParticipant() throws IOException, URISyntaxException {
+		//Ouvrir le lien de notre site web
+		Desktop d = Desktop.getDesktop();
+		d.browse(new URI("https://www.google.com"));
 	}
 
 	

@@ -1,4 +1,4 @@
-package projet.view.tacheMission;
+package projet.view.equipebenevole;
 
 import javax.inject.Inject;
 
@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import jfox.javafx.view.IManagerGui;
 import projet.view.EnumView;
 
-public class TacheMissionController {
+public class EquipeBenevoleController {
 	@Inject
 	private IManagerGui		managerGui;
 	

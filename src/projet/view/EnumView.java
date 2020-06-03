@@ -17,7 +17,7 @@ public enum EnumView implements IEnumView {
 	Options				("option/Option.fxml"),
 	Apropos				("apropos/Apropos.fxml"),
 	ListBenevoles		("benevole/ListedesBenevoles.fxml"),
-	TachesMissions		("tacheMission/TacheMission.fxml"),
+	EquipeBenevole		("equipebenevole/EquipeBenevole.fxml"),
 	EquipeParticipant	("equipeparticipant/EquipesDeParticipant.fxml"),
 	ListParticipants 	("participant/ListedesParticipants.fxml"),
 	InscrireParticipant	("participant/InscrireParticipant.fxml"),
