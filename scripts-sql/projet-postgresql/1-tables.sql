@@ -239,6 +239,8 @@ CREATE TABLE inscrire(
 CREATE TABLE lier(
 	nom       VARCHAR (20) NOT NULL ,
 	libelle   VARCHAR (20) NOT NULL  ,
+	statut	  INT NOT NULL,
+	CHECK (statut IN (0, 1)),
 	CONSTRAINT lier_PK PRIMARY KEY (nom,libelle)
 
 	,CONSTRAINT lier_epreuve_FK FOREIGN KEY (nom) REFERENCES epreuve(nom)

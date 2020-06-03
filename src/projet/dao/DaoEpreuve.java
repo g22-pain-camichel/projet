@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,8 +36,10 @@ public class DaoEpreuve {
 				stmt = cn.prepareStatement( sql );
 				stmt.setObject(1, epreuve.getNom());
 				stmt.setObject(2, epreuve.getDistance());
-				stmt.setObject(3, epreuve.getHr_deb());
-				stmt.setObject(4, epreuve.getHr_fin());
+				LocalTime t1 = LocalTime.parse(epreuve.getHr_deb());
+				LocalTime t2 = LocalTime.parse(epreuve.getHr_fin());
+				stmt.setObject(	3, t1);
+				stmt.setObject(	4, t2 );
 				stmt.executeUpdate();
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
@@ -57,8 +61,10 @@ public class DaoEpreuve {
 				stmt = cn.prepareStatement( sql );
 				stmt.setObject(1, epreuve.getNom());
 				stmt.setObject(2, epreuve.getDistance());
-				stmt.setObject(3, epreuve.getHr_deb());
-				stmt.setObject(4, epreuve.getHr_fin());
+				LocalTime t1 = LocalTime.parse(epreuve.getHr_deb());
+				LocalTime t2 = LocalTime.parse(epreuve.getHr_fin());
+				stmt.setObject(	3, t1);
+				stmt.setObject(	4, t2 );
 				stmt.setObject(5, epreuve.getNom());
 				stmt.executeUpdate();
 
@@ -146,9 +152,11 @@ public class DaoEpreuve {
 		private Epreuve construireEpreuve( ResultSet rs ) throws SQLException {
 			Epreuve epreuve = new Epreuve();
 			epreuve.setNom(rs.getObject( "nom", String.class ) );
-			epreuve.setDistance(rs.getObject( "distance", Integer.class ) );
-			epreuve.setHr_deb(rs.getObject("hr_deb", String.class));
-			epreuve.setHr_fin(rs.getObject("hr_fin", String.class));
+			epreuve.setDistance(rs.getObject( "distance", Double.class ) );
+			Time t1 = rs.getObject("hr_deb", Time.class);
+			Time t2 = rs.getObject("hr_fin", Time.class);
+			epreuve.setHr_deb(t1.toString());
+			epreuve.setHr_fin(t2.toString());
 			return epreuve;
 		}
 }

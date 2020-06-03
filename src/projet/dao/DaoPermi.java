@@ -1,10 +1,10 @@
 package projet.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -146,7 +146,7 @@ public class DaoPermi {
 			Permi permi = new Permi();
 			permi.setNumero(rs.getObject( "numero", String.class ) );
 			permi.setLieu(rs.getObject( "Lieu", String.class ) );
-			permi.setDateDelivrance(rs.getObject("dateDelivrance", Date.class));
+			permi.setDateDelivrance(rs.getObject("dateDelivrance", LocalDate.class));
 			return permi;
 		}
 }

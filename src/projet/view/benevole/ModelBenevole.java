@@ -15,21 +15,31 @@ import jfox.commun.exception.ExceptionValidation;
 import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
 import projet.dao.DaoBenevole;
+import projet.dao.DaoPermi;
 import projet.data.Benevole;
+import projet.data.Permi;
 
 public class ModelBenevole {
 	
 	private final ObservableList<Benevole> listBenevole = FXCollections.observableArrayList();
 	
 	private Benevole courant = new Benevole();
+	private Permi permi = new Permi();
 	
 	@Inject
 	private IMapper mapper;
 	@Inject
 	private DaoBenevole daoBenevole;
+	@Inject
+	private DaoPermi daoPermi;
 	
 	public ObservableList<Benevole> getListe() {
 		actualiserListe();
+		return listBenevole;
+	}
+	
+	public ObservableList<Benevole> getListe(boolean bool) {
+		modifListe(bool);
 		return listBenevole;
 	}
 	
@@ -37,8 +47,8 @@ public class ModelBenevole {
 		return courant;
 	}
 	
-	public void setCourant(Benevole b) {
-		courant = b; 
+	public Permi getPermi() {
+		return permi;
 	}
 	
 	// actualisation
@@ -48,13 +58,19 @@ public class ModelBenevole {
 	}
 	
 	// acions
+
+	public void modifListe(boolean bool) {
+		listBenevole.setAll(daoBenevole.listerTout(bool));
+	}
 	
 	public void preparerAjouter() {
 		mapper.update( courant, new Benevole() );
+		mapper.update(permi, new Permi());
 	}
 	
 	public void preparerModifier( Benevole item ) {
 		mapper.update( courant, daoBenevole.retrouver( item.getIdentifiant()) );
+		mapper.update(permi, daoPermi.retrouver(item.getNumero()));
 	}
 	
 	public List<Benevole> find(String name) {
@@ -120,6 +136,7 @@ public class ModelBenevole {
 		} else {
 			// modficiation
 			daoBenevole.modifier( courant );
+			daoPermi.modifier(permi);
 		}
 	}
 	

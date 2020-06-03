@@ -102,7 +102,7 @@ public class DaoBenevole {
 			stmt.setObject(	10, t2 );
 			stmt.setObject(11, benevole.getNumero());
 			stmt.setObject(12, benevole.getEstValide());
-			stmt.setObject(	11, benevole.getIdentifiant());
+			stmt.setObject(	13, benevole.getIdentifiant());
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -191,7 +191,7 @@ public class DaoBenevole {
 		}
 	}
 	
-	public List<Benevole> listerBenevoles(String name)   {
+	public List<Benevole> listerTout(boolean bool)   {
 
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
@@ -201,9 +201,46 @@ public class DaoBenevole {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM benevole WHERE nom = ?";
+			sql = "SELECT * FROM benevole WHERE estValide = ? ORDER BY nom, prenom";
 			stmt = cn.prepareStatement(sql);
-			stmt.setObject( 1, name);
+			stmt.setObject(1, bool);
+			rs = stmt.executeQuery();
+			
+			List<Benevole> benevoles = new ArrayList<>();
+			while (rs.next()) {
+				benevoles.add( construireBenevole(rs, false) );
+			}
+			return benevoles;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
+	
+	public List<Benevole> listerBenevoles(String value)   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+			
+			try {
+				int i = Integer.parseInt(value);
+				sql = "SELECT * FROM benevole WHERE identifiant = ?";
+				stmt = cn.prepareStatement(sql);
+				stmt.setObject( 1, i);
+			}
+			catch(Exception e) {
+				sql = "SELECT * FROM benevole WHERE nom LIKE ('%' || ? || '%')";
+				stmt = cn.prepareStatement(sql);
+				stmt.setObject( 1, value);
+			}
             rs = stmt.executeQuery();
             
 			List<Benevole> benevoles = new ArrayList<>();
@@ -218,39 +255,6 @@ public class DaoBenevole {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
-	
-/* 	public List<Benevole> listerPourMemo( int idMemo )   {
-
-		Connection			cn		= null;
-		PreparedStatement	stmt	= null;
-		ResultSet 			rs 		= null;
-		String				sql;
-
-		try {
-			cn = dataSource.getConnection();
-
-			sql = "SELECT p.* FROM benevole p" 
-				+ " INNER JOIN concerner c ON p.idbenevole = c.idbenevole" 
-				+ " WHERE c.idmemo = ?" 
-				+ " ORDER BY nom, prenom";
-			stmt = cn.prepareStatement(sql);
-			stmt.setObject( 1, idMemo ); 
-			rs = stmt.executeQuery();
-			
-			List<benevole> benevoles = new ArrayList<>();
-			while (rs.next()) {
-				benevoles.add( construirebenevole(rs, false) );
-			}
-			return benevoles;
-
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		} finally {
-			UtilJdbc.close( rs, stmt, cn );
-		}
-	}
-
- */	
 	// Méthodes auxiliaires
 	
 	private Benevole construireBenevole( ResultSet rs, boolean flagComplet ) throws SQLException {

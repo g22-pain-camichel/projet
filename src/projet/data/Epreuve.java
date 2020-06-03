@@ -10,23 +10,12 @@ public class Epreuve {
 	
 	
 	//champs
-	private final Property<Integer>		distance			= new SimpleObjectProperty<>();	
+	private final Property<Double>		distance			= new SimpleObjectProperty<Double>();	
 	private final StringProperty   	 	nom       = new SimpleStringProperty();
 	private final StringProperty	hr_deb	= new SimpleStringProperty();
 	private final StringProperty hr_fin = new SimpleStringProperty();
 	
 	//getters && setters
-	
-	public final Property<Integer> distanceProperty() {
-		return this.distance;
-	}
-	public final Integer getDistance() {
-		return this.distanceProperty().getValue();
-	}
-	
-	public final void setDistance(final Integer distance) {
-		this.distanceProperty().setValue(distance);
-	}
 	
 	public final StringProperty nomProperty() {
 		return this.nom;
@@ -62,6 +51,19 @@ public class Epreuve {
 	public final void setHr_fin(final String hr_fin) {
 		this.hr_finProperty().set(hr_fin);
 	}
+
+	public final Property<Double> distanceProperty() {
+		return this.distance;
+	}
 	
+
+	public final Double getDistance() {
+		return this.distanceProperty().getValue();
+	}
+	
+
+	public final void setDistance(final Double distance) {
+		this.distanceProperty().setValue(distance);
+	}
 	
 }

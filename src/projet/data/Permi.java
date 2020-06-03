@@ -1,6 +1,6 @@
 package projet.data;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
@@ -11,27 +11,18 @@ public class Permi {
 
 	private final StringProperty	numero		= new SimpleStringProperty();
 	private final StringProperty	lieu	= new SimpleStringProperty();
-	private final Property<Date> dateDelivrance = new SimpleObjectProperty<>();
-	
-	
-	
-	
-	
+	private final Property<LocalDate> dateDelivrance = new SimpleObjectProperty<LocalDate>();
 	
 	// Constructeurs
 	
 	public Permi() {
 	}
 	
-	public Permi( String numero, String lieu,Date dateDelivrance ) {
+	public Permi( String numero, String lieu, LocalDate dateDelivrance ) {
 		setNumero(numero);
 		setLieu(lieu);
 		setDateDelivrance(dateDelivrance);
 	}
-	
-	
-
-		
 	
 	public final StringProperty numeroProperty() {
 		return this.numero;
@@ -57,25 +48,17 @@ public class Permi {
 		this.lieuProperty().set(lieu);
 	}
 	
-	public final Property<Date> dateDelivranceProperty() {
+	public final Property<LocalDate> dateDelivranceProperty() {
 		return this.dateDelivrance;
 	}
 	
-	public final Date getDateDelivrance() {
+	public final LocalDate getDateDelivrance() {
 		return this.dateDelivranceProperty().getValue();
 	}
 	
-	public final void setDateDelivrance(final Date dateDelivrance) {
+	public final void setDateDelivrance(final LocalDate dateDelivrance) {
 		this.dateDelivranceProperty().setValue(dateDelivrance);
 	}
-	
-	
-	
-	
-	
-	
-
-	
 
 
 }

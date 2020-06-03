@@ -30,10 +30,11 @@ public class DaoLier {
 
 			try {
 				cn = dataSource.getConnection();
-				sql = "INSERT INTO lier (nom, libelle) VALUES (?,?)";
+				sql = "INSERT INTO lier (nom, libelle, statut) VALUES (?,?, ?)";
 				stmt = cn.prepareStatement( sql );
 				stmt.setObject(1, lier.getNom());
 				stmt.setObject(2, lier.getLibelle());
+				stmt.setObject(3, lier.getStatut());
 				stmt.executeUpdate();
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
@@ -50,11 +51,12 @@ public class DaoLier {
 
 			try {
 				cn = dataSource.getConnection();
-				sql = "UPDATE lier SET nom = ?, libelle = ? WHERE nom =  ?";
+				sql = "UPDATE lier SET nom = ?, libelle = ?, statut = ? WHERE nom =  ?";
 				stmt = cn.prepareStatement( sql );
 				stmt.setObject(1, lier.getNom());
 				stmt.setObject(2, lier.getLibelle());
-				stmt.setObject(3, lier.getNom());
+				stmt.setObject(3, lier.getStatut());
+				stmt.setObject(4, lier.getNom());
 				stmt.executeUpdate();
 
 			} catch (SQLException e) {

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
+import projet.data.Epreuve;
 import projet.data.Tache;
 
 public class DaoTache {
@@ -34,8 +37,10 @@ public class DaoTache {
 				stmt = cn.prepareStatement( sql );
 				stmt.setObject(1, tache.getLibelle());
 				stmt.setObject(2, tache.getEmplacement());
-				stmt.setObject(3, tache.getHr_deb());
-				stmt.setObject(4, tache.getHr_fin());
+				LocalTime t1 = LocalTime.parse(tache.getHr_deb());
+				LocalTime t2 = LocalTime.parse(tache.getHr_fin());
+				stmt.setObject(	3, t1);
+				stmt.setObject(	4, t2 );
 				stmt.setObject(5, tache.getTaille());
 				stmt.executeUpdate();
 			} catch (SQLException e) {
@@ -58,8 +63,10 @@ public class DaoTache {
 				stmt = cn.prepareStatement( sql );
 				stmt.setObject(1, tache.getLibelle());
 				stmt.setObject(2, tache.getEmplacement());
-				stmt.setObject(3, tache.getHr_deb());
-				stmt.setObject(4, tache.getHr_fin());
+				LocalTime t1 = LocalTime.parse(tache.getHr_deb());
+				LocalTime t2 = LocalTime.parse(tache.getHr_fin());
+				stmt.setObject(	3, t1);
+				stmt.setObject(	4, t2 );
 				stmt.setObject(5, tache.getTaille());
 				stmt.setObject(6, tache.getLibelle());
 				stmt.executeUpdate();
@@ -119,7 +126,7 @@ public class DaoTache {
 			}
 		}
 		
-		public List<Tache> listerTout() {
+		public List<Tache> listerTout(Epreuve epreuve) {
 
 			Connection			cn 		= null;
 			PreparedStatement	stmt 	= null;
@@ -128,8 +135,10 @@ public class DaoTache {
 
 			try {
 				cn = dataSource.getConnection();
-				sql = "SELECT * FROM tache ORDER BY libelle";
+				sql = "SELECT * FROM tache t, lier l, epreuve e WHERE t.libelle = l.libelle"
+						+ " AND l.nom = e.nom AND e.nom = ? ORDER BY libelle";
 				stmt = cn.prepareStatement( sql );
+				stmt.setObject(1, epreuve.getNom());
 				rs = stmt.executeQuery();
 
 				List<Tache> taches = new LinkedList<>();
@@ -149,8 +158,10 @@ public class DaoTache {
 			Tache tache = new Tache();
 			tache.setLibelle(rs.getObject( "libelle", String.class ) );
 			tache.setEmplacement( rs.getObject( "emplacement", String.class ) );
-			tache.setHr_deb(rs.getObject("hr_deb", String.class));
-			tache.setHr_fin(rs.getObject("hr_fin", String.class));
+			Time t1 = rs.getObject("hr_deb", Time.class);
+			Time t2 = rs.getObject("hr_fin", Time.class);
+			tache.setHr_deb(t1.toString());
+			tache.setHr_fin(t2.toString());
 			tache.setTaille(rs.getObject("taille", Integer.class));
 			return tache;
 		}

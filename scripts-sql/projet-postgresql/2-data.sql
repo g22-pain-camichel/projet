@@ -184,11 +184,11 @@ INSERT INTO epreuve (nom, distance, hr_deb, hr_fin) VALUES
 	
 	-- Lier
 	
-INSERT INTO lier (nom, libelle) VALUES
-	('epreuve 1', 'amet sit dolor'),
-	('epreuve 2', 'lorem ipsum'),
-	('epreuve 3', 'amet sit dolor'),
-	('epreuve 4', 'ipsum lorem');
+INSERT INTO lier (nom, libelle, statut) VALUES
+	('epreuve 2', 'amet sit dolor', 0),
+	('epreuve 1', 'lorem ipsum', 0),
+	('epreuve 2', 'dolor sit amet', 0),
+	('epreuve 1', 'ipsum lorem', 0);
 	
 	-- Inscrire
 	
