@@ -82,17 +82,14 @@
                <children>
                   <HBox alignment="CENTER" layoutX="97.0" layoutY="415.0" prefHeight="40.0" prefWidth="312.0" spacing="10.0">
                      <children>
-                        <JFXButton fx:id="button_add" buttonType="RAISED" onAction="#doAdd" prefHeight="28.0" prefWidth="87.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Ajouter">
+                        <JFXButton fx:id="button_valid" buttonType="RAISED" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Valider">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../images/add_ico.png" />
+                                    <Image url="@../../images/valider.png" />
                                  </image>
                               </ImageView>
                            </graphic>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
                         </JFXButton>
                         <JFXButton fx:id="button_update" buttonType="RAISED" onAction="#doUpdate" prefHeight="28.0" prefWidth="98.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Modifier">
                            <graphic>
