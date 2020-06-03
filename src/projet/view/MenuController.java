@@ -74,6 +74,6 @@ public class MenuController {
 	}
 	@FXML
 	public void doCategorie() {
-		managerGui.showView(EnumView.Categorie);
+		managerGui.showView(EnumView.Tache);
 	}
 }

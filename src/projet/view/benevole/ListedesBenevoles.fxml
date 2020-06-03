@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.geometry.Insets?>
@@ -58,8 +59,9 @@
                   <ListView fx:id="listView" layoutY="54.0" onMouseClicked="#doFillGap" prefHeight="405.0" prefWidth="267.0" />
                   <HBox prefHeight="31.0" prefWidth="267.0" spacing="6.0">
                      <children>
-                        <JFXTextField fx:id="textField_find" focusColor="#6b8cee" prefHeight="25.0" prefWidth="173.0" promptText="Recherche un benevole [nom]" />
-                        <JFXButton fx:id="button_find" buttonType="RAISED" onAction="#doFind" prefHeight="28.0" prefWidth="112.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Rechercher">
+                        <JFXTextField fx:id="textField_find" focusColor="#6b8cee" prefHeight="25.0" prefWidth="116.0" promptText="Recherche un benevole [nom]" />
+                        <JFXComboBox prefHeight="25.0" prefWidth="74.0" />
+                        <JFXButton fx:id="button_find" buttonType="RAISED" onAction="#doFind" prefHeight="28.0" prefWidth="81.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Search">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -137,7 +139,6 @@
                         <RowConstraints maxHeight="41.66668701171875" minHeight="10.0" prefHeight="41.66668701171875" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="51.333343505859375" minHeight="10.0" prefHeight="40.99997965494791" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="63.00002034505209" minHeight="10.0" prefHeight="44.666676839192704" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="66.66665649414062" minHeight="10.0" prefHeight="41.99997965494791" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="66.66665649414062" minHeight="10.0" prefHeight="41.99997965494791" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="66.66665649414062" minHeight="10.0" prefHeight="41.99997965494791" valignment="CENTER" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="66.66665649414062" minHeight="10.0" prefHeight="41.99997965494791" vgrow="SOMETIMES" />
@@ -148,10 +149,8 @@
                         <Label text="Prenom" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                         <Label text="Email" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                         <Label text="Date naissance" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                        <Label prefHeight="27.0" prefWidth="100.0" text="fonction souhaitée" textAlignment="CENTER" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="114.0" text="Telephone" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                         <Label text="Sexe" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                        <Label text="Equipe" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
                         <TextField fx:id="textField_name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="textField_email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <DatePicker fx:id="datePicker_birthday" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -166,24 +165,28 @@
                         </VBox>
                         <TextField fx:id="textField_surname" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                         <TextField fx:id="textField_phone" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <ComboBox fx:id="comboBox_desireFunc" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextField fx:id="textField_equipe" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                        <Label text="Heure debut" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-                        <Label text="Heure fin" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-                        <JFXTimePicker fx:id="timePicker_startH" defaultColor="#4485fc" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <JFXTimePicker fx:id="timePicker_endH" defaultColor="#4485fc" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                        <Label contentDisplay="CENTER" text="Type benévole" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
-                        <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <Label text="Permis" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
-                        <Label text="N° permis" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
-                        <Label text="Date de delivrance" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
-                        <Label text="Lieu de délivrance" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
+                        <Label text="Heure debut" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                        <Label text="Heure fin" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                        <JFXTimePicker fx:id="timePicker_startH" defaultColor="#4485fc" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <JFXTimePicker fx:id="timePicker_endH" defaultColor="#4485fc" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <Label contentDisplay="CENTER" text="Type benévole" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                        <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label text="Permis" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                        <Label text="N° permis" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                        <Label text="Date de delivrance" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+                        <Label text="Lieu de délivrance" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+                        <TextField GridPane.columnIndex="3" GridPane.rowIndex="6" />
                         <TextField GridPane.columnIndex="3" GridPane.rowIndex="7" />
-                        <TextField GridPane.columnIndex="3" GridPane.rowIndex="8" />
-                        <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <Label text="ID" GridPane.halignment="CENTER" />
                         <TextField fx:id="textField_id" editable="false" prefHeight="25.0" prefWidth="51.0" GridPane.columnIndex="1" />
-                        <Label text="nompermis.pdf" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Label text="nompermis.pdf" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label text="Validé" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+                        <Label text="False" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                   </GridPane>
                </children>

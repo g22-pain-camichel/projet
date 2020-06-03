@@ -23,7 +23,7 @@ public enum EnumView implements IEnumView {
 	InscrireParticipant	("participant/InscrireParticipant.fxml"),
 	Epreuve				("epreuve/Epreuve.fxml"),
 	EpreuveAdmin		("epreuveadmin/EpreuveAdmin.fxml"),
-	Categorie			("categorie/Categorie.fxml"),
+	Tache				("tache/Tache.fxml"),
 	
 	// celui du prof
 	

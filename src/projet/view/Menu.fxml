@@ -338,13 +338,13 @@
                            <children>
                               <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/categorie.png" />
+                                    <Image url="@../images/task.png" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </ImageView>
-                              <Label text="Catégories" textFill="WHITE" GridPane.columnIndex="1">
+                              <Label text="Taches" textFill="WHITE" GridPane.columnIndex="1">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
