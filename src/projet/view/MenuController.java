@@ -67,4 +67,13 @@ public class MenuController {
 	public void doTacheMission() {
 		managerGui.showView(EnumView.TachesMissions);
 	}
+	
+	@FXML
+	public void doEpreuveAdmin() {
+		managerGui.showView(EnumView.EpreuveAdmin);
+	}
+	@FXML
+	public void doCategorie() {
+		managerGui.showView(EnumView.Categorie);
+	}
 }

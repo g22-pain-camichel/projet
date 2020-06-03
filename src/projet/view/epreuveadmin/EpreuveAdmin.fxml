@@ -179,7 +179,7 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <Label layoutX="71.0" layoutY="17.0" text="Liste des Participants" textFill="#4485fc" underline="true" />
+            <Label layoutX="71.0" layoutY="17.0" text="Créer les épreuves" textFill="#4485fc" underline="true" />
             <Pane layoutX="56.0" layoutY="49.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="719.0" style="-fx-background-color: #F1F1F1; -fx-background-radius: 5;" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="56.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="6.0" layoutX="80.0" layoutY="13.0" nodeOrientation="LEFT_TO_RIGHT" text="Pour modifier les informations d'un participant,cliquez sur un enregistrement dans la liste">

@@ -22,6 +22,8 @@ public enum EnumView implements IEnumView {
 	ListParticipants 	("participant/ListedesParticipants.fxml"),
 	InscrireParticipant	("participant/InscrireParticipant.fxml"),
 	Epreuve				("epreuve/Epreuve.fxml"),
+	EpreuveAdmin		("epreuveadmin/EpreuveAdmin.fxml"),
+	Categorie			("categorie/Categorie.fxml"),
 	
 	// celui du prof
 	
