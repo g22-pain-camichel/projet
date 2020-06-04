@@ -5,6 +5,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 import projet.data.Benevole;
+import projet.data.Epreuve;
+import projet.data.EquipeBenevole;
 import projet.data.Memo;
 import projet.data.Participant;
 import projet.data.Permi;
@@ -27,5 +29,9 @@ public interface IMapper {
 	
 	Benevole update( @MappingTarget Benevole target, Benevole source );
 	
+	EquipeBenevole update( @MappingTarget EquipeBenevole target, EquipeBenevole source );
+	
 	Permi update( @MappingTarget Permi target, Permi source );
+	
+	Epreuve update( @MappingTarget Epreuve target, Epreuve source );
 }

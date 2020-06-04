@@ -65,5 +65,10 @@ public class Epreuve {
 	public final void setDistance(final Double distance) {
 		this.distanceProperty().setValue(distance);
 	}
+
+	@Override
+	public String toString() {
+		return getNom();
+	}
 	
 }

@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
 import projet.data.Epreuve;
+import projet.data.EquipeBenevole;
 
 public class DaoEpreuve {
 	
@@ -109,6 +110,34 @@ public class DaoEpreuve {
 				sql = "SELECT * FROM epreuve WHERE nom = ?";
 				stmt = cn.prepareStatement( sql );
 				stmt.setString(1, nom);
+				rs = stmt.executeQuery();
+
+				if ( rs.next() ) {
+					return construireEpreuve( rs );
+				} else {
+					return null;
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
+		
+		public Epreuve retrouverEpEq(EquipeBenevole eb ) {
+
+			Connection			cn 		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs		= null;
+			String				sql;
+
+			try {
+				cn = dataSource.getConnection();
+				sql = "SELECT * FROM equipebenevole eqb, tache t, lier l, epreuve e WHERE"
+						+ "eqb.libelle = t.libelle AND t.libelle = l.libelle AND l.nom = e.nom "
+						+ "AND eqb.libelle = ?";
+				stmt = cn.prepareStatement( sql );
+				stmt.setString(1, eb.getLibelle());
 				rs = stmt.executeQuery();
 
 				if ( rs.next() ) {

@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
+import projet.data.Benevole;
 import projet.data.EquipeBenevole;
 
 
@@ -155,6 +156,70 @@ public class DaoEquipeBenevole {
 			stmt = cn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			
+			List<EquipeBenevole> benevoles = new ArrayList<>();
+			while (rs.next()) {
+				benevoles.add( construireEquipeBenevole(rs, false) );
+			}
+			return benevoles;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
+	public List<EquipeBenevole> listerTout(boolean bool)   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM equipeBenevole WHERE estValide = ? ORDER BY num";
+			stmt = cn.prepareStatement(sql);
+			stmt.setObject(1, bool);
+			rs = stmt.executeQuery();
+			
+			List<EquipeBenevole> benevoles = new ArrayList<>();
+			while (rs.next()) {
+				benevoles.add( construireEquipeBenevole(rs, false) );
+			}
+			return benevoles;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
+	public List<EquipeBenevole> listerEquipeBenevoles(String value)   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+			
+			try {
+				int i = Integer.parseInt(value);
+				sql = "SELECT * FROM equipebenevole WHERE num = ?";
+				stmt = cn.prepareStatement(sql);
+				stmt.setObject( 1, i);
+			}
+			catch(Exception e) {
+				sql = "SELECT * FROM equipebenevole WHERE libelle LIKE ('%' || ? || '%')";
+				stmt = cn.prepareStatement(sql);
+				stmt.setObject( 1, value);
+			}
+            rs = stmt.executeQuery();
+            
 			List<EquipeBenevole> benevoles = new ArrayList<>();
 			while (rs.next()) {
 				benevoles.add( construireEquipeBenevole(rs, false) );

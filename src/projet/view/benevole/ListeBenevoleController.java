@@ -1,6 +1,5 @@
 package projet.view.benevole;
 
-import java.sql.PreparedStatement;
 import java.text.ParseException;
 import java.util.List;
 
@@ -83,7 +82,6 @@ public class ListeBenevoleController {
 			listView.setItems(modelBenevole.getListe());
 		}
 		comboBox_typeB.setItems(FXCollections.observableArrayList("interne", "externe"));
-		
 		
 		if (courant.getIdentifiant() != null) {
 			UtilFX.selectInListView( listView, modelBenevole.getCourant() );

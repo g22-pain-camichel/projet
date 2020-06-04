@@ -86,8 +86,9 @@ public class Tache {
 	public final void setTaille(final Integer taille) {
 		this.tailleProperty().setValue(taille);
 	}
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return getLibelle();
+	}	
 }

@@ -136,7 +136,7 @@ public class DaoTache {
 			try {
 				cn = dataSource.getConnection();
 				sql = "SELECT * FROM tache t, lier l, epreuve e WHERE t.libelle = l.libelle"
-						+ " AND l.nom = e.nom AND e.nom = ? ORDER BY libelle";
+						+ " AND l.nom = e.nom AND e.nom = ? ORDER BY l.libelle";
 				stmt = cn.prepareStatement( sql );
 				stmt.setObject(1, epreuve.getNom());
 				rs = stmt.executeQuery();

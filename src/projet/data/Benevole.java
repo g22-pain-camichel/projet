@@ -226,7 +226,7 @@ public class Benevole {
 
 	@Override
 	public String toString() {
-		return "Benevole {identifiant=" + getIdentifiant() + ", nom=" + getNom() + "}";
+		return getNom() + " "+ getPrenom();
 	}
 
 	public final StringProperty numeroProperty() {
