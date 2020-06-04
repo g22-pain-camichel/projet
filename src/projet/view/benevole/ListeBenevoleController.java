@@ -204,6 +204,7 @@ public class ListeBenevoleController {
 	}
 	
 	private void actualiserSexeDansVue() {
+		modelBenevole.preparerModifier(listView.getSelectionModel().getSelectedItem() );
 		if (modelBenevole.getCourant().getIdentifiant() != null) {
 			int sex = modelBenevole.getCourant().getSexe();
 			Toggle button = toggleSex.getToggles().get(sex);
