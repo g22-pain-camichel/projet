@@ -12,6 +12,7 @@ import projet.data.Participant;
 import projet.data.Permi;
 import projet.data.Personne;
 import projet.data.Service;
+import projet.data.Tache;
 
 
 @Mapper
@@ -34,4 +35,6 @@ public interface IMapper {
 	Permi update( @MappingTarget Permi target, Permi source );
 	
 	Epreuve update( @MappingTarget Epreuve target, Epreuve source );
+	
+	Tache update( @MappingTarget Tache target, Tache source );
 }

@@ -16,6 +16,7 @@ import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
 import projet.data.Benevole;
+import projet.data.EquipeBenevole;
 
 
 public class DaoBenevole {
@@ -178,6 +179,61 @@ public class DaoBenevole {
 			stmt = cn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			
+			List<Benevole> benevoles = new ArrayList<>();
+			while (rs.next()) {
+				benevoles.add( construireBenevole(rs, false) );
+			}
+			return benevoles;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
+	public List<Benevole> listerToutDispo()   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM benevole b WHERE identifiant NOT IN (SELECT identifiant FROM"
+					+ " constituer)";
+			stmt = cn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			List<Benevole> benevoles = new ArrayList<>();
+			while (rs.next()) {
+				benevoles.add( construireBenevole(rs, false) );
+			}
+			return benevoles;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
+	public List<Benevole> listerBenevoleEquipe(EquipeBenevole eq)   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM benevole b, constituer c, equipebenevole eb WHERE "
+					+ "b.identifiant = c.identifiant AND c.num = eb.num AND eb.num = ?";
+			stmt = cn.prepareStatement(sql);
+			stmt.setObject(1, eq.getNum());
+			rs = stmt.executeQuery();
 			List<Benevole> benevoles = new ArrayList<>();
 			while (rs.next()) {
 				benevoles.add( construireBenevole(rs, false) );

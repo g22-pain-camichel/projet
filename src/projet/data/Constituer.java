@@ -9,6 +9,7 @@ public class Constituer {
 	//champs
 	private final Property<Integer>		num			= new SimpleObjectProperty<>();	
 	private final Property<Integer>		identidant			= new SimpleObjectProperty<>();
+	
 	public final Property<Integer> numProperty() {
 		return this.num;
 	}

@@ -11,12 +11,17 @@ import javafx.collections.ObservableList;
 import jfox.commun.exception.ExceptionValidation;
 import jfox.javafx.util.UtilFX;
 import projet.commun.IMapper;
+import projet.dao.DaoBenevole;
+import projet.dao.DaoConstituer;
 import projet.dao.DaoEpreuve;
 import projet.dao.DaoEquipeBenevole;
 import projet.dao.DaoLier;
 import projet.dao.DaoTache;
+import projet.data.Benevole;
+import projet.data.Constituer;
 import projet.data.Epreuve;
 import projet.data.EquipeBenevole;
+import projet.data.Lier;
 import projet.data.Tache;
 
 public class ModelEquipeBenevole {
@@ -24,9 +29,13 @@ public class ModelEquipeBenevole {
 	private final ObservableList<EquipeBenevole> listEquipeBenevole = FXCollections.observableArrayList();
 	private final ObservableList<Tache> listeT = FXCollections.observableArrayList();
 	private final ObservableList<Epreuve> listeE = FXCollections.observableArrayList();
+	private final ObservableList<Benevole> listeB = FXCollections.observableArrayList();
+	private final ObservableList<Benevole> listeBE = FXCollections.observableArrayList();
 	
 	private EquipeBenevole courant = new EquipeBenevole();
 	private Epreuve epreuve = new Epreuve();
+	private Benevole benevole = new Benevole();
+	private Tache tache = new Tache();
 	
 	@Inject
 	private IMapper mapper;
@@ -36,6 +45,12 @@ public class ModelEquipeBenevole {
 	private DaoEpreuve daoEpreuve;
 	@Inject
 	private DaoTache daoTache;
+	@Inject
+	private DaoBenevole daoBenevole;
+	@Inject 
+	private DaoConstituer daoConstituer;
+	@Inject
+	private DaoLier daoLier;
 	
 	public ObservableList<EquipeBenevole> getListe() {
 		actualiserListe();
@@ -48,6 +63,14 @@ public class ModelEquipeBenevole {
 	public ObservableList<Tache> getListeT() {
 		actualiserListeT();
 		return listeT;
+	}
+	public ObservableList<Benevole> getListeB() {
+		actualiserListeB();
+		return listeB;
+	}
+	public ObservableList<Benevole> getListeBE() {
+		actualiserListeBE();
+		return listeBE;
 	}
 	
 	public ObservableList<EquipeBenevole> getListe(boolean bool) {
@@ -63,6 +86,14 @@ public class ModelEquipeBenevole {
 		return epreuve;
 	}
 	
+	public Benevole getBenevole() {
+		return benevole;
+	}
+	
+	public Tache getTache() {
+		return tache;
+	}
+	
 	// actualisation
 	
 	public void actualiserListe() {
@@ -74,6 +105,12 @@ public class ModelEquipeBenevole {
 	public void actualiserListeT() {
 		listeT.setAll(daoTache.listerTout(epreuve));
 	}
+	public void actualiserListeB() {
+		listeB.setAll(daoBenevole.listerToutDispo());
+	}
+	public void actualiserListeBE() {
+		listeBE.setAll(daoBenevole.listerBenevoleEquipe(courant));
+	}
 	
 	// acions
 
@@ -83,7 +120,9 @@ public class ModelEquipeBenevole {
 	
 	public void preparerAjouter() {
 		mapper.update( courant, new EquipeBenevole() );
+		mapper.update(benevole, new Benevole());
 		mapper.update(epreuve, new Epreuve());
+		mapper.update(tache, new Tache());
 	}
 	
 	public void preparerModifier( EquipeBenevole item ) {
@@ -94,10 +133,40 @@ public class ModelEquipeBenevole {
 		mapper.update( epreuve, daoEpreuve.retrouver(ep.getNom()) );
 	}
 	
+	public void preparerModifier( Benevole b ) {
+		mapper.update( benevole, daoBenevole.retrouver(b.getIdentifiant()) );
+	}
+	
+	public void preparerModifier (Tache t) {
+		mapper.update(tache, daoTache.retrouver(t.getLibelle()));
+	}
+	
 	public List<EquipeBenevole> find(String name) {
 		List<EquipeBenevole> liste = new ArrayList();
 		liste = daoEquipeBenevole.listerEquipeBenevoles(name);
 		return liste;
+	}
+	
+	public void ajouterBenevoleDansEquipe() {
+		Constituer constituer = new Constituer();
+		constituer.setNum(courant.getNum());
+		constituer.setIdentidant(benevole.getIdentifiant());
+		daoConstituer.inserer(constituer);
+	}
+	
+	public boolean equipePleine() {
+		int total = daoEquipeBenevole.countBenevole(courant);
+		int nbre = courant.getNbreBenevole();
+		if (nbre <= total) return true;
+		else return false;
+	}
+	
+	public void bloquerTache() {
+		Lier lier = new Lier();
+		lier.setLibelle(tache.getLibelle());
+		lier.setNom(epreuve.getNom());
+		lier.setStatut(1);
+		daoLier.modifier(lier);
 	}
 	
 	public void validerMiseAJour() throws ParseException {

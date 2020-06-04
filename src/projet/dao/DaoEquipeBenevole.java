@@ -22,7 +22,6 @@ public class DaoEquipeBenevole {
 
 	@Inject
 	private DataSource		dataSource;
-
 	
 	// Actions
 
@@ -60,7 +59,6 @@ public class DaoEquipeBenevole {
 		// Retourne l'identifiant
 		return equipeBenevole.getNum();
 	}
-
 	
 	public void modifier(EquipeBenevole equipeBenevole)  {
 
@@ -161,6 +159,34 @@ public class DaoEquipeBenevole {
 				benevoles.add( construireEquipeBenevole(rs, false) );
 			}
 			return benevoles;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
+	public int countBenevole(EquipeBenevole equipe)   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT COUNT(*) AS total FROM benevole b, constituer c, equipebenevole eb WHERE "
+					+ "b.identifiant = c.identifiant AND c.num = eb.num AND eb.num = ?";
+			stmt = cn.prepareStatement(sql);
+			stmt.setObject(1, equipe.getNum());
+			rs = stmt.executeQuery();
+			int val = 0;
+			while (rs.next()) {
+				val = rs.getInt("total");
+			}
+			return val;
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

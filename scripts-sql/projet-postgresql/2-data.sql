@@ -124,9 +124,10 @@ INSERT INTO benevole (identifiant, nom, prenom, sexe, dtNaiss, email, tel, type,
   	(1, 'jerome', 'vincent', 0, {d'2000-02-25'}, 'jvincent@gmail.com', '+33 07 54 23 08 39', 'interne', {t '12:20'}, {t '16:30'}, false, NULL),
   	(2, 'julia', 'adele', 1, {d'1996-08-15'}, 'juliaadh@gmail.com', '+33 07 44 23 98 30', 'externe', {t '10:00'}, {t '15:30'}, false, 911091204209),
   	(3, 'andres', 'brayan', 0, {d'1999-10-01'}, 'andres@yahoo.fr', '+33 07 22 76 48 21', 'externe', {t '08:00'}, {t '12:00'}, false, NULL),
-  	(4, 'suzie', 'angela', 1, {d'2000-05-09'}, 'suzangela@gmail.com', '+33 06 49 03 78 10', 'interne', {t '16:00'}, {t '18:30'}, false, 122082203108);
+  	(4, 'rufus', 'denzel', 0, {d'1993-07-23'}, 'rufus@gmail.com', '+33 06 12 68 51 32', 'interne', {t '10:00'}, {t '16:00'}, false, NULL),
+  	(5, 'suzie', 'angela', 1, {d'2000-05-09'}, 'suzangela@gmail.com', '+33 06 49 03 78 10', 'interne', {t '16:00'}, {t '18:30'}, false, 122082203108);
   	 	
-ALTER TABLE benevole ALTER COLUMN identifiant RESTART WITH 5;
+ALTER TABLE benevole ALTER COLUMN identifiant RESTART WITH 6;
 
   -- Participant 
   
@@ -170,9 +171,7 @@ ALTER TABLE equipebenevole ALTER COLUMN num RESTART WITH 5;
 	
 INSERT INTO constituer (identifiant, num) VALUES
 	(1, 2),
-	(2, 1),
-	(3, 4),
-	(4, 3);
+	(2, 1);
 
 	-- Epreuve
 
