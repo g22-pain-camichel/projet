@@ -154,6 +154,7 @@ CREATE TABLE equipeBenevole(
 	nbreBenevole INT NOT NULL ,
     estValide         BOOLEAN NOT NULL ,
     libelle            VARCHAR (20) NOT NULL,
+    nom            VARCHAR (20) NOT NULL,
 	CONSTRAINT equipeBenevole_PK PRIMARY KEY (num)
 
 	,CONSTRAINT equipeBenevole_tache_FK FOREIGN KEY (libelle) REFERENCES tache(libelle)

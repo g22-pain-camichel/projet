@@ -12,12 +12,15 @@ public class EquipeBenevole {
 	//champs
 	
 	private final Property<Integer>		num			= new SimpleObjectProperty<>();	
+	private final StringProperty   	 	nom       = new SimpleStringProperty();
 	private final StringProperty   	 	libelle       = new SimpleStringProperty();
 	private final Property<Integer>		nbreBenevole	= new SimpleObjectProperty<>();
 	private final Property<Boolean> estValide = new SimpleObjectProperty<>(); 
 
 	//getters && setters
 
+	
+	
 	public final Property<Integer> numProperty() {
 		return this.num;
 	}
@@ -99,6 +102,24 @@ public class EquipeBenevole {
 	public final void setEstValide(final Boolean estValide) {
 		this.estValideProperty().setValue(estValide);
 	}
+
+
+	public final StringProperty nomProperty() {
+		return this.nom;
+	}
+	
+
+
+	public final String getNom() {
+		return this.nomProperty().get();
+	}
+	
+
+
+	public final void setNom(final String nom) {
+		this.nomProperty().set(nom);
+	}
+	
 	
 
 	

@@ -36,13 +36,14 @@ public class DaoEquipeBenevole {
 			cn = dataSource.getConnection();
 
 			// Insère le equipeBenevole
-			sql = "INSERT INTO equipebenevole(num, nbreBenevole, libelle, estValide)"
+			sql = "INSERT INTO equipebenevole(num, nom, nbreBenevole, libelle, estValide)"
 					+ " VALUES ( ?, ?, ?, ?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
 			stmt.setObject(	1, equipeBenevole.getNum());
-			stmt.setObject(	2, equipeBenevole.getNbreBenevole());
-			stmt.setObject(	3, equipeBenevole.getLibelle() );
-			stmt.setObject(4, equipeBenevole.getEstValide());
+			stmt.setObject(	2, equipeBenevole.getNom());
+			stmt.setObject(	3, equipeBenevole.getNbreBenevole());
+			stmt.setObject(	4, equipeBenevole.getLibelle() );
+			stmt.setObject(5, equipeBenevole.getEstValide());
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -70,14 +71,15 @@ public class DaoEquipeBenevole {
 			cn = dataSource.getConnection();
 
 			// Modifie le equipeBenevole
-			sql = "UPDATE equipeBenevole SET num = ?, nbreBenevole = ?, "
+			sql = "UPDATE equipeBenevole SET num = ?, nom = ?, nbreBenevole = ?, "
 					+ "libelle = ?, estValide = ? WHERE num =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject(	1, equipeBenevole.getNum());
-			stmt.setObject(	2, equipeBenevole.getNbreBenevole());
-			stmt.setObject(	3, equipeBenevole.getLibelle() );
-			stmt.setObject( 4, equipeBenevole.getEstValide());
-			stmt.setObject(	5, equipeBenevole.getNum());
+			stmt.setObject(	2, equipeBenevole.getNom());
+			stmt.setObject(	3, equipeBenevole.getNbreBenevole());
+			stmt.setObject(	4, equipeBenevole.getLibelle() );
+			stmt.setObject( 5, equipeBenevole.getEstValide());
+			stmt.setObject(	6, equipeBenevole.getNum());
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -240,7 +242,8 @@ public class DaoEquipeBenevole {
 				stmt.setObject( 1, i);
 			}
 			catch(Exception e) {
-				sql = "SELECT * FROM equipebenevole WHERE libelle LIKE ('%' || ? || '%')";
+				value = value.toLowerCase();
+				sql = "SELECT * FROM equipebenevole WHERE nom LIKE ('%' || ? || '%')";
 				stmt = cn.prepareStatement(sql);
 				stmt.setObject( 1, value);
 			}
@@ -262,6 +265,7 @@ public class DaoEquipeBenevole {
 	private EquipeBenevole construireEquipeBenevole( ResultSet rs, boolean flagComplet ) throws SQLException {
 		EquipeBenevole equipeBenevole = new EquipeBenevole();
 		equipeBenevole.setNum(rs.getObject( "num", Integer.class ));
+		equipeBenevole.setNom(rs.getObject( "nom", String.class ));
 		equipeBenevole.setLibelle(rs.getObject( "libelle", String.class ));
 		equipeBenevole.setNbreBenevole(rs.getObject( "nbreBenevole", Integer.class ));
 		equipeBenevole.setEstValide(rs.getObject("estValide", Boolean.class));

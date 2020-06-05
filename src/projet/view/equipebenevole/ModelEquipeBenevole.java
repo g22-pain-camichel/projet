@@ -174,11 +174,11 @@ public class ModelEquipeBenevole {
 		
 		StringBuilder message = new StringBuilder();
 
-		if( courant.getLibelle() == null || courant.getLibelle().isEmpty() ) {
-			message.append( "\nLe Libelle ne doit pas être vide." );
+		if( courant.getNom() == null || courant.getNom().isEmpty() ) {
+			message.append( "\nLe nom de l'equipe ne doit pas être vide." );
 		} 
-		else  if ( courant.getLibelle().length()> 50 ) {
-			message.append( "\nLe Libelle est trop long : 50 maxi." );
+		else  if ( courant.getNom().length()> 50 ) {
+			message.append( "\nLe nom de cette equipe est trop long : 50 maxi." );
 		}
 		if (courant.getNbreBenevole() <= 1 || courant.getNbreBenevole() >= 20) {
 			message.append("\n une équipe est contitué de 2 à 20 membres");

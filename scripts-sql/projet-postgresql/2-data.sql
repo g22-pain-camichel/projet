@@ -159,11 +159,11 @@ INSERT INTO tache (libelle, emplacement, hr_deb, hr_fin, taille) VALUES
 
 	-- Equipebenevole
 	
-INSERT INTO equipebenevole(num, nbreBenevole, libelle, estValide) VALUES
-	(1, 3, 'lorem ipsum', false),
-	(2, 4, 'dolor sit amet', false),
-	(3, 3, 'ipsum lorem', false),
-	(4, 2, 'amet sit dolor', false);
+INSERT INTO equipebenevole(num, nom, nbreBenevole, libelle, estValide) VALUES
+	(1, 'equipe 1', 3, 'lorem ipsum', false),
+	(2, 'equipe 2', 4, 'dolor sit amet', false),
+	(3, 'equipe 3', 3, 'ipsum lorem', false),
+	(4, 'equipe 4', 2, 'amet sit dolor', false);
 	
 ALTER TABLE equipebenevole ALTER COLUMN num RESTART WITH 5;
 

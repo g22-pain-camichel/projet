@@ -81,7 +81,7 @@ public class EquipeBenevoleController {
 		comboBox_epreuve.setItems(modelEquipeBenevole.getListeE());
 		comboBox_epreuve.setCellFactory(UtilFX.cellFactory(item -> item.getNom()));
 		
-		listView.setCellFactory(UtilFX.cellFactory(item -> item.getLibelle()+
+		listView.setCellFactory(UtilFX.cellFactory(item -> item.getNom()+
 				" [ validé: "+item.getEstValide().toString()+ " ]"));
 		
 		if (txt.equals("Valide")) {
@@ -108,6 +108,10 @@ public class EquipeBenevoleController {
 		button_create.setDisable(false);
 		
 		if (courant.getNum() != null) {
+			
+			UtilFX.selectInListView( listView, modelEquipeBenevole.getCourant() );
+			listView.requestFocus();
+			
 			if (courant.getEstValide()) {
 				disableForm();
 			}
@@ -120,9 +124,6 @@ public class EquipeBenevoleController {
 				button_addB.setDisable(false);
 				button_create.setDisable(true);
 				
-				UtilFX.selectInListView( listView, modelEquipeBenevole.getCourant() );
-				listView.requestFocus();
-				
 				label_valide.setText(courant.getEstValide().toString());
 				
 				if (courant.getEstValide()) {
@@ -132,7 +133,7 @@ public class EquipeBenevoleController {
 					button_valid.setDisable(false);
 				}
 				
-				textField_equipe.textProperty().bindBidirectional(courant.libelleProperty());
+				textField_equipe.textProperty().bindBidirectional(courant.nomProperty());
 				
 				textField_nbre.textProperty().bindBidirectional(courant.nbreBenevoleProperty(),  new ConverterStringInteger());
 				textField_nbre.focusedProperty().addListener(new ListenerFocusValidation(courant.numProperty(), "Un nombre valide est demandé"));
@@ -213,7 +214,7 @@ public class EquipeBenevoleController {
 		if (!textField_find.getText().isEmpty()) {
 			List<EquipeBenevole> maListe = modelEquipeBenevole.find(textField_find.getText());
 			if (maListe.isEmpty()) {
-				managerGui.showDialogMessage("Aucun bénévole possédant ce nom n'a été trouvé");
+				managerGui.showDialogMessage("Aucune équipe possédant ce nom n'a été trouvé");
 			}
 			else {
 				UtilFX.selectInListView( listView, maListe.get(0) );
