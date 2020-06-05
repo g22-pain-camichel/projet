@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
 import projet.data.Club;
+import projet.data.Epreuve;
 
 public class DaoClub {
 	
@@ -33,7 +34,7 @@ public class DaoClub {
 		try {
 			cn = dataSource.getConnection();
 			sql = "INSERT INTO club (num, nomCapitain, nbRepasReserves, numParticipant, categorie,"
-					+ " activite, estValide) VALUES (?,?,?,?,?,?,?)";
+					+ " activite, estValide, nom) VALUES (?,?,?,?,?,?,?,?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, club.getNum());
 			stmt.setObject( 2, club.getNomCapitain() );
@@ -42,6 +43,7 @@ public class DaoClub {
 			stmt.setObject(5, club.getCategorie());
 			stmt.setObject(6, club.getActivite());
 			stmt.setObject(7, club.getEstValide());
+			stmt.setObject( 8, club.getNom() );
 			stmt.executeUpdate();
 
 			// Récupère l'Num généré par le SGBD
@@ -66,7 +68,7 @@ public class DaoClub {
 
 			// Modifie le club
 			sql = "UPDATE club SET num = ?, nomCapitain = ?, nbRepasReserves = ?, numParticipant = ?"
-					+ "categorie = ?, activite = ?, estValide = ? WHERE num =  ?";
+					+ "categorie = ?, activite = ?, estValide = ?, nom = ? WHERE num =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, club.getNum());
 			stmt.setObject( 2, club.getNomCapitain() );
@@ -75,7 +77,8 @@ public class DaoClub {
 			stmt.setObject( 5, club.getCategorie());
 			stmt.setObject( 6, club.getActivite());
 			stmt.setObject( 7, club.getEstValide());
-			stmt.setObject( 8, club.getNum());
+			stmt.setObject( 8, club.getNom() );
+			stmt.setObject( 9, club.getNum());
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -148,8 +151,37 @@ public class DaoClub {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM club ORDER BY nomCapitain";
+			sql = "SELECT * FROM club ORDER BY nom";
 			stmt = cn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			
+			List<Club> clubs = new ArrayList<>();
+			while (rs.next()) {
+				clubs.add( construireClub(rs, false) );
+			}
+			return clubs;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
+	public List<Club> clubsEpreuve(Epreuve ep)   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM club b, inscrire i, epreuve e WHERE b.num = i.num"
+					+ " AND i.nom = e.nom AND e.nom = ?";
+			stmt = cn.prepareStatement(sql);
+			stmt.setObject(1, ep.getNom());
 			rs = stmt.executeQuery();
 			
 			List<Club> clubs = new ArrayList<>();
@@ -168,6 +200,7 @@ public class DaoClub {
 	private Club construireClub( ResultSet rs, boolean flagComplet ) throws SQLException {
 		Club club = new Club();
 		club.setNum(rs.getObject( "Num", Integer.class ));
+		club.setNom(rs.getObject( "Nom", String.class ));
 		club.setNomCapitain(rs.getObject( "nomCapitain", String.class ));
 		club.setNbRepasReserves(rs.getObject( "nbRepasReserves", Integer.class ));
 		club.setNumParticipant(rs.getObject( "numParticipant", Integer.class ));

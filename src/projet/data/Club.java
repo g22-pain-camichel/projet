@@ -13,6 +13,7 @@ public class Club {
 	//champs
 	
 	private final Property<Integer>		num			= new SimpleObjectProperty<>();	
+	private final StringProperty   	 	nom       = new SimpleStringProperty();
 	private final StringProperty   	 	nomCapitain       = new SimpleStringProperty();
 	private final Property<Integer>		nbRepasReserves	= new SimpleObjectProperty<>();
 	private final Property<Integer>		numParticipant	= new SimpleObjectProperty<>();
@@ -65,24 +66,6 @@ public class Club {
 		this.numParticipantProperty().setValue(numParticipant);
 	}
 	
-	
-	@Override
-	public int hashCode() {
-		return Objects.hash(num.getValue());
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Club other = (Club) obj;
-		return Objects.equals(num.getValue(), other.num.getValue());
-	}
-
 	public final Property<Integer> nbRepasReservesProperty() {
 		return this.nbRepasReserves;
 	}
@@ -140,8 +123,36 @@ public class Club {
 	public final void setActivite(final Integer activite) {
 		this.activiteProperty().setValue(activite);
 	}
+
+	public final StringProperty nomProperty() {
+		return this.nom;
+	}
+	
+
+	public final String getNom() {
+		return this.nomProperty().get();
+	}
+	
+
+	public final void setNom(final String nom) {
+		this.nomProperty().set(nom);
+	}
 	
 	
-	
-	
+	@Override
+	public int hashCode() {
+		return Objects.hash(num.getValue());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Club other = (Club) obj;
+		return Objects.equals(num.getValue(), other.num.getValue());
+	}	
 }

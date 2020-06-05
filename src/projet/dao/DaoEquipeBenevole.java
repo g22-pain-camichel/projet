@@ -12,7 +12,7 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
-import projet.data.Benevole;
+import projet.data.Epreuve;
 import projet.data.EquipeBenevole;
 
 
@@ -249,6 +249,36 @@ public class DaoEquipeBenevole {
 			}
             rs = stmt.executeQuery();
             
+			List<EquipeBenevole> benevoles = new ArrayList<>();
+			while (rs.next()) {
+				benevoles.add( construireEquipeBenevole(rs, false) );
+			}
+			return benevoles;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
+	public List<EquipeBenevole> equipesEpreuve(Epreuve ep)   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM equipebenevole eq, tache t, lier l, epreuve ep WHERE "
+					+ "eq.libelle = t.libelle AND t.libelle = l.libelle AND l.nom = ep.nom"
+					+ " AND ep.nom = ?";
+			stmt = cn.prepareStatement(sql);
+			stmt.setObject(1, ep.getNom());
+			rs = stmt.executeQuery();
+			
 			List<EquipeBenevole> benevoles = new ArrayList<>();
 			while (rs.next()) {
 				benevoles.add( construireEquipeBenevole(rs, false) );

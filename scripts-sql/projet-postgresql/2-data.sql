@@ -141,11 +141,11 @@ ALTER TABLE participant ALTER COLUMN num RESTART WITH 5;
 	
 	-- Club
 
-INSERT INTO club (num, nomCapitain, nbRepasReserves, numParticipant, categorie, estValide, activite) VALUES
-	(1, 'luc', 3, 1, 0, false, 0),
-	(2, 'suzane', 3, 4, 1, false, 0),
-	(3, 'julie', 4, 2, 1, false, 1),
-	(4, 'ange', 3, 3, 3, false, 1);
+INSERT INTO club (num, nom, nomCapitain, nbRepasReserves, numParticipant, categorie, estValide, activite) VALUES
+	(1, 'manchester', 'luc', 3, 1, 0, false, 0),
+	(2, 'barcelone', 'suzane', 3, 4, 1, false, 0),
+	(3, 'madrid', 'julie', 4, 2, 1, false, 1),
+	(4, 'arsenal', 'ange', 3, 3, 3, false, 1);
 
 ALTER TABLE club ALTER COLUMN num RESTART WITH 5;
 	
@@ -194,5 +194,5 @@ INSERT INTO lier (nom, libelle, statut) VALUES
 INSERT INTO inscrire (nom, num) VALUES
 	('epreuve 1', 3),
 	('epreuve 2', 1),
-	('epreuve 3', 4),
-	('epreuve 4', 2);
+	('epreuve 1', 4),
+	('epreuve 2', 2);
