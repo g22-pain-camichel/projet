@@ -70,8 +70,7 @@ public class ListeBenevoleController {
 		// data binding
 		courant = modelBenevole.getCourant();
 		permi = modelBenevole.getPermi();
-		listView.setCellFactory(UtilFX.cellFactory(item -> item.getNom()+" "+item.getPrenom()+
-				" [ validé: "+item.getEstValide().toString()+ " ]"));
+		System.out.println("avant: "+listView.getSelectionModel().getSelectedIndex());
 		if (txt.equals("Valide")) {
 			listView.setItems(modelBenevole.getListe(true));
 		}
@@ -81,11 +80,15 @@ public class ListeBenevoleController {
 		else {
 			listView.setItems(modelBenevole.getListe());
 		}
+		listView.setCellFactory(UtilFX.cellFactory(item -> item.getNom()+" "+item.getPrenom()+
+				" [ validé: "+item.getEstValide().toString()+ " ]"));
+		
 		comboBox_typeB.setItems(FXCollections.observableArrayList("interne", "externe"));
 		
 		if (courant.getIdentifiant() != null) {
-			UtilFX.selectInListView( listView, modelBenevole.getCourant() );
+			UtilFX.selectInListView( listView, courant );
 			listView.requestFocus();
+			System.out.println("avant: "+listView.getSelectionModel().getSelectedIndex());
 			label_valide.setText(courant.getEstValide().toString());
 			
 			if (courant.getEstValide()) {
