@@ -83,7 +83,7 @@ public class EpreuveController {
 		if (comboBox_epreuve.getSelectionModel().getSelectedIndex() > -1) {
 			modelEpreuve.preparerAjouter();
 			modelEpreuve.preparerModifier(comboBox_epreuve.getSelectionModel().getSelectedItem());
-			initialize();
+			initialize();			
 		}
 	}
 	

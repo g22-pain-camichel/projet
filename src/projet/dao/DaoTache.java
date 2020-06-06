@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
+import projet.data.Benevole;
 import projet.data.Epreuve;
 import projet.data.Tache;
 
@@ -126,6 +128,32 @@ public class DaoTache {
 			}
 		}
 		
+		public List<Tache> listerTout() {
+
+			Connection			cn 		= null;
+			PreparedStatement	stmt 	= null;
+			ResultSet 			rs		= null;
+			String				sql;
+
+			try {
+				cn = dataSource.getConnection();
+				sql = "SELECT * FROM tache ";
+				stmt = cn.prepareStatement( sql );
+				rs = stmt.executeQuery();
+
+				List<Tache> taches = new LinkedList<>();
+				while (rs.next()) {
+					taches.add( construireTache( rs ) );
+				}
+				return taches;
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
+		
 		public List<Tache> listerTout(Epreuve epreuve) {
 
 			Connection			cn 		= null;
@@ -153,6 +181,35 @@ public class DaoTache {
 				UtilJdbc.close( rs, stmt, cn );
 			}
 		}
+		
+
+		public List<Tache> listerTaches(String value)   {
+
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+			String				sql;
+
+			try {
+				cn = dataSource.getConnection();
+				sql = "SELECT * FROM tache WHERE libelle LIKE ('%' || ? || '%')";
+				stmt = cn.prepareStatement(sql);
+				stmt.setObject( 1, value);
+	            rs = stmt.executeQuery();
+	            
+				List<Tache> taches = new ArrayList<>();
+				while (rs.next()) {
+					taches.add( construireTache(rs) );
+				}
+				return taches;
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
+
 		
 		private Tache construireTache( ResultSet rs ) throws SQLException {
 			Tache tache = new Tache();

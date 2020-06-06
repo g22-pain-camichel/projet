@@ -175,9 +175,11 @@ public class EquipeBenevoleController {
 	
 	@FXML
 	public void doFillGap() {
-		modelEquipeBenevole.preparerAjouter();
-		modelEquipeBenevole.preparerModifier(listView.getSelectionModel().getSelectedItem() );
-		initialize();
+		if (listView.getSelectionModel().getSelectedIndex() > -1) {
+			modelEquipeBenevole.preparerAjouter();
+			modelEquipeBenevole.preparerModifier(listView.getSelectionModel().getSelectedItem() );
+			initialize();			
+		}
 	}
 	
 	@FXML

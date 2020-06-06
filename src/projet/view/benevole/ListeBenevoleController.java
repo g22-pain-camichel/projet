@@ -127,9 +127,11 @@ public class ListeBenevoleController {
 	
 	@FXML
 	public void doFillGap() {
-		modelBenevole.preparerAjouter();
-		modelBenevole.preparerModifier(listView.getSelectionModel().getSelectedItem() );
-		initialize();
+		if (listView.getSelectionModel().getSelectedIndex() > -1) {
+			modelBenevole.preparerAjouter();
+			modelBenevole.preparerModifier(listView.getSelectionModel().getSelectedItem() );
+			initialize();						
+		}
 	}
 	
 	@FXML

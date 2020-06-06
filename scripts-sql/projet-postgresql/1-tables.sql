@@ -120,7 +120,7 @@ CREATE TABLE participant(
 ------------------------------------------------------------
 CREATE TABLE tache(
 	libelle       VARCHAR (20) NOT NULL ,
-	emplacement   VARCHAR (20) NOT NULL  ,
+	emplacement   VARCHAR (50) NOT NULL  ,
     hr_deb      TIME NOT NULL ,
     hr_fin      TIME NOT NULL ,
     taille      INT NOT NULL,
