@@ -263,6 +263,19 @@
                         </JFXButton>
                      </children>
                   </HBox>
+                  <HBox alignment="CENTER" layoutX="358.0" layoutY="-5.0" prefHeight="40.0" prefWidth="107.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" prefHeight="28.0" prefWidth="96.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Rafraîchir">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/refresh.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
             <Label layoutX="71.0" layoutY="17.0" text="Equipe de Participants" textFill="#4485fc" underline="true" />

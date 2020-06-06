@@ -88,7 +88,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <AnchorPane layoutX="341.0" layoutY="171.0" minHeight="0.0" minWidth="0.0" prefHeight="408.0" prefWidth="476.0">
+            <AnchorPane layoutX="341.0" layoutY="152.0" minHeight="0.0" minWidth="0.0" prefHeight="391.0" prefWidth="476.0">
                <children>
                   <HBox alignment="CENTER" layoutX="47.0" layoutY="323.0" prefHeight="40.0" prefWidth="322.0" spacing="10.0">
                      <children>
@@ -163,6 +163,19 @@
                         <TextField fx:id="textField_location" prefHeight="25.0" prefWidth="199.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
+                  <HBox alignment="CENTER" layoutX="350.0" prefHeight="40.0" prefWidth="107.0">
+                     <children>
+                        <JFXButton buttonType="RAISED" prefHeight="28.0" prefWidth="96.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Rafraîchir">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../images/refresh.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
          </children>
