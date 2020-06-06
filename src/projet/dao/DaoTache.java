@@ -117,7 +117,7 @@ public class DaoTache {
 				rs = stmt.executeQuery();
 
 				if ( rs.next() ) {
-					return construireTache( rs );
+					return construireTache( rs, false );
 				} else {
 					return null;
 				}
@@ -128,22 +128,23 @@ public class DaoTache {
 			}
 		}
 		
-		public List<Tache> listerTout() {
+		public List<Tache> listerTout()   {
 
-			Connection			cn 		= null;
-			PreparedStatement	stmt 	= null;
-			ResultSet 			rs		= null;
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
 			String				sql;
 
 			try {
 				cn = dataSource.getConnection();
-				sql = "SELECT * FROM tache ";
-				stmt = cn.prepareStatement( sql );
-				rs = stmt.executeQuery();
 
-				List<Tache> taches = new LinkedList<>();
+				sql = "SELECT * FROM tache ORDER BY libelle";
+				stmt = cn.prepareStatement(sql);
+				rs = stmt.executeQuery();
+				
+				List<Tache> taches = new ArrayList<>();
 				while (rs.next()) {
-					taches.add( construireTache( rs ) );
+					taches.add( construireTache(rs, false) );
 				}
 				return taches;
 
@@ -171,7 +172,7 @@ public class DaoTache {
 
 				List<Tache> taches = new LinkedList<>();
 				while (rs.next()) {
-					taches.add( construireTache( rs ) );
+					taches.add( construireTache( rs, false ) );
 				}
 				return taches;
 
@@ -199,7 +200,7 @@ public class DaoTache {
 	            
 				List<Tache> taches = new ArrayList<>();
 				while (rs.next()) {
-					taches.add( construireTache(rs) );
+					taches.add( construireTache(rs, false) );
 				}
 				return taches;
 
@@ -211,7 +212,7 @@ public class DaoTache {
 		}
 
 		
-		private Tache construireTache( ResultSet rs ) throws SQLException {
+		private Tache construireTache( ResultSet rs, boolean flagComplet  ) throws SQLException {
 			Tache tache = new Tache();
 			tache.setLibelle(rs.getObject( "libelle", String.class ) );
 			tache.setEmplacement( rs.getObject( "emplacement", String.class ) );

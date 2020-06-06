@@ -6,22 +6,21 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.jfoenix.controls.JFXTimePicker;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import jfox.javafx.util.ConverterStringInteger;
-import jfox.javafx.util.ListenerFocusValidation;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
-import projet.data.Tache;
 import projet.data.Tache;
 import projet.view.EnumView;
 
 public class TacheController {
 	@Inject
 	private IManagerGui		managerGui;
+	
 	@Inject
 	private ModelTache modelTache;
 	
@@ -32,55 +31,42 @@ public class TacheController {
 	private JFXTimePicker timePicker_startH, timePicker_endH;
 	
 	@FXML
-	private Button button_create, button_update, button_delete, button_find;
+	private ListView<Tache> listView;
 	
 	@FXML
-	private ListView<Tache> listView;
+	private ComboBox<String> comboBox_typeB, comboBox_valideB; 
+	
+	@FXML
+	private Button button_create, button_update, button_delete, 
+		button_find, button_annuler;
 	
 	private Tache tache;
 	
+	
 	@FXML
 	private void initialize() {
+		// data binding
 		tache = modelTache.getTache();
-		
 		listView.setItems(modelTache.getListe());
-		listView.setCellFactory(UtilFX.cellFactory(item -> item.getLibelle()));		
-		disableForm();
+		listView.setCellFactory(UtilFX.cellFactory(item -> item.getLibelle()));
+		button_create.setDisable(false);
+		
 		if (tache.getLibelle() != null) {
-			UtilFX.selectInListView(listView, modelTache.getTache());
+			
+			UtilFX.selectInListView( listView, tache );
 			listView.requestFocus();
-			enableForm();
+
 			button_create.setDisable(true);
 			
+			textField_size.textProperty().bindBidirectional(tache.tailleProperty(), new ConverterStringInteger());
+			
 			textField_nom.textProperty().bindBidirectional(tache.libelleProperty());
-			textField_size.textProperty().bindBidirectional(tache.tailleProperty(),  new ConverterStringInteger());
-			textField_size.focusedProperty().addListener(new ListenerFocusValidation(tache.tailleProperty(), "Un nombre valide est demandé"));
+			
 			textField_location.textProperty().bindBidirectional(tache.emplacementProperty());
+			
 			timePicker_startH.getEditor().textProperty().bindBidirectional(tache.hr_debProperty());
 			timePicker_endH.getEditor().textProperty().bindBidirectional(tache.hr_finProperty());
 		}
-	}
-	
-	public void disableForm() {
-		textField_nom.setDisable(true);
-		textField_location.setDisable(true);
-		textField_size.setDisable(true);
-		button_create.setDisable(true);
-		button_update.setDisable(true);
-		button_delete.setDisable(true);
-		timePicker_startH.setDisable(true);
-		timePicker_endH.setDisable(true);
-	}
-	
-	public void enableForm() {
-		textField_nom.setDisable(false);
-		textField_location.setDisable(false);
-		textField_size.setDisable(false);
-		button_create.setDisable(false);
-		button_update.setDisable(false);
-		button_delete.setDisable(false);
-		timePicker_startH.setDisable(false);
-		timePicker_endH.setDisable(false);
 	}
 	
 	@FXML
@@ -88,12 +74,14 @@ public class TacheController {
 		if (listView.getSelectionModel().getSelectedIndex() > -1) {
 			modelTache.preparerAjouter();
 			modelTache.preparerModifier(listView.getSelectionModel().getSelectedItem() );
-			initialize();			
+			initialize();						
 		}
-		else {
-			modelTache.preparerAjouter();
-			initialize();
-		}
+	}
+	
+	@FXML
+	public void doUndo() throws ParseException {
+		modelTache.preparerAjouter();
+		initialize();
 	}
 	
 	@FXML

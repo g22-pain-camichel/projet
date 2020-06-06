@@ -1,6 +1,8 @@
 package projet.data;
 
 
+import java.util.Objects;
+
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -85,6 +87,25 @@ public class Tache {
 
 	public final void setTaille(final Integer taille) {
 		this.tailleProperty().setValue(taille);
+	}
+
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(getLibelle());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tache other = (Tache) obj;
+		return Objects.equals(getLibelle(), other.getLibelle());
 	}
 
 	@Override

@@ -56,7 +56,6 @@
          <children>
             <AnchorPane layoutX="45.0" layoutY="114.0" minHeight="0.0" minWidth="0.0" prefHeight="449.0" prefWidth="267.0">
                <children>
-                  <ListView fx:id="listView" layoutY="54.0" onMouseClicked="#doFillGap" prefHeight="405.0" prefWidth="267.0" />
                   <HBox layoutY="7.0" prefHeight="31.0" prefWidth="267.0" spacing="15.0">
                      <children>
                         <JFXTextField fx:id="textField_find" focusColor="#6b8cee" prefHeight="25.0" prefWidth="167.0" promptText="Benevole [ nom | id ]" />
@@ -71,6 +70,7 @@
                         </JFXButton>
                      </children>
                   </HBox>
+                  <ListView fx:id="listView" layoutY="54.0" onMouseClicked="#doFillGap" prefHeight="405.0" prefWidth="267.0" />
                </children>
             </AnchorPane>
             <Label layoutX="56.0" layoutY="17.0" text=" &gt; " />
