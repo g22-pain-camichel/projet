@@ -3,12 +3,25 @@ package projet.view.participant;
 import javax.inject.Inject;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import jfox.javafx.view.IManagerGui;
 import projet.view.EnumView;
+import projet.view.connexion.ModelConnexion;
 
 public class InscrireParticipantController {
 	@Inject
 	private IManagerGui		managerGui;
+	@Inject 
+	private ModelConnexion modelConnexion;
+	
+	@FXML
+	private Label user;
+	
+	@FXML 
+	private void initialize() {
+		// TODO Auto-generated method stub
+		user.setText(modelConnexion.getUtilisateurActif().getPseudo());
+	}
 	
 	@FXML
 	public void doAccueil() {
@@ -17,6 +30,7 @@ public class InscrireParticipantController {
 	
 	@FXML
 	public void deconnexion() {
+		modelConnexion.fermerSessionUtilisateur();
 		managerGui.showView(EnumView.Connexion);
 	}
 }

@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
@@ -26,13 +27,19 @@ import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Participant;
 import projet.view.EnumView;
+import projet.view.connexion.ModelConnexion;
 
 public class ListeParticipantController {
 	@Inject
 	private IManagerGui		managerGui;
+	@Inject 
+	private ModelConnexion modelConnexion;
 	
 	@Inject
 	private ModelParticipantListe modelParticipant;
+	
+	@FXML
+	private Label user;
 	
 	@FXML
 	private TextField textField_id, textField_name, textField_surname, textField_email,
@@ -52,6 +59,8 @@ public class ListeParticipantController {
 	
 	@FXML
 	private void initialize() {
+
+		user.setText(modelConnexion.getUtilisateurActif().getPseudo());
 		// data binding
 		courant = modelParticipant.getCourant();
 		listView.setItems(modelParticipant.getListe());
@@ -122,6 +131,7 @@ public class ListeParticipantController {
 	
 	@FXML
 	public void deconnexion() {
+		modelConnexion.fermerSessionUtilisateur();
 		managerGui.showView(EnumView.Connexion);
 	}
 	

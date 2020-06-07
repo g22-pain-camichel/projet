@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXTimePicker;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import jfox.javafx.util.ConverterStringInteger;
@@ -16,13 +17,19 @@ import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Tache;
 import projet.view.EnumView;
+import projet.view.connexion.ModelConnexion;
 
 public class TacheController {
 	@Inject
 	private IManagerGui		managerGui;
+	@Inject 
+	private ModelConnexion modelConnexion;
 	
 	@Inject
 	private ModelTache modelTache;
+
+	@FXML
+	private Label user;
 	
 	@FXML
 	private TextField textField_nom, textField_size, textField_location, textField_find;
@@ -45,6 +52,7 @@ public class TacheController {
 	
 	@FXML
 	private void initialize() {
+		user.setText(modelConnexion.getUtilisateurActif().getPseudo());
 		// data binding
 		tache = modelTache.getTache();
 		listView.setItems(modelTache.getListe());
@@ -119,6 +127,7 @@ public class TacheController {
 	
 	@FXML
 	public void deconnexion() {
+		modelConnexion.fermerSessionUtilisateur();
 		managerGui.showView(EnumView.Connexion);
 	}
 }

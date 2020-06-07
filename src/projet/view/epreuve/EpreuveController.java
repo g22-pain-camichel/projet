@@ -16,12 +16,15 @@ import projet.data.Club;
 import projet.data.Epreuve;
 import projet.data.EquipeBenevole;
 import projet.view.EnumView;
+import projet.view.connexion.ModelConnexion;
 
 public class EpreuveController {
 	@Inject
 	private IManagerGui		managerGui;
 	@Inject
 	private ModelEpreuve modelEpreuve;
+	@Inject 
+	private ModelConnexion modelConnexion;
 	
 	@FXML
 	private ComboBox<Epreuve> comboBox_epreuve;
@@ -30,7 +33,7 @@ public class EpreuveController {
 	private Button button_display;
 	
 	@FXML
-	private Label label_ep, label_dist, label_hrDeb, label_hrFin;
+	private Label label_ep, label_dist, label_hrDeb, label_hrFin, user;
 
 	@FXML
 	private TableView<EquipeBenevole> tableView_b;
@@ -48,6 +51,8 @@ public class EpreuveController {
 	
 	@FXML
 	private void initialize() {
+
+		user.setText(modelConnexion.getUtilisateurActif().getPseudo());
 		epreuve = modelEpreuve.getEpreuve();
 		// initialisation des tableaux
 		
@@ -94,6 +99,7 @@ public class EpreuveController {
 	
 	@FXML
 	public void deconnexion() {
+		modelConnexion.fermerSessionUtilisateur();
 		managerGui.showView(EnumView.Connexion);
 	}
 	

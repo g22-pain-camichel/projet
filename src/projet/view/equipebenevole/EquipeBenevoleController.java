@@ -25,15 +25,18 @@ import projet.data.Epreuve;
 import projet.data.EquipeBenevole;
 import projet.data.Tache;
 import projet.view.EnumView;
+import projet.view.connexion.ModelConnexion;
 
 public class EquipeBenevoleController {
 	@Inject
 	private IManagerGui		managerGui;
 	@Inject
 	private ModelEquipeBenevole modelEquipeBenevole;
+	@Inject 
+	private ModelConnexion modelConnexion;
 	
 	@FXML
-	private Label label_valide;
+	private Label label_valide, user;
 	
 	@FXML
 	private TextField textField_find, textField_equipe, textField_nbre, textField_id;
@@ -67,11 +70,9 @@ public class EquipeBenevoleController {
 	
 	private String txt = "";
 	
-	private StringProperty libelle = new SimpleStringProperty();
-	
 	@FXML
 	private void initialize() {
-		
+		user.setText(modelConnexion.getUtilisateurActif().getPseudo());
 		// data binding
 		courant = modelEquipeBenevole.getCourant();
 		epreuve = modelEquipeBenevole.getEpreuve();
@@ -276,6 +277,7 @@ public class EquipeBenevoleController {
 	
 	@FXML
 	public void deconnexion() {
+		modelConnexion.fermerSessionUtilisateur();
 		managerGui.showView(EnumView.Connexion);
 	}
 	

@@ -29,16 +29,19 @@ import jfox.javafx.view.IManagerGui;
 import projet.data.Benevole;
 import projet.data.Permi;
 import projet.view.EnumView;
+import projet.view.connexion.ModelConnexion;
 
 public class ListeBenevoleController {
 	@Inject
 	private IManagerGui		managerGui;
+	@Inject 
+	private ModelConnexion modelConnexion;
 	
 	@Inject
 	private ModelBenevole modelBenevole;
 	
 	@FXML
-	private Label label_valide,label_nomPermi;
+	private Label label_valide,label_nomPermi, user;
 	
 	@FXML
 	private TextField textField_id, textField_name, textField_surname, textField_email,
@@ -71,6 +74,8 @@ public class ListeBenevoleController {
 	
 	@FXML
 	private void initialize() {
+
+		user.setText(modelConnexion.getUtilisateurActif().getPseudo());
 		// data binding
 		courant = modelBenevole.getCourant();
 		permi = modelBenevole.getPermi();
@@ -201,6 +206,7 @@ public class ListeBenevoleController {
 	
 	@FXML
 	public void deconnexion() {
+		modelConnexion.fermerSessionUtilisateur();
 		managerGui.showView(EnumView.Connexion);
 	}
 	
