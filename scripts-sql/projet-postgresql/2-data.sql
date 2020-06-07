@@ -129,7 +129,7 @@ INSERT INTO benevole (identifiant, nom, prenom, sexe, dtNaiss, email, tel, type,
   	(18, 'maillard', 'honore', 0, {d'1996-02-20'}, 'maillard.honore@hotmail.com', '+33 02 98 38 56 02 ', 'externe', {t '14:00'}, {t '20:30'}, false, NULL),
   	(19, 'boyer', 'gabriel', 0, {d'1999-12-30'}, 'boyer.gabriel@hotmail.com', '+33 02 98 38 56 02 ', 'externe', {t '14:00'}, {t '20:30'}, false, NULL),
   	(20, 'Adele', 'Barthelemy', 0, {d'1997-01-01'}, 'adele.barthelemy@gmail.com', '+33 02 99 61 54 01 ', 'interne', {t '08:00'}, {t '21:30'}, false, NULL);
-ALTER TABLE benevole ALTER COLUMN identifiant RESTART WITH 6;
+ALTER TABLE benevole ALTER COLUMN identifiant RESTART WITH 21;
 
   -- Participant 
   
@@ -156,34 +156,24 @@ INSERT INTO participant (num, nom, prenom, sexe, dtNaiss, email, tel, role, adre
   	(20, 'suzane', 'beldouce', 0, {d'2002-09-29'}, 'suzaned@gmail.com', '+33 06 49 03 75 10', 1, 'xxxxxxxxxxxx', NULL, false);
   
 
-ALTER TABLE participant ALTER COLUMN num RESTART WITH 5;
+ALTER TABLE participant ALTER COLUMN num RESTART WITH 21;
 	
 	-- Club
 
-<<<<<<< HEAD
-INSERT INTO club (num, nom, nomCapitain, nbRepasReserves, numParticipant, categorie, estValide, activite) VALUES
-	(1, 'manchester', 'luc', 3, 1, 0, false, 0),
-	(2, 'manchester', 'julie', 3, 2, 0, false, 0),
-	(3, 'barcelone', 'ange', 3, 4, 3, false, 0),
-	(4, 'barcelone', 'suzane', 3, 20, 1, false, 0),
-	(5, 'madrid', 'renard', 4, 19, 1, false, 1),
-	(6, 'madrid', 'leconte', 4,18, 1, false, 1),
-	(7, 'ajax', 'renee', 4, 5, 1, false, 1),
-	(8, 'ajax', 'bazin', 4, 17, 1, false, 1),
-	(9, 'atletico', 'margaud', 4, 6, 1, false, 1),
-	(10, 'atletico', 'guillon', 4, 14, 1, false, 1),
-	(11, 'Chelsea', 'gerard', 4, 7, 1, false, 1),
-	(12, 'liverpool', 'elise', 4, 8, 1, false, 1),
-	(13, 'Arsenal', 'julie', 4, 2, 1, false, 1),
-	(14, 'City', 'andree', 4, 9, 1, false, 1),
-	(15, 'Inter', 'alphonse', 3, 12, 3, false, 1);
-=======
-INSERT INTO club (num, nom, numCapitaine,numEquipier, nbRepasReserves, categorie, estValide, activite) VALUES
-	(1, 'manchester',1,2, 3, 0, false, 0),
-	(2, 'barcelone', 3,4, 5, 1, false, 1);
->>>>>>> branch 'master' of https://github.com/g22-pain-camichel/projet
 
-ALTER TABLE club ALTER COLUMN num RESTART WITH 3;
+INSERT INTO club (num, nom, numCapitaine,numEquipier, nbRepasReserves, categorie, estValide, activite) VALUES
+	(1, 'manchester',1,2 , 3, 0, false, 0),
+	(2, 'manches',  3, 4, 2, 0, false, 0),
+	(3, 'barcelone', 5, 6, 4, 3, false, 0),
+	(4, 'battant', 7, 8, 6, 1, false, 0),
+	(5, 'madrid', 9, 10,1, 1, false, 1),
+	(6, 'madridos', 11,12,4, 1, false, 1),
+	(7, 'ajax',  13, 14, 5, 1, false, 1),
+	(8, 'ajaxo',  15, 16, 17, 1, false, 1),
+	(9, 'atletico', 17, 18, 6, 1, false, 1),
+	(10, 'atlet', 19, 20, 14, 1, false, 1);
+
+ALTER TABLE club ALTER COLUMN num RESTART WITH 11;
 	
 	-- Tache
 

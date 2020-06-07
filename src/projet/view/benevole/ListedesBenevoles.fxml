@@ -73,7 +73,7 @@
                         </JFXButton>
                      </children>
                   </HBox>
-                  <ListView fx:id="listView" layoutY="54.0" onMouseClicked="#doFillGap" prefHeight="405.0" prefWidth="267.0" />
+                  <ListView fx:id="listView" layoutY="54.0" onMouseClicked="#doFillGap" prefHeight="381.0" prefWidth="267.0" />
                </children>
             </AnchorPane>
             <Label layoutX="56.0" layoutY="17.0" text=" &gt; " />
@@ -239,7 +239,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <HBox layoutX="45.0" layoutY="571.0" prefHeight="27.0" prefWidth="267.0">
+            <HBox layoutX="45.0" layoutY="541.0" prefHeight="27.0" prefWidth="267.0">
                <children>
                   <Button fx:id="button_init" mnemonicParsing="false" onAction="#doInitList" prefHeight="27.0" prefWidth="142.0" text="Initiale">
                      <cursor>
@@ -255,6 +255,15 @@
                      </cursor></Button>
                </children>
             </HBox>
+            <JFXButton buttonType="RAISED" layoutX="45.0" layoutY="580.0" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 5;" text="Imprimer">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/print.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
          <padding>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />

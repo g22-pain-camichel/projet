@@ -30,6 +30,7 @@ public class ControllerAccueil {
 		totalP.setText(modelAccueil.totalParticipant());
 		totalEqP.setText(modelAccueil.totalEquipeParticipant());
 		user.setText(modelConnexion.getUtilisateurActif().getPseudo());
+		
 	}
 	
 	@FXML

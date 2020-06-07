@@ -139,7 +139,6 @@ public class DaoClub {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
-
 	
 	public List<Club> listerTout()   {
 
