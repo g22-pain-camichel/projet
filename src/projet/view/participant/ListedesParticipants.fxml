@@ -164,10 +164,13 @@
                         <Label text="Adresse" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
                         <TextField fx:id="textfield_adresse" prefHeight="25.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
                         <Label text="Certificat médical" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-                        <Label fx:id="label_cm" alignment="CENTER" prefHeight="59.0" prefWidth="150.0" text="nomcertificat.pdf" textFill="#000dff" underline="true" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                        <Label fx:id="label_cm" alignment="CENTER" onMouseClicked="#doVisualiserDocument" prefHeight="59.0" prefWidth="150.0" text="nomcertificat.pdf" textFill="#000dff" underline="true" wrapText="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                            <font>
                               <Font name="Gadugi" size="13.0" />
-                           </font></Label>
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Label>
                         <Label text="ID" GridPane.halignment="CENTER" />
                         <TextField fx:id="textField_id" editable="false" prefHeight="25.0" prefWidth="57.0" GridPane.columnIndex="1" />
                         <Label text="Nom club" GridPane.columnIndex="2" GridPane.halignment="CENTER" />

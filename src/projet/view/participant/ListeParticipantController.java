@@ -87,9 +87,6 @@ public class ListeParticipantController {
 			
 			textField_phone.textProperty().bindBidirectional(courant.telProperty());
 			
-			textfield_adresse.textProperty().bindBidirectional(courant.adressePostProperty());
-			
-			label_cm.setText(courant.getCm());
 			
 						
 		}
