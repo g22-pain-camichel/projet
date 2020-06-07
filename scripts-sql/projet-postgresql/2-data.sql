@@ -100,11 +100,11 @@ ALTER TABLE service ALTER COLUMN idservice RESTART WITH 5;
   
   -- Permi
   
-INSERT INTO permi(numero, dateDelivrance, lieu) VALUES
-	(911091204209, {d'2000-08-02'}, 'foreke'),
-	(122082203108, {d'1990-10-20'}, 'bamenda'),
-	(788171614617, {d'1999-01-15'}, 'bouda'),
-	(513853284285, {d'2003-11-08'}, 'doul');
+INSERT INTO permi(numero,nom, dateDelivrance, lieu) VALUES
+	(911091204209,NULL, {d'2000-08-02'}, 'foreke'),
+	(122082203108,NULL, {d'1990-10-20'}, 'bamenda'),
+	(788171614617,NULL, {d'1999-01-15'}, 'bouda'),
+	(513853284285,NULL,{d'2003-11-08'}, 'doul');
 
   -- Benevole 
   
@@ -160,6 +160,7 @@ ALTER TABLE participant ALTER COLUMN num RESTART WITH 5;
 	
 	-- Club
 
+<<<<<<< HEAD
 INSERT INTO club (num, nom, nomCapitain, nbRepasReserves, numParticipant, categorie, estValide, activite) VALUES
 	(1, 'manchester', 'luc', 3, 1, 0, false, 0),
 	(2, 'manchester', 'julie', 3, 2, 0, false, 0),
@@ -176,8 +177,13 @@ INSERT INTO club (num, nom, nomCapitain, nbRepasReserves, numParticipant, catego
 	(13, 'Arsenal', 'julie', 4, 2, 1, false, 1),
 	(14, 'City', 'andree', 4, 9, 1, false, 1),
 	(15, 'Inter', 'alphonse', 3, 12, 3, false, 1);
+=======
+INSERT INTO club (num, nom, numCapitaine,numEquipier, nbRepasReserves, categorie, estValide, activite) VALUES
+	(1, 'manchester',1,2, 3, 0, false, 0),
+	(2, 'barcelone', 3,4, 5, 1, false, 1);
+>>>>>>> branch 'master' of https://github.com/g22-pain-camichel/projet
 
-ALTER TABLE club ALTER COLUMN num RESTART WITH 5;
+ALTER TABLE club ALTER COLUMN num RESTART WITH 3;
 	
 	-- Tache
 
@@ -222,7 +228,5 @@ INSERT INTO lier (nom, libelle, statut) VALUES
 	-- Inscrire
 	
 INSERT INTO inscrire (nom, num) VALUES
-	('epreuve 1', 3),
 	('epreuve 2', 1),
-	('epreuve 1', 4),
-	('epreuve 2', 2);
+	('epreuve 1', 2);
