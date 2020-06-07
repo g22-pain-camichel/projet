@@ -67,6 +67,9 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </JFXButton>
                      </children>
                   </HBox>
@@ -91,6 +94,9 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </JFXButton>
                         <JFXButton fx:id="button_update" buttonType="RAISED" onAction="#doUpdate" prefHeight="28.0" prefWidth="98.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Modifier">
                            <graphic>
@@ -100,6 +106,9 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </JFXButton>
                         <JFXButton fx:id="button_delete" buttonType="RAISED" onAction="#doDelete" prefHeight="28.0" prefWidth="97.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Supprimer">
                            <graphic>
@@ -109,6 +118,9 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </JFXButton>
                      </children>
                   </HBox>
@@ -126,11 +138,11 @@
                         </Label>
                      </children>
                   </HBox>
-                  <GridPane alignment="CENTER" layoutX="6.0" layoutY="53.0" prefHeight="340.0" prefWidth="455.0">
+                  <GridPane alignment="CENTER" layoutX="6.0" layoutY="53.0" prefHeight="340.0" prefWidth="472.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.66666666666667" minWidth="10.0" prefWidth="108.66666666666667" />
-                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="148.66666666666666" minWidth="10.0" prefWidth="114.00000000000001" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.00004069010416" minWidth="10.0" prefWidth="114.66668701171878" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.66666666666667" minWidth="10.0" prefWidth="99.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="154.0" minWidth="10.0" prefWidth="147.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.00004069010416" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.66668701171875" minWidth="10.0" prefWidth="116.66666666666663" />
                     </columnConstraints>
                     <rowConstraints>
@@ -179,7 +191,13 @@
                         <DatePicker fx:id="datePicker_permi" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <Label text="ID" GridPane.halignment="CENTER" />
                         <TextField fx:id="textField_id" editable="false" prefHeight="25.0" prefWidth="51.0" GridPane.columnIndex="1" />
-                        <Label text="nompermis.pdf" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label fx:id="label_nomPermi" onMouseClicked="#doVisualiserDocument" prefHeight="42.0" prefWidth="149.0" text="nompermis.pdf" textFill="#0d38e4" underline="true" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Gadugi" size="13.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Label>
                         <Label text="Validé" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
                         <Label fx:id="label_valide" text="False" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                            <font>
@@ -198,6 +216,9 @@
                                  </image>
                               </ImageView>
                            </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </JFXButton>
                      </children>
                   </HBox>
@@ -220,9 +241,18 @@
             </Pane>
             <HBox layoutX="45.0" layoutY="571.0" prefHeight="27.0" prefWidth="267.0">
                <children>
-                  <Button fx:id="button_init" mnemonicParsing="false" onAction="#doInitList" prefHeight="27.0" prefWidth="142.0" text="Initiale" />
-                  <Button fx:id="button_validB" mnemonicParsing="false" onAction="#find_validB" prefHeight="27.0" prefWidth="147.0" text="Valide" />
-                  <Button fx:id="button_nonValidB" mnemonicParsing="false" onAction="#find_nonValidB" prefHeight="27.0" prefWidth="146.0" text="Non valide" />
+                  <Button fx:id="button_init" mnemonicParsing="false" onAction="#doInitList" prefHeight="27.0" prefWidth="142.0" text="Initiale">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="button_validB" mnemonicParsing="false" onAction="#find_validB" prefHeight="27.0" prefWidth="147.0" text="Valide">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="button_nonValidB" mnemonicParsing="false" onAction="#find_nonValidB" prefHeight="27.0" prefWidth="146.0" text="Non valide">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
             </HBox>
          </children>

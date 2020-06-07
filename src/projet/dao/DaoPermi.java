@@ -31,11 +31,12 @@ public class DaoPermi {
 
 			try {
 				cn = dataSource.getConnection();
-				sql = "INSERT INTO permi (numero, lieu, dateDelivrance) VALUES (?,?,?)";
+				sql = "INSERT INTO permi (numero,nom, lieu, dateDelivrance) VALUES (?,?,?,?)";
 				stmt = cn.prepareStatement( sql );
 				stmt.setObject(1, permi.getNumero());
-				stmt.setObject(2, permi.getLieu());
-				stmt.setObject(3, permi.getDateDelivrance());
+				stmt.setObject(2, permi.getNom());
+				stmt.setObject(3, permi.getLieu());
+				stmt.setObject(4, permi.getDateDelivrance());
 				stmt.executeUpdate();
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
@@ -145,6 +146,7 @@ public class DaoPermi {
 		private Permi construirePermi( ResultSet rs ) throws SQLException {
 			Permi permi = new Permi();
 			permi.setNumero(rs.getObject( "numero", String.class ) );
+			permi.setNom(rs.getObject("nom",String.class));
 			permi.setLieu(rs.getObject( "Lieu", String.class ) );
 			permi.setDateDelivrance(rs.getObject("dateDelivrance", LocalDate.class));
 			return permi;

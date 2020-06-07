@@ -1,5 +1,9 @@
 package projet.view.benevole;
 
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.util.List;
 
@@ -34,7 +38,7 @@ public class ListeBenevoleController {
 	private ModelBenevole modelBenevole;
 	
 	@FXML
-	private Label label_valide;
+	private Label label_valide,label_nomPermi;
 	
 	@FXML
 	private TextField textField_id, textField_name, textField_surname, textField_email,
@@ -90,6 +94,7 @@ public class ListeBenevoleController {
 			listView.requestFocus();
 			System.out.println("avant: "+listView.getSelectionModel().getSelectedIndex());
 			label_valide.setText(courant.getEstValide().toString());
+			label_nomPermi.setText(permi.getNom());
 			
 			if (courant.getEstValide()) {
 				button_val.setDisable(true);
@@ -213,5 +218,12 @@ public class ListeBenevoleController {
 			Toggle button = toggleSex.getToggles().get(sex);
 			toggleSex.selectToggle(button);
 		}
+	}
+	
+	@FXML
+	public void doVisualiserDocument() throws IOException, URISyntaxException {
+		//Ouvrir le lien de notre site web
+		Desktop d = Desktop.getDesktop();
+		d.browse(new URI("http://localhost/paincamiche/filesb/"+label_nomPermi.getText()));
 	}
 }

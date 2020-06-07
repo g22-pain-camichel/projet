@@ -11,6 +11,7 @@ public class Permi {
 
 	private final StringProperty	numero		= new SimpleStringProperty();
 	private final StringProperty	lieu	= new SimpleStringProperty();
+	private final StringProperty	nom	= new SimpleStringProperty();
 	private final Property<LocalDate> dateDelivrance = new SimpleObjectProperty<LocalDate>();
 	
 	// Constructeurs
@@ -18,8 +19,9 @@ public class Permi {
 	public Permi() {
 	}
 	
-	public Permi( String numero, String lieu, LocalDate dateDelivrance ) {
+	public Permi( String numero,String nom, String lieu, LocalDate dateDelivrance ) {
 		setNumero(numero);
+		setNom(nom);
 		setLieu(lieu);
 		setDateDelivrance(dateDelivrance);
 	}
@@ -34,6 +36,20 @@ public class Permi {
 	
 	public final void setNumero(final String numero) {
 		this.numeroProperty().set(numero);
+	}
+	
+	public final StringProperty nomProperty() {
+		return this.nom;
+	}
+	
+
+	public final String getNom() {
+		return this.nomProperty().get();
+	}
+	
+
+	public final void setNom(final String nom) {
+		this.nomProperty().set(nom);
 	}
 	
 	public final StringProperty lieuProperty() {
@@ -59,6 +75,9 @@ public class Permi {
 	public final void setDateDelivrance(final LocalDate dateDelivrance) {
 		this.dateDelivranceProperty().setValue(dateDelivrance);
 	}
+
+	
+	
 
 
 }
