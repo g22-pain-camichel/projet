@@ -36,11 +36,11 @@ public class EquipeBenevoleController {
 	private Label label_valide;
 	
 	@FXML
-	private TextField textField_find, textField_equipe, textField_nbre;
+	private TextField textField_find, textField_equipe, textField_nbre, textField_id;
 	
 	@FXML
-	private Button button_find, button_addB, button_create, button_update, 
-		button_delete, button_valid, button_validB, button_nValidB, button_init;
+	private Button button_find, button_addB, button_rmvB, button_create, button_update, 
+		button_delete, button_valid, button_validB, button_nValidB, button_refresh, button_init;
 	
 	@FXML
 	private ComboBox<Epreuve> comboBox_epreuve;
@@ -49,7 +49,7 @@ public class EquipeBenevoleController {
 	private ComboBox<Tache> comboBox_tache;
 	
 	@FXML
-	private ComboBox<Benevole> comboBox_bvle;
+	private ComboBox<Benevole> comboBox_ajbvle, comboBox_enbvle;
 	
 	@FXML
 	private ListView<EquipeBenevole> listView;
@@ -103,10 +103,12 @@ public class EquipeBenevoleController {
 		
 		tableView.setItems(modelEquipeBenevole.getListeBE());
 		
-		comboBox_bvle.setDisable(true);
+		comboBox_ajbvle.setDisable(true);
 		button_addB.setDisable(true);
+		comboBox_enbvle.setDisable(true);
+		button_rmvB.setDisable(true);
 		button_create.setDisable(false);
-		
+
 		if (courant.getNum() != null) {
 			
 			UtilFX.selectInListView( listView, modelEquipeBenevole.getCourant() );
@@ -117,11 +119,18 @@ public class EquipeBenevoleController {
 			}
 			else {
 				enableForm();
-				comboBox_bvle.setDisable(false);
-				comboBox_bvle.setItems(modelEquipeBenevole.getListeB());
-				comboBox_bvle.setCellFactory(UtilFX.cellFactory(item -> item.getNom()+
+				comboBox_ajbvle.setDisable(false);
+				comboBox_ajbvle.setItems(modelEquipeBenevole.getListeB());
+				comboBox_ajbvle.setCellFactory(UtilFX.cellFactory(item -> item.getNom()+
 						" "+item.getPrenom()));
 				button_addB.setDisable(false);
+				
+				comboBox_enbvle.setDisable(false);
+				comboBox_enbvle.setItems(modelEquipeBenevole.getListB());
+				comboBox_enbvle.setCellFactory(UtilFX.cellFactory(item -> item.getNom()+
+						" "+item.getPrenom()));
+				button_rmvB.setDisable(false);
+				
 				button_create.setDisable(true);
 				
 				label_valide.setText(courant.getEstValide().toString());
@@ -132,26 +141,31 @@ public class EquipeBenevoleController {
 				else {
 					button_valid.setDisable(false);
 				}
-				
-				textField_equipe.textProperty().bindBidirectional(courant.nomProperty());
-				
-				textField_nbre.textProperty().bindBidirectional(courant.nbreBenevoleProperty(),  new ConverterStringInteger());
-				textField_nbre.focusedProperty().addListener(new ListenerFocusValidation(courant.numProperty(), "Un nombre valide est demandé"));
-				
-				libelle.bindBidirectional(courant.libelleProperty());
 			}
 		}
+		textField_id.textProperty().bindBidirectional(courant.numProperty(),  new ConverterStringInteger());
+		textField_id.focusedProperty().addListener(new ListenerFocusValidation(courant.numProperty(), "Un nombre valide est demandé"));
+		
+		textField_equipe.textProperty().bindBidirectional(courant.nomProperty());
+		textField_equipe.focusedProperty().addListener(new ListenerFocusValidation(courant.nomProperty(), "Un nom es demandé"));
+		
+		textField_nbre.textProperty().bindBidirectional(courant.nbreBenevoleProperty(),  new ConverterStringInteger());
+		textField_nbre.focusedProperty().addListener(new ListenerFocusValidation(courant.nbreBenevoleProperty(), "Un nombre valide est demandé"));
+		
 	}
 	
 	public void disableForm() {
 		textField_equipe.setDisable(true);
 		textField_nbre.setDisable(true); 
+		textField_id.setDisable(true); 
 		
-		comboBox_bvle.setDisable(true);
+		comboBox_ajbvle.setDisable(true);
+		comboBox_enbvle.setDisable(true);
 		comboBox_epreuve.setDisable(true);
 		comboBox_tache.setDisable(true);
 		
 		button_addB.setDisable(true);
+		button_rmvB.setDisable(true);
 		button_create.setDisable(true);
 		button_delete.setDisable(true);
 		button_update.setDisable(true);
@@ -161,12 +175,15 @@ public class EquipeBenevoleController {
 	public void enableForm() {
 		textField_equipe.setDisable(false);
 		textField_nbre.setDisable(false);
+		textField_id.setDisable(false);
 		
-		comboBox_bvle.setDisable(false);
+		comboBox_ajbvle.setDisable(false);
+		comboBox_enbvle.setDisable(false);
 		comboBox_epreuve.setDisable(false);
 		comboBox_tache.setDisable(false);
 		
 		button_addB.setDisable(false);
+		button_rmvB.setDisable(false);
 		button_create.setDisable(false);
 		button_delete.setDisable(false);
 		button_update.setDisable(false);
@@ -183,6 +200,12 @@ public class EquipeBenevoleController {
 	}
 	
 	@FXML
+	public void doRefresh() throws ParseException {
+		modelEquipeBenevole.preparerAjouter();
+		initialize();
+	}
+	
+	@FXML
 	public void doValider() throws ParseException {
 		courant.setEstValide(true);
 		doUpdate();
@@ -190,6 +213,10 @@ public class EquipeBenevoleController {
 	
 	@FXML
 	public void doUpdate() throws ParseException {
+		if (comboBox_tache.getSelectionModel().getSelectedIndex() > -1) {
+			modelEquipeBenevole.preparerModifier(comboBox_tache.getSelectionModel().getSelectedItem());
+			courant.setLibelle(tache.getLibelle());
+		}
 		modelEquipeBenevole.validerMiseAJour();
 		modelEquipeBenevole.preparerAjouter();
 		initialize();
@@ -255,7 +282,7 @@ public class EquipeBenevoleController {
 	@FXML
 	public void addBenevoleEq() {
 		if (!modelEquipeBenevole.equipePleine()) {
-			modelEquipeBenevole.preparerModifier(comboBox_bvle.getSelectionModel().getSelectedItem());
+			modelEquipeBenevole.preparerModifier(comboBox_ajbvle.getSelectionModel().getSelectedItem());
 			modelEquipeBenevole.ajouterBenevoleDansEquipe();
 			initialize();
 		}
@@ -267,5 +294,13 @@ public class EquipeBenevoleController {
 				initialize();
 			}
 		}
+	}
+	@FXML
+	public void rmvBenevoleEq() {
+		if (comboBox_enbvle.getSelectionModel().getSelectedIndex() > -1) {
+			modelEquipeBenevole.retirerBenevoleDansEquipe(comboBox_enbvle.getSelectionModel().getSelectedItem());
+			initialize();
+		}
+		
 	}
 }

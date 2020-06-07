@@ -15,7 +15,7 @@ public class EquipeBenevole {
 	private final StringProperty   	 	nom       = new SimpleStringProperty();
 	private final StringProperty   	 	libelle       = new SimpleStringProperty();
 	private final Property<Integer>		nbreBenevole	= new SimpleObjectProperty<>();
-	private final Property<Boolean> estValide = new SimpleObjectProperty<>(); 
+	private final Property<Boolean> estValide = new SimpleObjectProperty<>(false); 
 
 	//getters && setters
 

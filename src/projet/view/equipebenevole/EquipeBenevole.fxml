@@ -197,14 +197,14 @@
                                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="123.0" text="Ajouter un bénévole:" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
                                     <TextField fx:id="textField_nbre" prefHeight="27.0" prefWidth="48.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <Label text="Nom Equipe :" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                                    <TextField fx:id="textField_equipe" editable="false" prefHeight="30.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="textField_equipe" prefHeight="30.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="Nombre :" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                                     <Label fx:id="label_valide" text="False" textFill="#ee2d2d" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
                                        <font>
                                           <Font name="System Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="comboBox_bvle" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                                    <ComboBox fx:id="comboBox_ajbvle" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5" />
                                     <JFXButton fx:id="button_addB" buttonType="RAISED" onAction="#addBenevoleEq" prefHeight="28.0" prefWidth="84.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Ajouter" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
@@ -220,8 +220,8 @@
                                     <Label text="Epreuve: " GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                                     <ComboBox fx:id="comboBox_epreuve" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="114.0" text="Enlever un bénévole d'une équipe" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
-                                    <ComboBox fx:id="comboBox_bvle1" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                    <JFXButton buttonType="RAISED" prefHeight="28.0" prefWidth="84.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Retirer" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                                    <ComboBox fx:id="comboBox_enbvle" prefHeight="25.0" prefWidth="149.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <JFXButton fx:id="button_rmvB" buttonType="RAISED" onAction="#rmvBenevoleEq" prefHeight="28.0" prefWidth="84.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Retirer" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -231,12 +231,12 @@
                                        </graphic>
                                     </JFXButton>
                                     <Label text="Numéro" GridPane.halignment="CENTER" />
-                                    <TextField prefHeight="25.0" prefWidth="48.0" GridPane.columnIndex="1" />
+                                    <TextField fx:id="textField_id" editable="false" prefHeight="25.0" prefWidth="48.0" GridPane.columnIndex="1" />
                                  </children>
                               </GridPane>
                               <HBox alignment="CENTER" layoutX="368.0" layoutY="5.0" prefHeight="40.0" prefWidth="107.0">
                                  <children>
-                                    <JFXButton buttonType="RAISED" prefHeight="28.0" prefWidth="96.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Rafraîchir">
+                                    <JFXButton fx:id="button_refresh" buttonType="RAISED" onAction="#doRefresh" prefHeight="28.0" prefWidth="96.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Rafraîchir">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                              <image>

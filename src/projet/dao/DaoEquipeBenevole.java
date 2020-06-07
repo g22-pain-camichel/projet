@@ -36,14 +36,13 @@ public class DaoEquipeBenevole {
 			cn = dataSource.getConnection();
 
 			// Insère le equipeBenevole
-			sql = "INSERT INTO equipebenevole(num, nom, nbreBenevole, libelle, estValide)"
+			sql = "INSERT INTO equipebenevole(nom, nbreBenevole, libelle, estValide)"
 					+ " VALUES ( ?, ?, ?, ?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
-			stmt.setObject(	1, equipeBenevole.getNum());
-			stmt.setObject(	2, equipeBenevole.getNom());
-			stmt.setObject(	3, equipeBenevole.getNbreBenevole());
-			stmt.setObject(	4, equipeBenevole.getLibelle() );
-			stmt.setObject(5, equipeBenevole.getEstValide());
+			stmt.setObject(	1, equipeBenevole.getNom());
+			stmt.setObject(	2, equipeBenevole.getNbreBenevole());
+			stmt.setObject(	3, equipeBenevole.getLibelle() );
+			stmt.setObject(4, equipeBenevole.getEstValide());
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -196,7 +195,7 @@ public class DaoEquipeBenevole {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
-	
+
 	public List<EquipeBenevole> listerTout(boolean bool)   {
 
 		Connection			cn		= null;

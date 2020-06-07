@@ -30,6 +30,7 @@ public class ModelEquipeBenevole {
 	private final ObservableList<Tache> listeT = FXCollections.observableArrayList();
 	private final ObservableList<Epreuve> listeE = FXCollections.observableArrayList();
 	private final ObservableList<Benevole> listeB = FXCollections.observableArrayList();
+	private final ObservableList<Benevole> listB = FXCollections.observableArrayList();
 	private final ObservableList<Benevole> listeBE = FXCollections.observableArrayList();
 	
 	private EquipeBenevole courant = new EquipeBenevole();
@@ -67,6 +68,10 @@ public class ModelEquipeBenevole {
 	public ObservableList<Benevole> getListeB() {
 		actualiserListeB();
 		return listeB;
+	}
+	public ObservableList<Benevole> getListB() {
+		actualiserListB();
+		return listB;
 	}
 	public ObservableList<Benevole> getListeBE() {
 		actualiserListeBE();
@@ -107,6 +112,9 @@ public class ModelEquipeBenevole {
 	}
 	public void actualiserListeB() {
 		listeB.setAll(daoBenevole.listerToutDispo());
+	}
+	public void actualiserListB() {
+		listB.setAll(daoBenevole.listerBenevoleEquipe(courant));
 	}
 	public void actualiserListeBE() {
 		listeBE.setAll(daoBenevole.listerBenevoleEquipe(courant));
@@ -153,6 +161,12 @@ public class ModelEquipeBenevole {
 		constituer.setIdentidant(benevole.getIdentifiant());
 		daoConstituer.inserer(constituer);
 	}
+	public void retirerBenevoleDansEquipe(Benevole b) {
+		Constituer constituer = new Constituer();
+		constituer.setNum(courant.getNum());
+		constituer.setIdentidant(b.getIdentifiant());
+		daoConstituer.supprimer(constituer.getIdentidant());
+	}
 	
 	public boolean equipePleine() {
 		int total = daoEquipeBenevole.countBenevole(courant);
@@ -180,14 +194,13 @@ public class ModelEquipeBenevole {
 		else  if ( courant.getNom().length()> 50 ) {
 			message.append( "\nLe nom de cette equipe est trop long : 50 maxi." );
 		}
-		if (courant.getNbreBenevole() <= 1 || courant.getNbreBenevole() >= 20) {
+		if (courant.getNbreBenevole() == null || courant.getNbreBenevole() <= 1 || courant.getNbreBenevole() >= 20) {
 			message.append("\n une équipe est contitué de 2 à 20 membres");
 		}
 		
 		if ( message.length() > 0 ) {
 			throw new ExceptionValidation( message.toString().substring(1) );
 		}
-		
 		// Effectue la mise à jour
 		
 		if ( courant.getNum() == null ) {
