@@ -180,6 +180,7 @@ CREATE TABLE epreuve(
 
 CREATE TABLE Permi(
     numero          VARCHAR (20),
+    nom				VARCHAR(50),
     dateDelivrance DATE NOT NULL ,
     lieu            VARCHAR(2000) NOT NULL
 	,CONSTRAINT Permi_PK PRIMARY KEY (numero)
