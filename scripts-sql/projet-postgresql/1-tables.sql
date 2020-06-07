@@ -138,7 +138,7 @@ CREATE TABLE club (
     nbRepasReserves INT NOT NULL ,
     categorie       INT NOT NULL , -- categorie homme, femme, mixte, VAE
     estValide      BOOLEAN NOT NULL ,
-    numParticipant INT NOT NULL,
+    numParticipant INT ,
     activite INT NOT NULL, -- type minibol d'air ou bol d'air
     CHECK( (categorie = 0 OR categorie = 1 OR categorie = 2 OR categorie = 3)),
     CHECK( (activite = 0 OR activite = 1)),
