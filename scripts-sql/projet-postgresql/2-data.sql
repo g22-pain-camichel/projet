@@ -9,7 +9,7 @@ DELETE FROM telephone;
 DELETE FROM personne;
 DELETE FROM categorie;
 DELETE FROM role;
-DELETE FROM compte;
+DELETE FROM utilisateur;
 DELETE FROM benevole;
 DELETE FROM participant;
 
@@ -23,24 +23,12 @@ INSERT INTO utilisateur (idutilisateur, pseudo, motdepasse, email, role ) VALUES
 
 ALTER TABLE utilisateur ALTER COLUMN idutilisateur RESTART WITH 4;
 
--- Compte
-
-INSERT INTO compte (idcompte, pseudo, motdepasse, email ) VALUES 
-  (1, 'geek', 'geek', 'geek@3il.fr' ),
-  (2, 'chef', 'chef', 'chef@3il.fr' ),
-  (3, 'job', 'job', 'job@3il.fr' );
-  
- 
 -- Role
 
-INSERT INTO role (idcompte, role) VALUES 
+INSERT INTO role (idutilisateur, role) VALUES 
   ( 1, 'ADMINISTRATEUR' ),
-  ( 1, 'UTILISATEUR' ),
   ( 2, 'UTILISATEUR' ),
   ( 3, 'UTILISATEUR' );
-
-
-ALTER TABLE compte ALTER COLUMN idcompte RESTART WITH 4;
 
 -- Categorie
   

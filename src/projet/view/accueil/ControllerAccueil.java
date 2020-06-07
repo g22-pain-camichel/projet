@@ -38,7 +38,4 @@ public class ControllerAccueil {
 	public void deconnexion() {
 		managerGui.showView(EnumView.Connexion);
 	}
-	
-	
-	
 }

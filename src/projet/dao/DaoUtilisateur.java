@@ -22,6 +22,8 @@ public class DaoUtilisateur {
 
 	@Inject
 	private DataSource		dataSource;
+	@Inject
+	private DaoRole			daoRole;
 
 	
 	// Actions
@@ -37,12 +39,11 @@ public class DaoUtilisateur {
 			cn = dataSource.getConnection();
 
 			// Insère le utilisateur
-			sql = "INSERT INTO utilisateur ( pseudo, motdepasse, email, role ) VALUES ( ?, ?, ?, ?)";
+			sql = "INSERT INTO utilisateur ( pseudo, motdepasse, email ) VALUES ( ?, ?, ? )";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS ); 
 			stmt.setObject( 1, utilisateur.getPseudo() );
 			stmt.setObject( 2, utilisateur.getMotDePasse() );
 			stmt.setObject( 3, utilisateur.getEmail() );
-			stmt.setObject( 4, utilisateur.getRole() );
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -55,6 +56,9 @@ public class DaoUtilisateur {
 		} finally {
 			UtilJdbc.close( stmt, cn );
 		}
+
+		// Insère les rôles
+		daoRole.insererPourUtilisateur( utilisateur );
 		
 		// Retourne l'identifiant
 		return utilisateur.getId();
@@ -71,14 +75,12 @@ public class DaoUtilisateur {
 			cn = dataSource.getConnection();
 
 			// Modifie le utilisateur
-			sql = "UPDATE utilisateur SET pseudo = ?, motdepasse = ?, email = ?, role = ?"
-					+ " WHERE idutilisateur =  ?";
+			sql = "UPDATE utilisateur SET pseudo = ?, motdepasse = ?, email = ? WHERE idutilisateur =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, utilisateur.getPseudo() );
 			stmt.setObject( 2, utilisateur.getMotDePasse() );
 			stmt.setObject( 3, utilisateur.getEmail() );
-			stmt.setObject( 4, utilisateur.getRole() );
-			stmt.setObject( 5, utilisateur.getId() );
+			stmt.setObject( 4, utilisateur.getId() );
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -86,6 +88,11 @@ public class DaoUtilisateur {
 		} finally {
 			UtilJdbc.close( stmt, cn );
 		}
+
+		// Modifie les rôles
+		daoRole.supprimerPourUtilisateur( utilisateur.getId() );
+		daoRole.insererPourUtilisateur( utilisateur );
+
 	}
 	
 
@@ -94,7 +101,10 @@ public class DaoUtilisateur {
 		Connection			cn		= null;
 		PreparedStatement	stmt	= null;
 		String 				sql;
-		
+
+		// Supprime les rôles
+		daoRole.supprimerPourUtilisateur( idUtilisateur );
+
 		try {
 			cn = dataSource.getConnection();
 
@@ -235,7 +245,7 @@ public class DaoUtilisateur {
 		utilisateur.setPseudo( rs.getObject( "pseudo", String.class ) );
 		utilisateur.setMotDePasse( rs.getObject( "motdepasse", String.class ) );
 		utilisateur.setEmail( rs.getObject( "email", String.class ) );
-		utilisateur.setRole(rs.getObject("role", Integer.class));
+		utilisateur.getRoles().setAll( daoRole.listerPourUtilisateur( utilisateur ) );
 		return utilisateur;
 	}
 	
