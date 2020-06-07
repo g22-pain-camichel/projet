@@ -38,7 +38,7 @@ public class TacheController {
 	
 	@FXML
 	private Button button_create, button_update, button_delete, 
-		button_find, button_annuler;
+		button_find, button_refresh;
 	
 	private Tache tache;
 	
@@ -52,21 +52,18 @@ public class TacheController {
 		button_create.setDisable(false);
 		
 		if (tache.getLibelle() != null) {
-			
 			UtilFX.selectInListView( listView, tache );
 			listView.requestFocus();
-
 			button_create.setDisable(true);
-			
-			textField_size.textProperty().bindBidirectional(tache.tailleProperty(), new ConverterStringInteger());
-			
-			textField_nom.textProperty().bindBidirectional(tache.libelleProperty());
-			
-			textField_location.textProperty().bindBidirectional(tache.emplacementProperty());
-			
-			timePicker_startH.getEditor().textProperty().bindBidirectional(tache.hr_debProperty());
-			timePicker_endH.getEditor().textProperty().bindBidirectional(tache.hr_finProperty());
 		}
+		textField_size.textProperty().bindBidirectional(tache.tailleProperty(), new ConverterStringInteger());
+		
+		textField_nom.textProperty().bindBidirectional(tache.libelleProperty());
+		
+		textField_location.textProperty().bindBidirectional(tache.emplacementProperty());
+		
+		timePicker_startH.getEditor().textProperty().bindBidirectional(tache.hr_debProperty());
+		timePicker_endH.getEditor().textProperty().bindBidirectional(tache.hr_finProperty());
 	}
 	
 	@FXML
@@ -79,14 +76,17 @@ public class TacheController {
 	}
 	
 	@FXML
-	public void doUndo() throws ParseException {
+	public void doRefresh() throws ParseException {
 		modelTache.preparerAjouter();
 		initialize();
 	}
 	
 	@FXML
 	public void doUpdate() throws ParseException {
-		modelTache.validerMiseAJour();
+		if (button_create.isDisable()) 
+			modelTache.validerMiseAJour(1);
+		else 
+			modelTache.validerMiseAJour(0);
 		modelTache.preparerAjouter();
 		initialize();
 	}

@@ -61,7 +61,7 @@ public class ModelTache {
 		return liste;
 	}
 	
-	public void validerMiseAJour() throws ParseException {
+	public void validerMiseAJour(int a) throws ParseException {
 		// Vérifie la validité des données
 		
 		StringBuilder message = new StringBuilder();
@@ -91,7 +91,7 @@ public class ModelTache {
 		
 		// Effectue la mise à jour
 		
-		if ( tache.getLibelle() == null ) {
+		if ( a == 0 ) {
 			// Insertion
 			daoTache.inserer( tache );
 		} else {
