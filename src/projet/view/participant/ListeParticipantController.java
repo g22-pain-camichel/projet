@@ -25,7 +25,9 @@ import jfox.javafx.util.ConverterStringLocalDate;
 import jfox.javafx.util.ListenerFocusValidation;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
+import projet.data.Club;
 import projet.data.Participant;
+import projet.data.Permi;
 import projet.view.EnumView;
 import projet.view.connexion.ModelConnexion;
 
@@ -39,11 +41,11 @@ public class ListeParticipantController {
 	private ModelParticipantListe modelParticipant;
 	
 	@FXML
-	private Label user;
+	private Label user,label_cm;
 	
 	@FXML
 	private TextField textField_id, textField_name, textField_surname, textField_email,
-		textField_phone,textField_find;
+		textField_phone,textField_find,textfield_adresse,textfield_clubnom;
 	
 	
 	@FXML
@@ -56,6 +58,8 @@ public class ListeParticipantController {
 	private Button button_add, button_update, button_delete, button_find;
 	
 	private Participant courant;
+	
+	private Club club;
 	
 	@FXML
 	private void initialize() {
@@ -82,6 +86,11 @@ public class ListeParticipantController {
 			textField_email.textProperty().bindBidirectional(courant.emailProperty());
 			
 			textField_phone.textProperty().bindBidirectional(courant.telProperty());
+			
+			textfield_adresse.textProperty().bindBidirectional(courant.adressePostProperty());
+			
+			label_cm.setText(courant.getCm());
+			
 						
 		}
 	}
@@ -153,6 +162,13 @@ public class ListeParticipantController {
 		//Ouvrir le lien de notre site web
 		Desktop d = Desktop.getDesktop();
 		d.browse(new URI("https://www.google.com"));
+	}
+	
+	@FXML
+	public void doVisualiserDocument() throws IOException, URISyntaxException {
+		//Ouvrir le lien de notre site web
+		Desktop d = Desktop.getDesktop();
+		d.browse(new URI("http://localhost/paincamiche/filesp/"+label_cm.getText()));
 	}
 
 	
