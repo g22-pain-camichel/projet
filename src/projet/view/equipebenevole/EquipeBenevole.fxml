@@ -106,7 +106,7 @@
                         </AnchorPane>
                         <Pane layoutX="33.0" layoutY="55.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="769.0" style="-fx-background-color: #F1F1F1; -fx-background-radius: 5;">
                            <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="6.0" layoutX="60.0" layoutY="13.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="20.0" prefWidth="667.0" text="Pour modifier les informations d'une équipe de participants,cliquez sur les tabs et remplissez les champs">
+                              <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="6.0" layoutX="60.0" layoutY="13.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="20.0" prefWidth="667.0" text="Pour modifier les informations d'une équipe de Bénévoles,cliquez sur les tabs et remplissez les champs">
                                  <font>
                                     <Font name="Gadugi" size="14.0" />
                                  </font>
