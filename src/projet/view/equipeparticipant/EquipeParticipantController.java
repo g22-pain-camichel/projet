@@ -28,23 +28,23 @@ public class EquipeParticipantController {
 
 	@FXML
 	private Label user;
-	
+
 	@FXML
 	private Button button_add;
-	
+
 	@FXML
 	private Button button_update;
-	
+
 
 	@FXML
 	private Button button_delete;
 
 	@FXML
 	private Button button_find;
-	
+
 	@FXML
 	private Button button_val;
-	
+
 	@Inject
 	private ModelEquipeParticipant modelEquipeParticipant;
 
@@ -57,27 +57,27 @@ public class EquipeParticipantController {
 	private Button button_validC;
 	@FXML
 	private Button button_nonValidC;
-	
+
 	@FXML
 	private Button button_init;
-	
+
 	@FXML
 	private TextField textField_id;
-	
+
 	@FXML
 	private TextField textField_name;
-	
+
 	@FXML
 	private TextField textField_nbRepas;
-	
+
 	private String txt="";
 	@FXML
 	private TextField textField_find, textField_cat;
-	
-	
+
+
 	@FXML
 	private TextField textField_idC;
-	
+
 	@FXML
 	private TextField textField_nameC;
 	@FXML
@@ -86,11 +86,11 @@ public class EquipeParticipantController {
 	private TextField textField_emailC;
 	@FXML
 	private TextField textField_phoneC;
-	
+
 	@FXML
 	private TextField textfield_adresseC;
-//	@FXML
-//	private ToggleGroup toggleSexC;
+	//	@FXML
+	//	private ToggleGroup toggleSexC;
 	@FXML
 	private DatePicker datePicker_birthdayC;
 
@@ -109,12 +109,12 @@ public class EquipeParticipantController {
 		else {
 			listView.setItems(modelEquipeParticipant.getListe());
 		}
-		
+
 
 		listView.setCellFactory(UtilFX.cellFactory(item -> item.getNom()+
 				" [ validé: "+item.getEstValide().toString()+ " ]"));
-	
-		
+
+
 
 		if (courant.getNum() != null) {
 			UtilFX.selectInListView( listView, courant );
@@ -125,7 +125,7 @@ public class EquipeParticipantController {
 			textField_id.textProperty().bindBidirectional(courant.numProperty(), new ConverterStringInteger());
 
 			textField_name.textProperty().bindBidirectional(courant.nomProperty());
-			
+
 			textField_nbRepas.textProperty().bindBidirectional(courant.nbRepasReservesProperty(),  new ConverterStringInteger());
 			textField_cat.textProperty().bindBidirectional(courant.categorieProperty(),  new ConverterStringInteger());
 		}
@@ -142,11 +142,11 @@ public class EquipeParticipantController {
 
 	@FXML
 	public void doFillGap() {
-		
+
 		modelEquipeParticipant.preparerModifier(listView.getSelectionModel().getSelectedItem() );
 		initialize();		
-		
-		
+
+
 	}
 
 	@FXML
@@ -163,19 +163,19 @@ public class EquipeParticipantController {
 	}
 
 
-	
+
 	@FXML
 	public void find_validC() {
 		txt = "Valide";
 		initialize();
 	}
-	
+
 	@FXML
 	public void find_nonValidC() {
 		txt = "NonValide";
 		initialize();
 	}
-	
+
 	@FXML
 	public void doInitList() {
 		txt = "";
@@ -191,16 +191,17 @@ public class EquipeParticipantController {
 
 
 	@FXML
-	public void doAdd() {
-		
+	public void doAdd() throws ParseException {
+		courant.setEstValide(true);
+		doUpdate();
 	}
-	
+
 	@FXML
 	public void doUpdate() throws ParseException {
 		modelEquipeParticipant.validerMiseAJour();
 		initialize();
 	}
-	
+
 	@FXML
 	public void doDelete() {
 		if ( managerGui.showDialogConfirm( "Confirmez-vous la suppresion ?" ) ) {
@@ -208,7 +209,7 @@ public class EquipeParticipantController {
 			initialize();
 		}
 	}
-	
+
 
 
 
@@ -233,5 +234,5 @@ public class EquipeParticipantController {
 	}
 
 
-	
+
 }

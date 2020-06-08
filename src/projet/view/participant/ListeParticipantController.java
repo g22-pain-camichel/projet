@@ -140,8 +140,9 @@ public class ListeParticipantController {
 	}
 
 	@FXML
-	public void doAdd() {
-
+	public void doAdd() throws ParseException {
+		courant.setEstValide(true);
+		doUpdate();
 	}
 
 	@FXML
