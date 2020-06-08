@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import jfox.dao.jdbc.UtilJdbc;
 import projet.data.Club;
 import projet.data.Epreuve;
+import projet.data.Participant;
 
 public class DaoClub {
 	
@@ -33,16 +34,16 @@ public class DaoClub {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "INSERT INTO club (num, numCapitaine,numEquipier, nbRepasReserves, categorie,"
+			sql = "INSERT INTO club (num, numCapitaine, nbRepasReserves, numEquipier, categorie,"
 					+ " activite, estValide, nom) VALUES (?,?,?,?,?,?,?,?)";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS );
 			stmt.setObject( 1, club.getNum());
-			stmt.setObject( 2, club.getNumCapitaine());
-			stmt.setObject( 3, club.getNumEquipier());
-			stmt.setObject( 4, club.getNbRepasReserves());
-			stmt.setObject( 5, club.getCategorie());
-			stmt.setObject( 6, club.getActivite());
-			stmt.setObject( 7, club.getEstValide());
+			stmt.setObject( 2, club.getNumCapitaine() );
+			stmt.setObject( 3, club.getNbRepasReserves());
+			stmt.setObject( 4, club.getNumEquipier());
+			stmt.setObject(5, club.getCategorie());
+			stmt.setObject(6, club.getActivite());
+			stmt.setObject(7, club.getEstValide());
 			stmt.setObject( 8, club.getNom() );
 			stmt.executeUpdate();
 
@@ -67,11 +68,11 @@ public class DaoClub {
 			cn = dataSource.getConnection();
 
 			// Modifie le club
-			sql = "UPDATE club SET num = ?, numCapitain = ?, nbRepasReserves = ?, numEquipier = ?"
+			sql = "UPDATE club SET num = ?, numCapitaine = ?, nbRepasReserves = ?, numEquipier = ?"
 					+ "categorie = ?, activite = ?, estValide = ?, nom = ? WHERE num =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setObject( 1, club.getNum());
-			stmt.setObject( 2, club.getNumCapitaine());
+			stmt.setObject( 2, club.getNumCapitaine() );
 			stmt.setObject( 3, club.getNbRepasReserves());
 			stmt.setObject( 4, club.getNumEquipier());
 			stmt.setObject( 5, club.getCategorie());
@@ -123,7 +124,7 @@ public class DaoClub {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM club WHERE Num = ?";
+			sql = "SELECT * FROM club WHERE num = ?";
             stmt = cn.prepareStatement(sql);
             stmt.setObject( 1, idClub);
             rs = stmt.executeQuery();
@@ -139,6 +140,7 @@ public class DaoClub {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
+
 	
 	public List<Club> listerTout()   {
 
@@ -198,15 +200,71 @@ public class DaoClub {
 	
 	private Club construireClub( ResultSet rs, boolean flagComplet ) throws SQLException {
 		Club club = new Club();
-		club.setNum(rs.getObject( "Num", Integer.class ));
-		club.setNom(rs.getObject( "Nom", String.class ));
-		club.setNumCapitaine(rs.getObject( "numCapitaine", Integer.class ));
+		club.setNum(rs.getObject( "num", Integer.class ));
+		club.setNom(rs.getObject( "nom", String.class ));
+		club.setNumCapitaine(rs.getObject("numCapitaine", Integer.class));
 		club.setNbRepasReserves(rs.getObject( "nbRepasReserves", Integer.class ));
 		club.setNumEquipier(rs.getObject( "numEquipier", Integer.class ));
-		club.setCategorie(rs.getObject("Categorie", Integer.class));
-		club.setActivite(rs.getObject("Activite", Integer.class));
+		club.setCategorie(rs.getObject("categorie", Integer.class));
+		club.setActivite(rs.getObject("activite", Integer.class));
 		club.setEstValide(rs.getObject("estValide", Boolean.class));
 		return club;
 	}
+	
+	public List<Club> listerTout(boolean bool)   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM club WHERE estvalide = ? ORDER BY nom";
+			stmt = cn.prepareStatement(sql);
+			stmt.setObject(1, bool);
+			rs = stmt.executeQuery();
+			
+			List<Club> club = new ArrayList<>();
+			while (rs.next()) {
+				club.add( construireClub(rs, false) );
+			}
+			return club;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	public List<Club> listerClub(String name)   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM club WHERE nom = ?";
+			stmt = cn.prepareStatement(sql);
+			stmt.setObject( 1, name);
+            rs = stmt.executeQuery();
+            
+			List<Club> club = new ArrayList<>();
+			while (rs.next()) {
+				club.add( construireClub(rs, false) );
+			}
+			return club;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+	
 
 }

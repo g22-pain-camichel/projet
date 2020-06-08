@@ -14,9 +14,11 @@ public class Club {
 	
 	private final Property<Integer>		num			= new SimpleObjectProperty<>();	
 	private final StringProperty   	 	nom       = new SimpleStringProperty();
-	private final Property<Integer>		numCapitaine	= new SimpleObjectProperty<>();
-	private final Property<Integer>		numEquipier	= new SimpleObjectProperty<>();
+	//private final StringProperty   	 	nomCapitain       = new SimpleStringProperty();
+	private final Property<Integer>		numCapitaine			= new SimpleObjectProperty<>();	
+
 	private final Property<Integer>		nbRepasReserves	= new SimpleObjectProperty<>();
+	private final Property<Integer>		numEquipier	= new SimpleObjectProperty<>();
 
 	private final Property<Integer> categorie = new SimpleObjectProperty<>();
 	private final Property<Boolean> estValide = new SimpleObjectProperty<>(); 
@@ -35,7 +37,55 @@ public class Club {
 	public final void setNum(final Integer num) {
 		this.numProperty().setValue(num);
 	}
+	
+	
+	
+	public final Property<Integer> numCapitaineProperty() {
+		return this.numCapitaine;
+	}
+	
+	public final Integer getNumCapitaine() {
+		return this.numCapitaineProperty().getValue();
+	}
+	
+	public final void setNumCapitaine(final Integer num) {
+		this.numCapitaineProperty().setValue(num);
+	}
 
+
+	
+	
+	
+	
+	//
+//	public final StringProperty nomCapitainProperty() {
+//		return this.nomCapitain;
+//	}
+//	
+//
+//	public final String getNomCapitain() {
+//		return this.nomCapitainProperty().get();
+//	}
+//	
+//
+//	public final void setNomCapitain(final String nomCapitain) {
+//		this.nomCapitainProperty().set(nomCapitain);
+//	}
+	
+
+	public final Property<Integer> numEquipierProperty() {
+		return this.numEquipier;
+	}
+	
+
+	public final Integer getNumEquipier() {
+		return this.numEquipierProperty().getValue();
+	}
+	
+
+	public final void setNumEquipier(final Integer numParticipant) {
+		this.numEquipierProperty().setValue(numParticipant);
+	}
 	
 	public final Property<Integer> nbRepasReservesProperty() {
 		return this.nbRepasReserves;
@@ -125,35 +175,5 @@ public class Club {
 			return false;
 		Club other = (Club) obj;
 		return Objects.equals(num.getValue(), other.num.getValue());
-	}
-
-	public final Property<Integer> numCapitaineProperty() {
-		return this.numCapitaine;
-	}
-	
-
-	public final Integer getNumCapitaine() {
-		return this.numCapitaineProperty().getValue();
-	}
-	
-
-	public final void setNumCapitaine(final Integer numCapitaine) {
-		this.numCapitaineProperty().setValue(numCapitaine);
-	}
-	
-
-	public final Property<Integer> numEquipierProperty() {
-		return this.numEquipier;
-	}
-	
-
-	public final Integer getNumEquipier() {
-		return this.numEquipierProperty().getValue();
-	}
-	
-
-	public final void setNumEquipier(final Integer numEquipier) {
-		this.numEquipierProperty().setValue(numEquipier);
-	}
-		
+	}	
 }

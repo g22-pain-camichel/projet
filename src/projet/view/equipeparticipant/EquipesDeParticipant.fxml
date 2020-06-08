@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -25,7 +25,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="831.0" prefHeight="680.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.participant.ListeParticipantController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="831.0" prefHeight="680.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.equipeparticipant.EquipeParticipantController">
    <children>
       <AnchorPane layoutX="-1.0" prefHeight="59.0" prefWidth="831.0" style="-fx-background-color: #fafafa;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -56,11 +56,10 @@
          <children>
             <AnchorPane layoutX="45.0" layoutY="114.0" minHeight="0.0" minWidth="0.0" prefHeight="449.0" prefWidth="267.0">
                <children>
-                  <ListView fx:id="listView" layoutY="55.0" onMouseClicked="#doFillGap" prefHeight="407.0" prefWidth="279.0" AnchorPane.bottomAnchor="-13.0" AnchorPane.rightAnchor="-12.0" />
+                  <ListView fx:id="listView" layoutY="55.0" onMouseClicked="#doFillGap" prefHeight="356.0" prefWidth="267.0" AnchorPane.bottomAnchor="38.0" AnchorPane.rightAnchor="0.0" />
                   <HBox layoutX="1.0" layoutY="1.0" prefHeight="31.0" prefWidth="279.0" spacing="6.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-13.0" AnchorPane.topAnchor="1.0">
                      <children>
-                        <JFXTextField fx:id="textField_find" focusColor="#6b8cee" prefHeight="25.0" prefWidth="128.0" promptText="Recherche une équipe [nom]" />
-                        <JFXComboBox prefHeight="25.0" prefWidth="74.0" />
+                        <JFXTextField fx:id="textField_find" focusColor="#6b8cee" prefHeight="25.0" prefWidth="179.0" promptText="Recherche une équipe [nom]" text="Club [ nom | id ]" />
                         <JFXButton fx:id="button_find" buttonType="RAISED" onAction="#doFind" prefHeight="28.0" prefWidth="81.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Search">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
@@ -70,6 +69,13 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
+                     </children>
+                  </HBox>
+                  <HBox layoutY="411.0" prefHeight="36.0" prefWidth="267.0">
+                     <children>
+                        <Button fx:id="button_init" mnemonicParsing="false" onAction="#doInitList" prefHeight="27.0" prefWidth="177.0" text="Initial" />
+                        <Button fx:id="button_validC" mnemonicParsing="false" onAction="#find_validC" prefHeight="27.0" prefWidth="177.0" text="Valide" />
+                        <Button fx:id="button_nonValidC" mnemonicParsing="false" onAction="#find_nonValidC" prefHeight="27.0" prefWidth="177.0" text="Non valide" />
                      </children>
                   </HBox>
                </children>
@@ -111,18 +117,18 @@
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="143.0" text="Nbre repas réservé :" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                         <Label text="Deja validé :" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                        <TextField fx:id="textField_name" prefHeight="25.0" prefWidth="79.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="textField_nbRepas" prefHeight="25.0" prefWidth="79.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label text="ID :" GridPane.halignment="CENTER" />
                         <TextField fx:id="textField_id" editable="false" prefHeight="25.0" prefWidth="50.0" GridPane.columnIndex="1" />
                         <Label text="Nom club :" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
-                        <TextField GridPane.columnIndex="3" />
+                        <TextField fx:id="textField_name" GridPane.columnIndex="3" />
                         <Label text="False" textFill="#ee2d2d" GridPane.columnIndex="3" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                         <Label text="Catégorie :" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                        <TextField prefHeight="25.0" prefWidth="79.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="textField_cat" prefHeight="25.0" prefWidth="79.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                   <TabPane layoutX="27.0" layoutY="229.0" prefHeight="277.0" prefWidth="438.0" tabClosingPolicy="UNAVAILABLE">
@@ -152,25 +158,28 @@
                                           <Label text="Date naissance" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="114.0" text="Telephone" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                                           <Label text="Sexe" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                                          <TextField fx:id="textField_name1" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <TextField fx:id="textField_email" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <DatePicker fx:id="datePicker_birthday" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <TextField fx:id="textField_nameC" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <TextField fx:id="textField_emailC" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <DatePicker fx:id="datePicker_birthdayC" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                           <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="8.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                              <children>
                                                 <RadioButton mnemonicParsing="false" text="Masculin">
                                                    <toggleGroup>
-                                                      <ToggleGroup fx:id="toggleSex" />
+                                                      <ToggleGroup />
                                                    </toggleGroup>
                                                 </RadioButton>
-                                                <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="69.0" text="Feminin" toggleGroup="$toggleSex" />
+                                                <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="69.0" text="Feminin">
+                                                   <toggleGroup>
+                                                      <ToggleGroup />
+                                                   </toggleGroup></RadioButton>
                                              </children>
                                           </VBox>
-                                          <TextField fx:id="textField_surname" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                          <TextField fx:id="textField_phone" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                          <TextField fx:id="textField_surnameC" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                          <TextField fx:id="textField_phoneC" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                           <Label text="Adresse" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                                          <TextField editable="false" prefHeight="25.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                                          <TextField fx:id="textfield_adresseC" editable="false" prefHeight="25.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
                                           <Label text="ID" GridPane.halignment="CENTER" />
-                                          <TextField fx:id="textField_id1" editable="false" prefHeight="25.0" prefWidth="57.0" GridPane.columnIndex="1" />
+                                          <TextField fx:id="textField_idC" editable="false" prefHeight="25.0" prefWidth="57.0" GridPane.columnIndex="1" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -202,25 +211,28 @@
                                           <Label text="Date naissance" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="114.0" text="Telephone" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                                           <Label text="Sexe" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                                          <TextField fx:id="textField_name11" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <TextField fx:id="textField_email1" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <DatePicker fx:id="datePicker_birthday1" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <DatePicker editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                           <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="8.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                              <children>
                                                 <RadioButton mnemonicParsing="false" text="Masculin">
                                                    <toggleGroup>
-                                                      <ToggleGroup fx:id="toggleSex1" />
+                                                      <ToggleGroup />
                                                    </toggleGroup>
                                                 </RadioButton>
-                                                <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="69.0" text="Feminin" toggleGroup="$toggleSex1" />
+                                                <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="69.0" text="Feminin">
+                                                   <toggleGroup>
+                                                      <ToggleGroup />
+                                                   </toggleGroup></RadioButton>
                                              </children>
                                           </VBox>
-                                          <TextField fx:id="textField_surname1" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                          <TextField fx:id="textField_phone1" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                           <Label text="Adresse" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
                                           <TextField editable="false" prefHeight="25.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
                                           <Label text="ID" GridPane.halignment="CENTER" />
-                                          <TextField fx:id="textField_id11" editable="false" prefHeight="25.0" prefWidth="57.0" GridPane.columnIndex="1" />
+                                          <TextField editable="false" prefHeight="25.0" prefWidth="57.0" GridPane.columnIndex="1" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -231,7 +243,7 @@
                   </TabPane>
                   <HBox alignment="CENTER" layoutX="92.0" layoutY="178.0" prefHeight="40.0" prefWidth="312.0" spacing="10.0">
                      <children>
-                        <JFXButton fx:id="button_valid" buttonType="RAISED" prefHeight="28.0" prefWidth="87.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Valider">
+                        <JFXButton fx:id="button_add" buttonType="RAISED" onAction="#doAdd" prefHeight="28.0" prefWidth="87.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Valider">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -293,7 +305,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXButton fx:id="button_imprimer" buttonType="RAISED" layoutX="45.0" layoutY="584.0" prefHeight="28.0" prefWidth="97.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 7;" text="Imprimer">
+            <JFXButton buttonType="RAISED" layoutX="45.0" layoutY="584.0" prefHeight="28.0" prefWidth="97.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 7;" text="Imprimer">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>

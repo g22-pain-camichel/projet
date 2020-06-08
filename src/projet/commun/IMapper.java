@@ -4,6 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
 import projet.data.Benevole;
+import projet.data.Club;
 import projet.data.Epreuve;
 import projet.data.EquipeBenevole;
 import projet.data.Participant;
@@ -28,4 +29,6 @@ public interface IMapper {
 	Epreuve update( @MappingTarget Epreuve target, Epreuve source );
 	
 	Tache update( @MappingTarget Tache target, Tache source );
+
+	Club update( @MappingTarget Club courant, Club club);
 }

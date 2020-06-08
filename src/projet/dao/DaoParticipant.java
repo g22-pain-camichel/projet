@@ -263,5 +263,33 @@ public class DaoParticipant {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
+	public List<Participant> listerTout(boolean bool)   {
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM participant WHERE estvalide = ? ORDER BY nom, prenom";
+			stmt = cn.prepareStatement(sql);
+			stmt.setObject(1, bool);
+			rs = stmt.executeQuery();
+			
+			List<Participant> participant = new ArrayList<>();
+			while (rs.next()) {
+				participant.add( construireParticipant(rs, false) );
+			}
+			return participant;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
+
 	
 }

@@ -32,6 +32,10 @@ public class ModelParticipantListe {
 		actualiserListe();
 		return listParticipant;
 	}
+	public ObservableList<Participant> getListe(Boolean bool) {
+		modifListe(bool);
+		return listParticipant;
+	}
 	
 	public Participant getCourant() {
 		return courant;
@@ -48,7 +52,9 @@ public class ModelParticipantListe {
 	}
 	
 	// acions
-	
+	public void modifListe(boolean bool) {
+		listParticipant.setAll(daoParticipant.listerTout(bool));
+	}
 	public void preparerAjouter() {
 		mapper.update( courant, new Participant() );
 	}
