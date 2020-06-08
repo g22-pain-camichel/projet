@@ -54,7 +54,7 @@
          <children>
             <AnchorPane layoutX="45.0" layoutY="114.0" minHeight="0.0" minWidth="0.0" prefHeight="449.0" prefWidth="267.0">
                <children>
-                  <ListView fx:id="listView" layoutX="-5.0" layoutY="50.0" onMouseClicked="#doFillGap" prefHeight="407.0" prefWidth="279.0" AnchorPane.bottomAnchor="-8.0" AnchorPane.rightAnchor="-7.0" />
+                  <ListView fx:id="listView" layoutX="-5.0" layoutY="48.0" onMouseClicked="#doFillGap" prefHeight="369.0" prefWidth="279.0" AnchorPane.bottomAnchor="32.0" AnchorPane.rightAnchor="-7.0" />
                   <HBox layoutX="1.0" layoutY="1.0" prefHeight="31.0" prefWidth="279.0" spacing="6.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-13.0" AnchorPane.topAnchor="1.0">
                      <children>
                         <JFXTextField fx:id="textField_find" focusColor="#6b8cee" prefHeight="25.0" prefWidth="185.0" promptText="Participant [ nom | id]" />
@@ -67,6 +67,13 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="-5.0" layoutY="414.0" prefHeight="27.0" prefWidth="279.0">
+                     <children>
+                        <Button fx:id="button_init" mnemonicParsing="false" onAction="#doInitList" prefHeight="27.0" prefWidth="147.0" text="Initial" />
+                        <Button fx:id="button_valide" mnemonicParsing="false" onAction="#find_validP" prefHeight="27.0" prefWidth="147.0" text="Valide" />
+                        <Button fx:id="button_nvalide" mnemonicParsing="false" onAction="#find_nonValidP" prefHeight="27.0" prefWidth="147.0" text="Non valide" />
                      </children>
                   </HBox>
                </children>
@@ -202,13 +209,16 @@
                   </ImageView>
                </children>
             </Pane>
-            <HBox layoutX="40.0" layoutY="569.0" prefHeight="27.0" prefWidth="279.0">
-               <children>
-                  <Button fx:id="button_init" mnemonicParsing="false" onAction="#doInitList" prefHeight="27.0" prefWidth="147.0" text="Initial" />
-                  <Button fx:id="button_valide" mnemonicParsing="false" onAction="#find_validP" prefHeight="27.0" prefWidth="147.0" text="Valide" />
-                  <Button fx:id="button_nvalide" mnemonicParsing="false" onAction="#find_nonValidP" prefHeight="27.0" prefWidth="147.0" text="Non valide" />
-               </children>
-            </HBox>
+
+            <JFXButton fx:id="button_print" buttonType="RAISED" layoutX="45.0" layoutY="582.0" onAction="#doPrint" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 5;" text="Imprimer">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/print.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
          <padding>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />

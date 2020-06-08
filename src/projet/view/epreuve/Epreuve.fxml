@@ -61,7 +61,7 @@
                               <Font name="System Bold" size="13.0" />
                            </font></Label>
                         <ComboBox fx:id="comboBox_epreuve" layoutX="252.0" layoutY="60.0" prefWidth="150.0" />
-                        <JFXButton buttonType="RAISED" layoutX="693.0" layoutY="48.0" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 5;" text="Imprimer">
+                        <JFXButton fx:id="button_print" buttonType="RAISED" layoutX="693.0" layoutY="48.0" onAction="#doPrint" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 5;" text="Imprimer">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

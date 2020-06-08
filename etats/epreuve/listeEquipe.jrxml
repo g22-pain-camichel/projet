@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="listeEpreuve" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bb239704-ff6f-4a9b-95a8-2ca3a3f39287">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="ZXByZXV2ZSBBUyAsMTUyLDYwLDBlZWRjMjhjLTdmZDEtNGJjOS04OTUxLTkyZjMyNjdhYjEzMzs="/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PostgreSQL - painka"/>
+	<style name="Style1" fontName="Times New Roman" fontSize="12"/>
+	<style name="etiquette" style="Style1" isBold="true" isItalic="true"/>
+	<style name="header" style="Style1" fontSize="16" isBold="true"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT epreuve.nom,
+	epreuve.distance,
+	epreuve.hr_deb,
+	epreuve.hr_fin
+FROM epreuve
+ORDER BY epreuve.nom ASC]]>
+	</queryString>
+	<field name="nom" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nom"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="epreuve"/>
+	</field>
+	<field name="distance" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="distance"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="epreuve"/>
+	</field>
+	<field name="hr_deb" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.label" value="hr_deb"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="epreuve"/>
+	</field>
+	<field name="hr_fin" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.label" value="hr_fin"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="epreuve"/>
+	</field>
+	<variable name="nom1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{nom}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="77" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="header" x="0" y="0" width="268" height="77" uuid="db466ac7-a64a-404b-a923-ffc977c2a323"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="header" x="268" y="0" width="267" height="77" uuid="e48a766b-0b86-44c3-8254-4137d1e708a7">
+					<property name="com.jaspersoft.layout.grid.x" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.y" value="-1"/>
+					<property name="com.jaspersoft.layout.grid.weight.x" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.weight.y" value="1.0"/>
+					<property name="com.jaspersoft.layout.grid.rowspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.colspan" value="1"/>
+					<property name="com.jaspersoft.layout.grid.weight.fixed" value="false"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Liste des différentes épreuves]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="header" x="535" y="0" width="267" height="77" uuid="37437b90-a678-4241-b653-89648ba22da0"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.spreadsheet.SpreadsheetLayout"/>
+			<staticText>
+				<reportElement x="0" y="0" width="160" height="40" uuid="d62b0008-f324-4ee0-a0ab-474a65c423e8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6e0e1c84-ea1c-466b-b3cc-aabf71c2bdfa"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Nom]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="0" width="100" height="40" uuid="49a43186-1250-44c3-bede-b548a2cecee5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1a0f04f4-1938-4a08-b2d2-a76c4fe31086"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Distance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="0" width="100" height="40" uuid="097194f1-e803-4ea5-a389-b98ad965756a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d9cbffe9-5ffd-4152-a6f3-0087c1a239b9"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[Heure début]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="0" width="100" height="40" uuid="17fb1735-1893-404e-86fa-d55aa19f73d4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="824e34f7-8dc4-4317-bb52-530de837bb9b"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Heure fin]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.spreadsheet.SpreadsheetLayout"/>
+			<textField>
+				<reportElement x="0" y="0" width="160" height="36" uuid="78c77ede-303b-4b0e-b221-28d71400bb56">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6e0e1c84-ea1c-466b-b3cc-aabf71c2bdfa"/>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{nom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="0" width="100" height="36" uuid="b3723ff9-ec5f-4be2-bd46-c09638c13814">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1a0f04f4-1938-4a08-b2d2-a76c4fe31086"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{distance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="0" width="100" height="36" uuid="8af7a8d1-7ca9-4981-9223-1e5b76dc5650">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d9cbffe9-5ffd-4152-a6f3-0087c1a239b9"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hr_deb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="0" width="100" height="36" uuid="84351da7-80c6-416c-ab34-bcf5ae49fce3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="824e34f7-8dc4-4317-bb52-530de837bb9b"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{hr_fin}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="6" width="140" height="18" uuid="fbe0fbcd-7391-437c-a9a4-208ee134a997">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[Nombre d'épreuves:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="6" width="50" height="18" uuid="356ce89e-7a48-4ee8-88fa-05b4a6d22f71">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$V{nom1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

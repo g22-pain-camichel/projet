@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTimePicker;
 
 import javafx.fxml.FXML;
@@ -29,13 +30,19 @@ import jfox.javafx.view.IManagerGui;
 import projet.data.Club;
 import projet.data.Participant;
 import projet.data.Permi;
+import projet.report.EnumReport;
+import projet.report.ManagerReport;
 import projet.view.EnumView;
 import projet.view.connexion.ModelConnexion;
 
 public class ListeParticipantController {
 	@Inject
 	private IManagerGui managerGui;
-	@Inject
+	@Inject 
+	private ManagerReport managerReport;
+
+	
+	@Inject 	
 	private ModelConnexion modelConnexion;
 
 	@Inject
@@ -43,7 +50,10 @@ public class ListeParticipantController {
 
 	@FXML
 	private Label user, label_cm;
-
+	@FXML
+	private JFXButton button_print;
+	
+	
 	@FXML
 	private TextField textField_id, textField_name, textField_surname, textField_email, textField_phone, textField_find,
 			textfield_adresse, textfield_clubnom;
@@ -147,7 +157,11 @@ public class ListeParticipantController {
 			initialize();
 		}
 	}
-
+	@FXML
+	public void doPrint() {
+		managerReport.showViewer(EnumReport.listeParticipant, null);
+	}
+	
 	@FXML
 	public void doFind() {
 		if (!textField_find.getText().isEmpty()) {
