@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTimePicker;
 
 import javafx.fxml.FXML;
@@ -28,6 +29,8 @@ import jfox.javafx.view.IManagerGui;
 import projet.data.Club;
 import projet.data.Participant;
 import projet.data.Permi;
+import projet.report.EnumReport;
+import projet.report.ManagerReport;
 import projet.view.EnumView;
 import projet.view.connexion.ModelConnexion;
 
@@ -35,10 +38,15 @@ public class ListeParticipantController {
 	@Inject
 	private IManagerGui		managerGui;
 	@Inject 
+	private ManagerReport managerReport;
+	@Inject 
 	private ModelConnexion modelConnexion;
 	
 	@Inject
 	private ModelParticipantListe modelParticipant;
+	
+	@FXML
+	private JFXButton button_print;
 	
 	@FXML
 	private Label user,label_cm;
@@ -115,6 +123,10 @@ public class ListeParticipantController {
 			modelParticipant.supprimer( listView.getSelectionModel().getSelectedItem() );
 			initialize();
 		}
+	}
+	@FXML
+	public void doPrint() {
+		managerReport.showViewer(EnumReport.listeParticipant, null);
 	}
 	
 	@FXML

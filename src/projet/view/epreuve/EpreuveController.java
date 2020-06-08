@@ -15,12 +15,16 @@ import projet.data.Benevole;
 import projet.data.Club;
 import projet.data.Epreuve;
 import projet.data.EquipeBenevole;
+import projet.report.EnumReport;
+import projet.report.ManagerReport;
 import projet.view.EnumView;
 import projet.view.connexion.ModelConnexion;
 
 public class EpreuveController {
 	@Inject
 	private IManagerGui		managerGui;
+	@Inject 
+	private ManagerReport managerReport;
 	@Inject
 	private ModelEpreuve modelEpreuve;
 	@Inject 
@@ -102,5 +106,9 @@ public class EpreuveController {
 		modelConnexion.fermerSessionUtilisateur();
 		managerGui.showView(EnumView.Connexion);
 	}
-	
+
+	@FXML
+	public void doPrint() {
+		managerReport.showViewer(EnumReport.listeEpreuve, null);
+	}
 }

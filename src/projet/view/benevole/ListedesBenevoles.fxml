@@ -255,7 +255,7 @@
                      </cursor></Button>
                </children>
             </HBox>
-            <JFXButton buttonType="RAISED" layoutX="45.0" layoutY="580.0" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 5;" text="Imprimer">
+            <JFXButton fx:id="button_find" buttonType="RAISED" layoutX="45.0" layoutY="580.0" onAction="#doPrint" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 5;" text="Imprimer">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>

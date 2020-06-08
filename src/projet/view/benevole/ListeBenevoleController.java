@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTimePicker;
 
 import javafx.collections.FXCollections;
@@ -28,12 +29,16 @@ import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Benevole;
 import projet.data.Permi;
+import projet.report.EnumReport;
+import projet.report.ManagerReport;
 import projet.view.EnumView;
 import projet.view.connexion.ModelConnexion;
 
 public class ListeBenevoleController {
 	@Inject
 	private IManagerGui		managerGui;
+	@Inject 
+	private ManagerReport managerReport;
 	@Inject 
 	private ModelConnexion modelConnexion;
 	
@@ -55,6 +60,9 @@ public class ListeBenevoleController {
 	
 	@FXML
 	private ToggleGroup toggleSex;
+	
+	@FXML
+	private JFXButton button_print;
 	
 	@FXML
 	private ListView<Benevole> listView;
@@ -209,6 +217,12 @@ public class ListeBenevoleController {
 		modelConnexion.fermerSessionUtilisateur();
 		managerGui.showView(EnumView.Connexion);
 	}
+	
+	@FXML
+	public void doPrint() {
+		managerReport.showViewer(EnumReport.listeBenevole, null);
+	}
+	
 	
 	private void actualiserSexeDansModele() {
 		// modifie le sexe en fonction du bouton cliqué
