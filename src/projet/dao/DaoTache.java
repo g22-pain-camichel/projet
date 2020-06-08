@@ -102,6 +102,33 @@ public class DaoTache {
 			}
 		}
 		
+		public boolean deletableTask(Tache t) {
+			Connection			cn 		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs		= null;
+			String				sql;
+			int rowCount = -1;
+			try {
+				cn = dataSource.getConnection();
+				sql = "SELECT COUNT(*) FROM tache t, lier l WHERE t.libelle = l.libelle"
+						+ " AND t.libelle = ?";
+				stmt = cn.prepareStatement( sql );
+				stmt.setString(1, t.getLibelle());
+				rs = stmt.executeQuery();
+				
+				rs.next();		
+				rowCount = rs.getInt(1);
+				
+				if (rowCount > 0) return false;
+				else return true;
+				
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
+		
 		public Tache retrouver( String libelle ) {
 
 			Connection			cn 		= null;
@@ -166,6 +193,34 @@ public class DaoTache {
 				cn = dataSource.getConnection();
 				sql = "SELECT * FROM tache t, lier l, epreuve e WHERE t.libelle = l.libelle"
 						+ " AND l.nom = e.nom AND e.nom = ? AND statut <> 1 ORDER BY l.libelle";
+				stmt = cn.prepareStatement( sql );
+				stmt.setObject(1, epreuve.getNom());
+				rs = stmt.executeQuery();
+
+				List<Tache> taches = new LinkedList<>();
+				while (rs.next()) {
+					taches.add( construireTache( rs, false ) );
+				}
+				return taches;
+
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
+		
+		public List<Tache> listerToutEp(Epreuve epreuve) {
+
+			Connection			cn 		= null;
+			PreparedStatement	stmt 	= null;
+			ResultSet 			rs		= null;
+			String				sql;
+
+			try {
+				cn = dataSource.getConnection();
+				sql = "SELECT * FROM tache WHERE libelle NOT IN (SELECT libelle FROM lier l, epreuve e "
+						+ "WHERE l.nom = e.nom AND e.nom = ? AND statut <> 1 ORDER BY l.libelle)";
 				stmt = cn.prepareStatement( sql );
 				stmt.setObject(1, epreuve.getNom());
 				rs = stmt.executeQuery();

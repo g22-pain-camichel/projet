@@ -156,7 +156,7 @@ ORDER BY benevole.nom ASC,
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$F{nom} + " " + $F{prenom}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nom}  + " " + $F{prenom}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="Style1" x="170" y="0" width="160" height="36" uuid="c4cf41c0-4ba5-4871-8428-75dd834c029a">

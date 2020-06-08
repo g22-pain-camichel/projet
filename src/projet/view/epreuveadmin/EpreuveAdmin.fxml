@@ -9,8 +9,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -63,28 +61,13 @@
                            </image>
                         </ImageView>
                         <Label layoutX="71.0" layoutY="17.0" text="Créer et modifier les paramètres des épreuves" textFill="#4485fc" underline="true" />
-                        <TableView layoutX="35.0" layoutY="600.0" prefHeight="263.0" prefWidth="764.0" tableMenuButtonVisible="true">
-                          <columns>
-                              <TableColumn prefWidth="54.0" text="ID" />
-                            <TableColumn prefWidth="131.0" text="Nom_Tache" />
-                            <TableColumn prefWidth="136.0" text="Emplacement" />
-                              <TableColumn prefWidth="140.0" text="Taille" />
-                              <TableColumn prefWidth="143.0" text="Heure debut" />
-                              <TableColumn prefWidth="120.0" text="Heure fin" />
-                          </columns>
-                        </TableView>
-                        <Label layoutX="33.0" layoutY="563.0" prefHeight="18.0" prefWidth="241.0" text="Tableau des taches de l'épreuve choisie :" textFill="#4485fc">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
                         <AnchorPane layoutX="53.0" layoutY="125.0" minHeight="0.0" minWidth="0.0" prefHeight="415.0" prefWidth="281.0">
                            <children>
-                              <ListView fx:id="listView" layoutY="51.0" prefHeight="368.0" prefWidth="279.0" />
+                              <ListView fx:id="listView" layoutY="51.0" onMouseClicked="#doFillGap" prefHeight="368.0" prefWidth="279.0" />
                               <HBox layoutY="7.0" prefHeight="31.0" prefWidth="280.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="7.0">
                                  <children>
                                     <JFXTextField fx:id="textField_find" focusColor="#6b8cee" prefHeight="25.0" prefWidth="193.0" promptText="Recherche une équipe [nom]" />
-                                    <JFXButton fx:id="button_find" buttonType="RAISED" prefHeight="28.0" prefWidth="81.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Search">
+                                    <JFXButton fx:id="button_find" buttonType="RAISED" onAction="#doFind" prefHeight="28.0" prefWidth="81.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Search">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -118,7 +101,7 @@
                            <children>
                               <HBox alignment="CENTER" layoutX="25.0" layoutY="356.0" prefHeight="40.0" prefWidth="421.0" spacing="10.0">
                                  <children>
-                                    <JFXButton fx:id="button_valid" buttonType="RAISED" prefHeight="28.0" prefWidth="87.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Créer">
+                                    <JFXButton fx:id="button_create" buttonType="RAISED" onAction="#doUpdate" prefHeight="28.0" prefWidth="87.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Créer">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -130,7 +113,7 @@
                                           <Insets />
                                        </HBox.margin>
                                     </JFXButton>
-                                    <JFXButton fx:id="button_update" buttonType="RAISED" prefHeight="28.0" prefWidth="93.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Modifier">
+                                    <JFXButton fx:id="button_update" buttonType="RAISED" onAction="#doUpdate" prefHeight="28.0" prefWidth="93.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Modifier">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -139,7 +122,7 @@
                                           </ImageView>
                                        </graphic>
                                     </JFXButton>
-                                    <JFXButton fx:id="button_delete" buttonType="RAISED" prefHeight="28.0" prefWidth="97.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Supprimer">
+                                    <JFXButton fx:id="button_delete" buttonType="RAISED" onAction="#doDelete" prefHeight="28.0" prefWidth="97.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Supprimer">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -180,17 +163,17 @@
                                  </rowConstraints>
                                  <children>
                                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="123.0" text="Ajoutez les tâches a l'équipe :" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                                    <TextField fx:id="textField_name" prefHeight="27.0" prefWidth="48.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="textField_dist" prefHeight="27.0" prefWidth="48.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="Nom Epreuve  :" GridPane.halignment="CENTER" />
-                                    <TextField fx:id="textField_id" editable="false" prefHeight="25.0" prefWidth="181.0" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                                    <TextField fx:id="textField_nom" prefHeight="25.0" prefWidth="181.0" GridPane.columnIndex="1" GridPane.columnSpan="2" />
                                     <Label text="Distance :" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                                     <JFXTimePicker fx:id="timePicker_startH" defaultColor="#4485fc" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <JFXTimePicker fx:id="timePicker_startH1" defaultColor="#4485fc" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <JFXTimePicker fx:id="timePicker_endH" defaultColor="#4485fc" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                     <Label GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                     <Label text="Heure debut :" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                                     <Label text="Heure de fin :" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                                    <ComboBox prefHeight="25.0" prefWidth="184.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
-                                    <JFXButton fx:id="button_update1" buttonType="RAISED" prefHeight="28.0" prefWidth="84.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Ajouter" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                                    <ComboBox fx:id="comboBox_tache" prefHeight="25.0" prefWidth="184.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                                    <JFXButton fx:id="button_add" buttonType="RAISED" onAction="#addTacheEp" prefHeight="28.0" prefWidth="84.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Ajouter" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -203,7 +186,7 @@
                               </GridPane>
                               <HBox alignment="CENTER" layoutX="339.0" layoutY="35.0" prefHeight="40.0" prefWidth="107.0">
                                  <children>
-                                    <JFXButton buttonType="RAISED" prefHeight="28.0" prefWidth="96.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Rafraîchir">
+                                    <JFXButton fx:id="button_refresh" buttonType="RAISED" onAction="#doRefresh" prefHeight="28.0" prefWidth="96.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Rafraîchir">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                              <image>

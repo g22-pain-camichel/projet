@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,8 +14,10 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import jfox.dao.jdbc.UtilJdbc;
+import projet.data.Benevole;
 import projet.data.Epreuve;
 import projet.data.EquipeBenevole;
+import projet.data.Tache;
 
 public class DaoEpreuve {
 	
@@ -33,7 +36,7 @@ public class DaoEpreuve {
 
 			try {
 				cn = dataSource.getConnection();
-				sql = "INTO epreuve (nom, distance, hr_deb, hr_fin) VALUES (?,?,?,?)";
+				sql = "INSERT INTO epreuve (nom, distance, hr_deb, hr_fin) VALUES (?,?,?,?)";
 				stmt = cn.prepareStatement( sql );
 				stmt.setObject(1, epreuve.getNom());
 				stmt.setObject(2, epreuve.getDistance());
@@ -98,6 +101,33 @@ public class DaoEpreuve {
 			}
 		}
 		
+		public boolean deletableConstest(Epreuve ep) {
+			Connection			cn 		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs		= null;
+			String				sql;
+			int rowCount = -1;
+			try {
+				cn = dataSource.getConnection();
+				sql = "SELECT COUNT(*) FROM epreuve e, lier l WHERE e.nom = l.nom"
+						+ " AND e.nom = ?";
+				stmt = cn.prepareStatement( sql );
+				stmt.setString(1, ep.getNom());
+				rs = stmt.executeQuery();
+				
+				rs.next();		
+				rowCount = rs.getInt(1);
+				
+				if (rowCount > 0) return false;
+				else return true;
+				
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
+		
 		public Epreuve retrouver( String nom ) {
 
 			Connection			cn 		= null;
@@ -117,6 +147,33 @@ public class DaoEpreuve {
 				} else {
 					return null;
 				}
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			} finally {
+				UtilJdbc.close( rs, stmt, cn );
+			}
+		}
+		
+		public List<Epreuve> listerEpreuves(String value)   {
+
+			Connection			cn		= null;
+			PreparedStatement	stmt	= null;
+			ResultSet 			rs 		= null;
+			String				sql;
+
+			try {
+				cn = dataSource.getConnection();
+				sql = "SELECT * FROM epreuve WHERE nom LIKE ('%' || ? || '%')";
+				stmt = cn.prepareStatement(sql);
+				stmt.setObject( 1, value);
+	            rs = stmt.executeQuery();
+	            
+				List<Epreuve> epreuves = new ArrayList<>();
+				while (rs.next()) {
+					epreuves.add( construireEpreuve(rs) );
+				}
+				return epreuves;
+
 			} catch (SQLException e) {
 				throw new RuntimeException(e);
 			} finally {

@@ -235,8 +235,7 @@ CREATE TABLE lier(
 	nom       VARCHAR (20) NOT NULL ,
 	libelle   VARCHAR (20) NOT NULL  ,
 	statut	  INT NOT NULL,
-	CHECK (statut IN (0, 1)),
-	CONSTRAINT lier_PK PRIMARY KEY (nom,libelle)
+	CHECK (statut IN (0, 1))
 
 	,CONSTRAINT lier_epreuve_FK FOREIGN KEY (nom) REFERENCES epreuve(nom)
 	,CONSTRAINT lier_tache0_FK FOREIGN KEY (libelle) REFERENCES tache(libelle)

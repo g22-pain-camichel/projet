@@ -183,6 +183,10 @@ public class ModelEquipeBenevole {
 		daoLier.modifier(lier);
 	}
 	
+	public boolean isDeletable(EquipeBenevole eb) {
+		return daoEquipeBenevole.deletableEquipe(eb);
+	}
+	
 	public void validerMiseAJour() throws ParseException {
 		// Vérifie la validité des données
 		

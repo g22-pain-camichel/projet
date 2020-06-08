@@ -1,5 +1,7 @@
 package projet.data;
 
+import java.util.Objects;
+
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -64,6 +66,25 @@ public class Epreuve {
 
 	public final void setDistance(final Double distance) {
 		this.distanceProperty().setValue(distance);
+	}
+
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(nom);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Epreuve other = (Epreuve) obj;
+		return Objects.equals(getNom(), other.getNom());
 	}
 
 	@Override

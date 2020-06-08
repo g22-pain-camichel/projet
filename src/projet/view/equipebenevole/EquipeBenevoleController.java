@@ -226,7 +226,13 @@ public class EquipeBenevoleController {
 	@FXML
 	public void doDelete() {
 		if ( managerGui.showDialogConfirm( "Confirmez-vous la suppresion ?" ) ) {
-			modelEquipeBenevole.supprimer( listView.getSelectionModel().getSelectedItem() );
+			if (modelEquipeBenevole.isDeletable(listView.getSelectionModel().getSelectedItem())) {
+				modelEquipeBenevole.supprimer( listView.getSelectionModel().getSelectedItem() );
+			}
+			else {
+				managerGui.showDialogError("Veuillez retirer tous les bénévoles attribués à cette equipe afin de "
+						+ "pouvoir effectuer cette opération");
+			}
 			initialize();
 		}
 	}

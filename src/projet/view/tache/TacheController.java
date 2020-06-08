@@ -102,7 +102,13 @@ public class TacheController {
 	@FXML
 	public void doDelete() {
 		if ( managerGui.showDialogConfirm( "Confirmez-vous la suppresion ?" ) ) {
-			modelTache.supprimer( listView.getSelectionModel().getSelectedItem() );
+			if (modelTache.isDeletable(listView.getSelectionModel().getSelectedItem())) {
+				modelTache.supprimer( listView.getSelectionModel().getSelectedItem() );
+			}
+			else {
+				managerGui.showDialogError("Veuillez désallouer cette tache à une epreuve afin de "
+						+ "pouvoir effectuer cette opération");
+			}
 			initialize();
 		}
 	}

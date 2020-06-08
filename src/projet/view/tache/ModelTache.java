@@ -61,6 +61,10 @@ public class ModelTache {
 		return liste;
 	}
 	
+	public boolean isDeletable(Tache t) {
+		return daoTache.deletableTask(t);
+	}
+	
 	public void validerMiseAJour(int a) throws ParseException {
 		// Vérifie la validité des données
 		

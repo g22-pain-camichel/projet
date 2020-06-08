@@ -195,6 +195,34 @@ public class DaoEquipeBenevole {
 			UtilJdbc.close( rs, stmt, cn );
 		}
 	}
+	
+	public boolean deletableEquipe(EquipeBenevole eb) {
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+		int rowCount = -1;
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT COUNT(*) AS total FROM equipebenevole eb, constituer c WHERE "
+					+ "eb.num = c.num AND eb.num = ?";
+			stmt = cn.prepareStatement(sql);
+			stmt.setObject(1, eb.getNum());
+			rs = stmt.executeQuery();
+			
+			rs.next();		
+			rowCount = rs.getInt(1);
+			
+			if (rowCount > 0) return false;
+			else return true;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			UtilJdbc.close( rs, stmt, cn );
+		}
+	}
 
 	public List<EquipeBenevole> listerTout(boolean bool)   {
 
