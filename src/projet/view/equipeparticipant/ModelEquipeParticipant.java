@@ -37,7 +37,12 @@ public class ModelEquipeParticipant {
 	private IMapper mapper;
 	@Inject
 	private DaoClub daoClub;
+	@Inject
+	private DaoParticipant daoParticipant;
+	
 	private Club courant = new Club();
+	private Participant capitaine = new Participant();
+	private Participant equipier = new Participant();
 
 
 	public ObservableList<Club> getListe() {
@@ -51,6 +56,12 @@ public class ModelEquipeParticipant {
 
 	public Club getCourant() {
 		return courant;
+	}
+	public Participant getCapitiane() {
+		return capitaine;
+	}
+	public Participant getEquipier() {
+		return equipier;
 	}
 
 	public void setCourant(Club b) {
@@ -70,17 +81,16 @@ public class ModelEquipeParticipant {
 	}
 
 	public void preparerAjouter() {
-		mapper.update( courant, new Club() );
+		mapper.update(courant, new Club() );
+		mapper.update(capitaine, new Participant());
+		mapper.update(equipier, new Participant());
 	}
-
-
-
 
 	public void preparerModifier( Club item ) {
 		mapper.update( courant, daoClub.retrouver(item.getNum()));
-	
+		mapper.update(capitaine, daoParticipant.retrouver(item.getNumCapitaine()));
+		mapper.update(equipier, daoParticipant.retrouver(item.getNumEquipier()));
 	}
-
 
 	public List<Club> find(String name) {
 		List<Club> liste = new ArrayList();

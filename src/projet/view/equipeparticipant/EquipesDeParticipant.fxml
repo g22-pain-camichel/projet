@@ -8,11 +8,9 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -22,7 +20,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="831.0" prefHeight="680.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.equipeparticipant.EquipeParticipantController">
@@ -157,23 +154,9 @@
                                           <Label text="Email" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                                           <Label text="Date naissance" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="114.0" text="Telephone" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                                          <Label text="Sexe" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                                           <TextField fx:id="textField_nameC" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <TextField fx:id="textField_emailC" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <DatePicker fx:id="datePicker_birthdayC" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                          <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="8.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
-                                             <children>
-                                                <RadioButton mnemonicParsing="false" text="Masculin">
-                                                   <toggleGroup>
-                                                      <ToggleGroup />
-                                                   </toggleGroup>
-                                                </RadioButton>
-                                                <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="69.0" text="Feminin">
-                                                   <toggleGroup>
-                                                      <ToggleGroup />
-                                                   </toggleGroup></RadioButton>
-                                             </children>
-                                          </VBox>
                                           <TextField fx:id="textField_surnameC" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                                           <TextField fx:id="textField_phoneC" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                           <Label text="Adresse" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
@@ -210,29 +193,15 @@
                                           <Label text="Email" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                                           <Label text="Date naissance" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="114.0" text="Telephone" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-                                          <Label text="Sexe" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-                                          <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <DatePicker editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                          <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" spacing="8.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
-                                             <children>
-                                                <RadioButton mnemonicParsing="false" text="Masculin">
-                                                   <toggleGroup>
-                                                      <ToggleGroup />
-                                                   </toggleGroup>
-                                                </RadioButton>
-                                                <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="69.0" text="Feminin">
-                                                   <toggleGroup>
-                                                      <ToggleGroup />
-                                                   </toggleGroup></RadioButton>
-                                             </children>
-                                          </VBox>
-                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                          <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                          <TextField fx:id="textField_nameE" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <TextField fx:id="textField_emailE" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <DatePicker fx:id="datePicker_birthdayE" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <TextField fx:id="textField_surnameE" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                          <TextField fx:id="textField_phoneE" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                           <Label text="Adresse" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                                          <TextField editable="false" prefHeight="25.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                                          <TextField fx:id="textfield_adresseE" editable="false" prefHeight="25.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
                                           <Label text="ID" GridPane.halignment="CENTER" />
-                                          <TextField editable="false" prefHeight="25.0" prefWidth="57.0" GridPane.columnIndex="1" />
+                                          <TextField fx:id="textField_idE" editable="false" prefHeight="25.0" prefWidth="57.0" GridPane.columnIndex="1" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -277,7 +246,7 @@
                   </HBox>
                   <HBox alignment="CENTER" layoutX="358.0" layoutY="-5.0" prefHeight="40.0" prefWidth="107.0">
                      <children>
-                        <JFXButton buttonType="RAISED" prefHeight="28.0" prefWidth="96.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Rafraîchir">
+                        <JFXButton fx:id="button_refresh" buttonType="RAISED" prefHeight="28.0" prefWidth="96.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 45;" text="Rafraîchir">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

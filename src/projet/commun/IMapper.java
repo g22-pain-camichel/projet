@@ -16,11 +16,12 @@ import projet.data.Tache;
 @Mapper
 public interface IMapper {  
 	
-	Participant update( @MappingTarget Participant courant, Participant participant  );
-
+	
 	Service update( @MappingTarget Service target, Service source );
 	
 	Benevole update( @MappingTarget Benevole target, Benevole source );
+	
+	Participant update( @MappingTarget Participant target, Participant source );
 	
 	EquipeBenevole update( @MappingTarget EquipeBenevole target, EquipeBenevole source );
 	

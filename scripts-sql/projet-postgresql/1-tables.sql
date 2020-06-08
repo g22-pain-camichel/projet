@@ -99,7 +99,7 @@ CREATE TABLE participant(
 	email                VARCHAR (50) NOT NULL ,
 	role                 INT NOT NULL,
 	adressePost          VARCHAR (50) NOT NULL ,
-	cm   				 VARCHAR (2000)  ,
+	cm   				 VARCHAR (2000),
 	estValide			 BOOLEAN      NOT NULL,
 	CHECK( (role = 0 OR role = 1) AND (sexe = 0 OR sexe = 1)),
 	CONSTRAINT participant_PK PRIMARY KEY (num)

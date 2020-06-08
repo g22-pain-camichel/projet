@@ -11,12 +11,12 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import jfox.javafx.util.ConverterStringInteger;
-import jfox.javafx.util.ListenerFocusValidation;
+import jfox.javafx.util.ConverterStringLocalDate;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Club;
+import projet.data.Participant;
 import projet.view.EnumView;
 import projet.view.connexion.ModelConnexion;
 
@@ -89,16 +89,26 @@ public class EquipeParticipantController {
 
 	@FXML
 	private TextField textfield_adresseC;
-	//	@FXML
-	//	private ToggleGroup toggleSexC;
 	@FXML
 	private DatePicker datePicker_birthdayC;
+
+	@FXML
+	private TextField textField_idE, textField_nameE, textField_surnameE, 
+		textField_emailE, textField_phoneE, textfield_adresseE;
+	
+	@FXML
+	private DatePicker datePicker_birthdayE;
+	
+	private Participant capitain, equipier;
 
 	@FXML
 	private void initialize() {
 		user.setText(modelConnexion.getUtilisateurActif().getPseudo());
 		// data binding
 		courant = modelEquipeParticipant.getCourant();
+		capitain = modelEquipeParticipant.getCapitiane();
+		equipier = modelEquipeParticipant.getEquipier();
+		
 		System.out.println("avant: "+listView.getSelectionModel().getSelectedIndex());
 		if (txt.equals("Valide")) {
 			listView.setItems(modelEquipeParticipant.getListe(true));
@@ -120,7 +130,12 @@ public class EquipeParticipantController {
 			UtilFX.selectInListView( listView, courant );
 			listView.requestFocus();
 			System.out.println("avant: "+listView.getSelectionModel().getSelectedIndex());
-
+			
+			// fill captain fields
+			if (capitain.getNum() != null) fillCap();
+			
+			// fill partner fields
+			if (equipier.getNum() != null) fillEq();
 
 			textField_id.textProperty().bindBidirectional(courant.numProperty(), new ConverterStringInteger());
 
@@ -134,19 +149,12 @@ public class EquipeParticipantController {
 
 
 
-
-
-
-
-
-
 	@FXML
 	public void doFillGap() {
-
-		modelEquipeParticipant.preparerModifier(listView.getSelectionModel().getSelectedItem() );
-		initialize();		
-
-
+		if (listView.getSelectionModel().getSelectedIndex() > -1) {
+			modelEquipeParticipant.preparerModifier(listView.getSelectionModel().getSelectedItem() );
+			initialize();				
+		}
 	}
 
 	@FXML
@@ -162,7 +170,28 @@ public class EquipeParticipantController {
 		}
 	}
 
-
+// fill captain fields
+	
+	private void fillCap() {
+		textField_idC.textProperty().bindBidirectional(capitain.numProperty(), new ConverterStringInteger());
+		textField_nameC.textProperty().bindBidirectional(capitain.nomProperty());
+		textField_surnameC.textProperty().bindBidirectional(capitain.prenomProperty());
+		textField_emailC.textProperty().bindBidirectional(capitain.emailProperty());
+		textfield_adresseC.textProperty().bindBidirectional(capitain.adressePostProperty());
+		textField_phoneC.textProperty().bindBidirectional(capitain.telProperty());
+		datePicker_birthdayC.getEditor().textProperty().bindBidirectional(capitain.dtNaissProperty(), new ConverterStringLocalDate());
+	}
+	private void fillEq() {
+		textField_idE.textProperty().bindBidirectional(equipier.numProperty(), new ConverterStringInteger());
+		textField_nameE.textProperty().bindBidirectional(equipier.nomProperty());
+		textField_surnameE.textProperty().bindBidirectional(equipier.prenomProperty());
+		textField_emailE.textProperty().bindBidirectional(equipier.emailProperty());
+		textfield_adresseE.textProperty().bindBidirectional(equipier.adressePostProperty());
+		textField_phoneE.textProperty().bindBidirectional(equipier.telProperty());
+		datePicker_birthdayE.getEditor().textProperty().bindBidirectional(equipier.dtNaissProperty(), new ConverterStringLocalDate());
+	}
+	
+	
 
 	@FXML
 	public void find_validC() {
@@ -181,14 +210,6 @@ public class EquipeParticipantController {
 		txt = "";
 		initialize();
 	}
-
-
-
-
-
-
-
-
 
 	@FXML
 	public void doAdd() throws ParseException {
