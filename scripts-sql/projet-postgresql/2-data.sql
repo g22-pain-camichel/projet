@@ -178,26 +178,63 @@ ALTER TABLE club ALTER COLUMN num RESTART WITH 11;
 	-- Tache
 
 INSERT INTO tache (libelle, emplacement, hr_deb, hr_fin, taille) VALUES
-	('lorem ipsum', 'idn', {t '10:30'}, {t '14:00'}, 3),
-	('dolor sit amet', 'idn', {t '08:00'}, {t '10:00'}, 3),
-	('ipsum lorem', 'idn', {t '14:00'}, {t '16:00'}, 2),
-	('amet sit dolor', 'idn', {t '10:00'}, {t '16:00'}, 4);
+	('parking voiture', 'idn', {t '07:30'}, {t '09:00'}, 3),
+	('ravitaillement', 'idn', {t '09:00'}, {t '13:30'}, 3),
+	('signaleur', 'idn', {t '08:30'}, {t '13:30'}, 2),
+	('sécurité sur eau', 'idn', {t '09:00'}, {t '10:30'}, 4),
+	('moto(fermeture)', 'idn', {t '10:30'}, {t '13:30'}, 3),
+	('repas', 'idn', {t '09:00'}, {t '13:30'}, 3),
+	('photographe', 'idn', {t '07:30'}, {t '14:00'}, 2);
 
 	-- Equipebenevole
 	
 INSERT INTO equipebenevole(num, nom, nbreBenevole, libelle, estValide) VALUES
-	(1, 'equipe 1', 3, 'lorem ipsum', false),
-	(2, 'equipe 2', 4, 'dolor sit amet', false),
-	(3, 'equipe 3', 3, 'ipsum lorem', false),
-	(4, 'equipe 4', 2, 'amet sit dolor', false);
+	(1, 'equipe 1', 3, 'parking voiture', false),
+	(2, 'equipe 2', 3, 'ravitaillement', false),
+	(3, 'equipe 3', 3, 'repas', false),
+	(4, 'equipe 4', 4, 'sécurité sur eau', false),
+	(5, 'equipe 5', 3, 'moto(fermeture)', false),
+	(6, 'equipe 6', 2, 'photographe', false),
+	(7, 'equipe 7', 2, 'signaleur', false);
 	
 ALTER TABLE equipebenevole ALTER COLUMN num RESTART WITH 5;
 
 	-- Constituer
 	
 INSERT INTO constituer (identifiant, num) VALUES
-	(1, 2),
-	(2, 1);
+	(1, 1),
+	(2, 1),
+	(3, 1),
+	
+	(4, 2),
+	(5, 2),
+	(6, 2),
+	
+	
+	(7, 3),
+	(8, 3),
+	(9, 3),
+	
+	
+	(10, 4),
+	(11, 4),
+	(12, 4),
+	(13, 4),
+	
+	
+	
+	(14, 5),
+	(15, 5),
+	(16, 5),
+	
+	
+	(17, 6),
+	(18, 6),
+	
+	(19, 7),
+	(20, 7);
+	
+
 
 	-- Epreuve
 
@@ -210,13 +247,46 @@ INSERT INTO epreuve (nom, distance, hr_deb, hr_fin) VALUES
 	-- Lier
 	
 INSERT INTO lier (nom, libelle, statut) VALUES
-	('epreuve 2', 'amet sit dolor', 0),
-	('epreuve 1', 'lorem ipsum', 0),
-	('epreuve 2', 'dolor sit amet', 0),
-	('epreuve 1', 'ipsum lorem', 0);
+	('epreuve 1', 'parking voiture', 0),
+	('epreuve 1', 'ravitaillement', 0),
+	('epreuve 1', 'sécurité sur eau', 0),
+	('epreuve 1', 'signaleur', 0),
+	('epreuve 1', 'moto(fermeture)', 0),
+	('epreuve 1', 'repas', 0),
+	('epreuve 1', 'photographe', 0),
+	
+	('epreuve 2', 'parking voiture', 0),
+	('epreuve 2', 'ravitaillement', 0),
+	('epreuve 2', 'sécurité sur eau', 0),
+	('epreuve 2', 'signaleur', 0),
+	('epreuve 2', 'moto(fermeture)', 0),
+	('epreuve 2', 'repas', 0),
+	('epreuve 2', 'photographe', 0),
+	
+	('epreuve 3', 'parking voiture', 0),
+	('epreuve 3', 'ravitaillement', 0),
+	('epreuve 3', 'sécurité sur eau', 0),
+	('epreuve 3', 'signaleur', 0),
+	('epreuve 3', 'moto(fermeture)', 0),
+	('epreuve 3', 'repas', 0),
+	('epreuve 3', 'photographe', 0),
+	
+	('epreuve 4', 'parking voiture', 0),
+	('epreuve 4', 'ravitaillement', 0),
+	('epreuve 4', 'sécurité sur eau', 0),
+	('epreuve 4', 'signaleur', 0),
+	('epreuve 4', 'moto(fermeture)', 0),
+	('epreuve 4', 'repas', 0),
+	('epreuve 4', 'photographe', 0);
+	
 	
 	-- Inscrire
 	
 INSERT INTO inscrire (nom, num) VALUES
 	('epreuve 2', 1),
-	('epreuve 1', 2);
+	('epreuve 2', 2),
+	('epreuve 1', 3),
+	('epreuve 3', 4),
+	('epreuve 4', 5),
+	('epreuve 4', 6),
+	('epreuve 1', 7);
