@@ -98,7 +98,8 @@ public class ModelTache {
 		if ( a == 0 ) {
 			// Insertion
 			daoTache.inserer( tache );
-		} else {
+		} 
+		else {
 			// modficiation
 			daoTache.modifier( tache );
 		}

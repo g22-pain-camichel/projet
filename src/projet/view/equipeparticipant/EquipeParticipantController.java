@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.jfoenix.controls.JFXButton;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -17,12 +19,16 @@ import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.IManagerGui;
 import projet.data.Club;
 import projet.data.Participant;
+import projet.report.EnumReport;
+import projet.report.ManagerReport;
 import projet.view.EnumView;
 import projet.view.connexion.ModelConnexion;
 
 public class EquipeParticipantController {
 	@Inject
 	private IManagerGui		managerGui;
+	@Inject 
+	private ManagerReport managerReport;
 	@Inject 
 	private ModelConnexion modelConnexion;
 
@@ -100,6 +106,8 @@ public class EquipeParticipantController {
 	private DatePicker datePicker_birthdayE;
 	
 	private Participant capitain, equipier;
+	@FXML
+	private JFXButton button_print;
 
 	@FXML
 	private void initialize() {
@@ -234,7 +242,10 @@ public class EquipeParticipantController {
 
 
 
-
+	@FXML
+	public void doPrint() {
+		managerReport.openFilePdf(EnumReport.listeEquipeParticipant, null);
+	}
 
 
 

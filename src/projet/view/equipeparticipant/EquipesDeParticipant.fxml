@@ -22,7 +22,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="831.0" prefHeight="680.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.equipeparticipant.EquipeParticipantController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="650.0" minWidth="831.0" prefHeight="680.0" prefWidth="831.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projet.view.equipeparticipant.EquipeParticipantController">
    <children>
       <AnchorPane layoutX="-1.0" prefHeight="59.0" prefWidth="831.0" style="-fx-background-color: #fafafa;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -274,7 +274,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXButton buttonType="RAISED" layoutX="45.0" layoutY="584.0" prefHeight="28.0" prefWidth="97.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 7;" text="Imprimer">
+            <JFXButton fx:id="button_print" buttonType="RAISED" layoutX="45.0" layoutY="574.0" onAction="#doPrint" prefHeight="28.0" prefWidth="97.0" style="-fx-background-color: #FDFEFE; -fx-background-radius: 7;" text="Imprimer">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -91,11 +91,13 @@ public class TacheController {
 	
 	@FXML
 	public void doUpdate() throws ParseException {
-		if (button_create.isDisable()) 
+		if (button_create.isDisable()){
 			modelTache.validerMiseAJour(1);
-		else 
+		}
+		else{
 			modelTache.validerMiseAJour(0);
-		modelTache.preparerAjouter();
+			System.out.println("yoooo");
+		}
 		initialize();
 	}
 	

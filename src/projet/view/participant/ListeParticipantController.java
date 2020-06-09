@@ -160,7 +160,7 @@ public class ListeParticipantController {
 	}
 	@FXML
 	public void doPrint() {
-		managerReport.showViewer(EnumReport.listeParticipant, null);
+		managerReport.openFilePdf(EnumReport.listeParticipant, null);
 	}
 	
 	@FXML

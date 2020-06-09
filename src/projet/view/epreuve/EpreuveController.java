@@ -109,6 +109,6 @@ public class EpreuveController {
 
 	@FXML
 	public void doPrint() {
-		managerReport.showViewer(EnumReport.listeEpreuve, null);
+		managerReport.openFilePdf(EnumReport.listeEpreuve, null);
 	}
 }

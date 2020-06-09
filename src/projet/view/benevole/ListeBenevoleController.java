@@ -220,7 +220,7 @@ public class ListeBenevoleController {
 	
 	@FXML
 	public void doPrint() {
-		managerReport.showViewer(EnumReport.listeBenevole, null);
+		managerReport.openFilePdf(EnumReport.listeBenevole, null);
 	}
 	
 	
